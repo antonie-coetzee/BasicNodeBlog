@@ -1,0 +1,24 @@
+{
+  "name": "basicnodeblog",
+  "version": "0.0.1",
+  "description": "Basic blog engine serving static content",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WireJunky/BasicNodeBlog.git"
+  },
+  "keywords": [
+    "node",
+    "blog",
+    "static"
+  ],
+  "author": "wirejunky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WireJunky/BasicNodeBlog/issues"
+  },
+  "homepage": "https://github.com/WireJunky/BasicNodeBlog#readme"
+}
