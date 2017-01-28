@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "Basic blog engine serving static content",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WireJunky/BasicNodeBlog.git"
@@ -24,7 +23,11 @@
     "test": "test"
   },
   "dependencies": {
+    "express": "^4.14.0"
   },
   "devDependencies": {
+    "typescript": "^2.1.5",
+    "typings": "^2.1.0",
+    "webpack": "^1.14.0"
   }
 }
