@@ -4,7 +4,6 @@
   "description": "Basic blog engine serving static content",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/WireJunky/BasicNodeBlog/issues"
   },
-  "homepage": "https://github.com/WireJunky/BasicNodeBlog#readme"
+  "homepage": "https://github.com/WireJunky/BasicNodeBlog#readme",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
 }
