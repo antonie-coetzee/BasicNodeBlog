@@ -1,8 +1,10 @@
 {
-    "typescript.check.workspaceVersion": false,
+    "typescript.check.workspaceVersion": true,
     "files.exclude": {
         "**/.git": true,
         "**/.DS_Store": true,
         "**/*.js.map": true
     }   
+,
+"typescript.tsdk": "./node_modules/typescript/lib"
 }

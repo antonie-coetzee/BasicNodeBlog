@@ -1,3 +1,4 @@
+"use strict";
 var express = require('express');
 var app = express();
 app.listen(3000, function () {
@@ -12,4 +13,4 @@ var Startup = (function () {
     };
     return Startup;
 }());
-//# sourceMappingURL=project.js.map
+//# sourceMappingURL=app.js.map
