@@ -5,7 +5,9 @@
         "allowJs": false,
         "sourceMap": true,  
         "rootDir": "../",
+        "lib": ["dom","es5","es2015.promise"],
         "outDir" : "../../dist",
+        "watch": true,
         "types": [
             "node"
          ],
