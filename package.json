@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Basic blog engine serving static content",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": ".\\node_modules\\.bin\\webpack --config ./app/client/webpack.config.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WireJunky/BasicNodeBlog.git"
@@ -24,12 +26,21 @@
   },
   "dependencies": {
     "express": "^4.14.0",
-    "vue": "^2.1.10"
+    "inversify": "^3.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "reflect-metadata": "^0.1.9"
   },
   "devDependencies": {
     "@types/node": "^7.0.4",
+    "@types/react": "^15.0.6",
+    "@types/react-dom": "^0.14.22",
+    "@types/react-redux": "^4.4.36",
+    "@types/react-router": "^3.0.0",
+    "react-redux": "^5.0.2",
+    "react-router": "^3.0.2",
+    "ts-loader": "^2.0.0",
     "typescript": "^2.1.5",
-    "typings": "^2.1.0",
-    "webpack": "^1.14.0"
+    "webpack": "^2.2.1"
   }
 }

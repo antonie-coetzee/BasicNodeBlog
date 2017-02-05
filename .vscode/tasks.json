@@ -16,8 +16,9 @@
     {        
         "taskName": "typescript server",
         "isBuildCommand": true,
-        "args": ["-p", "app/server/tsconfig.json"],
+        "args": ["-w","-p", "app/server/tsconfig.json"],
         "suppressTaskName": true,
+        "isBackground": true,
         "problemMatcher": "$tsc-watch"     
     }
   ]
