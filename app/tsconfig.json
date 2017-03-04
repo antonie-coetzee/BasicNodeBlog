@@ -20,7 +20,6 @@
     },
      "exclude": [
          "server",
-         "client.webpack.config.js",
          "node_modules"
      ]
 }

@@ -2,20 +2,24 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "0.1.0",
-    "command": "tsc",
-    "isShellCommand": true,
+    "_runner": "terminal",
     "showOutput": "always",
     "tasks" : [ 
     {        
         "taskName": "typescript client",
+        "command": "tsc",
         "isBuildCommand": true,
+        "isShellCommand": true,
         "args": ["-p", "app/client/tsconfig.json"],
+        "isBackground": true,
         "suppressTaskName": true,
         "problemMatcher": "$tsc-watch"     
     },
     {        
         "taskName": "typescript server",
+        "command": "tsc",
         "isBuildCommand": true,
+        "isShellCommand": true,
         "args": ["-w","-p", "app/server/tsconfig.json"],
         "suppressTaskName": true,
         "isBackground": true,
