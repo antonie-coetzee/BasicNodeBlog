@@ -4,8 +4,8 @@
   "description": "Basic blog engine serving static content",
   "main": "index.js",
   "scripts": {
-    "build:prod": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --optimize-minimize --define process.env.NODE_ENV='production'",
-    "build:dev": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js"
+    "build:prod": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --optimize-minimize --define process.env.NODE_ENV='production' --progress",
+    "build:dev": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --progress"
   },
   "repository": {
     "type": "git",

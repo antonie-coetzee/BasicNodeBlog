@@ -2,28 +2,16 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "0.1.0",
-    "_runner": "terminal",
+    //"_runner": "terminal",
     "showOutput": "always",
     "tasks" : [ 
     {        
-        "taskName": "typescript client",
-        "command": "tsc",
+        "taskName": "webpack dev build",
+        "command": "${workspaceRoot}/node_modules/.bin/webpack",
         "isBuildCommand": true,
         "isShellCommand": true,
-        "args": ["-p", "app/client/tsconfig.json"],
-        "isBackground": true,
-        "suppressTaskName": true,
-        "problemMatcher": "$tsc-watch"     
-    },
-    {        
-        "taskName": "typescript server",
-        "command": "tsc",
-        "isBuildCommand": true,
-        "isShellCommand": true,
-        "args": ["-w","-p", "app/server/tsconfig.json"],
-        "suppressTaskName": true,
-        "isBackground": true,
-        "problemMatcher": "$tsc-watch"     
+        "args": ["--config", "./webpack.config.js", "--progress"],
+        "suppressTaskName": true
     }
   ]
 }

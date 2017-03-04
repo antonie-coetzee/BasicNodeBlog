@@ -19,7 +19,6 @@
          ]
     },
      "exclude": [
-         "server",
          "node_modules"
      ]
 }
