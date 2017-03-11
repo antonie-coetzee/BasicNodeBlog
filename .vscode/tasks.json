@@ -10,7 +10,7 @@
             "command": "${workspaceRoot}/node_modules/.bin/webpack",
             "isBuildCommand": true,
             "isShellCommand": true,
-            "args": ["--config", "./webpack.config.js", "--progress", "--watch"],
+            "args": ["--config", "./webpack.config.js", "--progress"],
             "suppressTaskName": true
         },{
             "taskName": "typescript server build",

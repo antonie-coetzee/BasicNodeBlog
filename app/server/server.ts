@@ -21,7 +21,7 @@ export class BnbServer implements IServer {
     bootstrap(){
         this.app = express();
 
-        this.app.use('/public', express.static('C:\\Dev\\BasicNodeBlog\\dist\\public'))
+        this.app.use('/', express.static(__dirname + '/../public'))
 
         this.app.listen(8080, function () {
             console.log('Example app listening on port 8080') 

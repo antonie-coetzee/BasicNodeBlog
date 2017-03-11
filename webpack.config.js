@@ -7,14 +7,11 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         client: path.resolve(__dirname, './app/client/client.tsx')
-        // server: path.resolve(__dirname, './app/server/Bootstrap.ts')
     },
     output: {
         filename: '[name]-bundle.js',
-        path: './dist/',
+        path: './dist/public/',
         pathinfo: true,
-        //devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-        //devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
     },
     resolve: {
         extensions: ['.ts', '.js', '.tsx']

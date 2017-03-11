@@ -6,7 +6,7 @@
         "sourceMap": true,  
         "lib": ["dom","es5", "es6","es2015.promise"],
         "outDir" : "../dist",
-        "watch": true,
+        "watch": false,
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
