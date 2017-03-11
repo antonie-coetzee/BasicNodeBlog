@@ -6,14 +6,15 @@ const Visualizer = require('webpack-visualizer-plugin');
 module.exports = {
     devtool: 'source-map',
     entry: {
-        client: path.resolve(__dirname, './app/client/client.tsx'),
-        server: path.resolve(__dirname, './app/server/server.ts')
+        client: path.resolve(__dirname, './app/client/client.tsx')
+        // server: path.resolve(__dirname, './app/server/Bootstrap.ts')
     },
     output: {
-        filename: '[name].js',
+        filename: '[name]-bundle.js',
         path: './dist/',
-        devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-        devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
+        pathinfo: true,
+        //devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+        //devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
     },
     resolve: {
         extensions: ['.ts', '.js', '.tsx']
@@ -26,7 +27,8 @@ module.exports = {
           options: {
             configFileName: './app/tsconfig.json',
             logInfoToStdOut: true
-          } 
+          }, 
+          exclude: [/node_modules/]
         }
       ]
     },

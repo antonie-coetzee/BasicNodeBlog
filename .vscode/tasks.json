@@ -2,16 +2,23 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "0.1.0",
-    //"_runner": "terminal",
+    "_runner": "terminal",
     "showOutput": "always",
     "tasks" : [ 
-    {        
-        "taskName": "webpack dev build",
-        "command": "${workspaceRoot}/node_modules/.bin/webpack",
-        "isBuildCommand": true,
-        "isShellCommand": true,
-        "args": ["--config", "./webpack.config.js", "--progress"],
-        "suppressTaskName": true
-    }
-  ]
-}
+        {        
+            "taskName": "webpack dev build",
+            "command": "${workspaceRoot}/node_modules/.bin/webpack",
+            "isBuildCommand": true,
+            "isShellCommand": true,
+            "args": ["--config", "./webpack.config.js", "--progress", "--watch"],
+            "suppressTaskName": true
+        },{
+            "taskName": "typescript server build",
+            "command": "tsc",
+            "isBuildCommand": true,
+            "isShellCommand": true,
+            "args": ["-p", "${workspaceRoot}/app"],
+            "suppressTaskName": true
+        }
+    ]
+} 

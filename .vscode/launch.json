@@ -8,10 +8,17 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}\\app\\server\\server.ts",
+            "program": "${workspaceRoot}\\app\\server\\Bootstrap.ts",
             "cwd": "${workspaceRoot}",
-            "outFiles": ["${workspaceRoot}\\dist\\*"],
-            "sourceMaps": true
+            "outFiles": ["${workspaceRoot}\\dist\\server\\*"],
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "args": [],
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "env": {
+                "NODE_ENV": "development"
+            }
         },
         {
             "type": "node",
