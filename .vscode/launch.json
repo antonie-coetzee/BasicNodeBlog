@@ -11,13 +11,16 @@
             "program": "${workspaceRoot}\\app\\server\\Bootstrap.ts",
             "cwd": "${workspaceRoot}",
             "outFiles": ["${workspaceRoot}\\dist\\server\\*"],
+            "skipFiles": [ "${workspaceRoot}/node_modules/**/*.js"],
             "sourceMaps": true,
             "stopOnEntry": false,
+            "smartStep": true,
             "args": [],
             "preLaunchTask": null,
             "runtimeExecutable": null,
             "env": {
-                "NODE_ENV": "development"
+                "NODE_ENV": "development",
+                "DEBUG": "express:*"
             }
         },
         {

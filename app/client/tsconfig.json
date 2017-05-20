@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "allowJs": false,
+        "sourceMap": true,  
+        "lib": ["dom","es5", "es6","es2015.promise"],
+        "outDir" : "../dist",
+        "watch": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "types": [
+            "node",
+            "reflect-metadata"
+         ],
+        "typeRoots": [
+            "node_modules/@types"
+         ]
+    },
+     "exclude": [
+         "../../node_modules"
+     ]
+}

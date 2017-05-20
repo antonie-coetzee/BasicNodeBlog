@@ -9,24 +9,25 @@ import * as path from "path";
 
 import {IServer, IServerSymbol} from "./IServer"
 import {IApi, IApiSymbol} from "./api/IApi"
+import {IContentUpdator, IContentUpdatorSymbol} from "./IContentUpdator"
 
 @injectable()
 export class BnbServer implements IServer {
     public app: express.Application;
 
     constructor(
-         @inject(IApiSymbol) private api: IApi
+         @inject(IApiSymbol) private api: IApi,
+         @inject(IContentUpdatorSymbol) private contentUpdator: IContentUpdator
     ) {}
 
     bootstrap(){
         this.app = express();
-
+        var contentUpdator = this.contentUpdator;
         this.app.use('/', express.static(__dirname + '/../public'))
-
         this.app.listen(8080, function () {
-            console.log('Example app listening on port 8080') 
+            console.log('listening on port 8080');
+            contentUpdator.UpdateContent("./Content", "https://github.com/WireJunky/BlogContent.git");
         })
-
         return this;
     }
 }

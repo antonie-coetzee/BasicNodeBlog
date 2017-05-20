@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
         "allowJs": false,
         "sourceMap": true,  
         "lib": ["dom","es5", "es6","es2015.promise"],
-        "outDir" : "../dist",
-        "watch": false,
+        "outDir" : "../../dist/server",
+        "watch": true,
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
@@ -19,6 +19,7 @@
          ]
     },
      "exclude": [
-         "../node_modules"
+         "../../node_modules"
      ]
+
 }

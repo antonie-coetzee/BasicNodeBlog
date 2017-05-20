@@ -9,16 +9,17 @@
             "taskName": "webpack dev build",
             "command": "${workspaceRoot}/node_modules/.bin/webpack",
             "isBuildCommand": true,
-            "isShellCommand": true,
+            "isShellCommand": true, 
             //"args": ["--config", "./webpack.config.js", "--progress", "--optimize-minimize", "--define", "process.env.NODE_ENV='production'"],
-            "args": ["--config", "./webpack.config.js", "--progress", "--watch"],
+            "args": ["--config", "./webpack.config.js", "--progress", "--watch"], 
             "suppressTaskName": true
         },{
-            "taskName": "typescript server build",
-            "command": "tsc",
+            "taskName": "typescript server build", 
+            "command": "node",
             "isBuildCommand": true,
             "isShellCommand": true,
-            "args": ["-p", "${workspaceRoot}/app"],
+            "args": ["${workspaceRoot}\\node_modules\\typescript\\bin\\tsc", "-p" , "${workspaceRoot}/app/server"],
+            //"args": ["-p", "${workspaceRoot}/app"],
             "suppressTaskName": true
         }
     ]
