@@ -11,9 +11,8 @@ export class ContentApi implements IApiModule {
     constructor(@inject(IContentUpdatorKey) private contentUpdator: IContentUpdator) {}
   
     ConfigureRouter(router:Router) : Router{
-
         router.get('/update',  async (req, res) => {
-            await this.contentUpdator.UpdateContent("./Content", "https://github.com/WireJunky/BlogContent.git");
+            await this.contentUpdator.UpdateContent("./dist/content", "https://github.com/WireJunky/BlogContent.git");
             res.send('content updated..')
         })
     

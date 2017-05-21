@@ -7,8 +7,7 @@ import ContentUpdator from "./Content/ContentUpdator"
 import {ContentApi} from "./Content/ContentApi"
 
 export let apiContainerModule = new ContainerModule(
-    (bind: interfaces.Bind)=>{
-        
+    (bind: interfaces.Bind)=>{       
         bind<IContentUpdator>(IContentUpdatorKey).to(ContentUpdator);
         bind<IApiModule>(IApiModuleKey).to(ContentApi);
     });
