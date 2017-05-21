@@ -11,7 +11,7 @@ import {IApiModule, IApiModuleKey} from "./api/IApimodule"
 import {IServer, IServerKey} from "./IServer"
 
 @injectable()
-export class BnbServer implements IServer {
+export class Server implements IServer {
     public app: express.Application;
 
     constructor(@multiInject(IApiModuleKey) private apiModules: IApiModule[]) {}
@@ -32,7 +32,6 @@ export class BnbServer implements IServer {
 
         this.app.listen(8080, function () {
             console.log('listening on port 8080');
-            //contentUpdator.UpdateContent("./Content", "https://github.com/WireJunky/BlogContent.git");
         })
         return this;
     }

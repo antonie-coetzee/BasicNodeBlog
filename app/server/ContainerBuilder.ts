@@ -1,16 +1,20 @@
 import "reflect-metadata"
 import {Container, interfaces} from "inversify"
 
+import {IConfig, IConfigKey} from "./IConfig"
+import Config from "./config"
+
 import  {IServer,IServerKey} from "./IServer"
-import  {BnbServer} from "./Server"
+import  {Server} from "./Server"
 
 import {apiContainerModule} from "./api/ApiContainerModule"
 
-export class BnbContainerBuilder {
+export class ContainerBuilder {
     public build() : Container{
-        let bnbContainer = new Container();
-        bnbContainer.load(apiContainerModule);
-        bnbContainer.bind<IServer>(IServerKey).to(BnbServer);    
-        return bnbContainer;
+        let container = new Container();
+        container.bind<IConfig>(IConfigKey).to(Config)
+        container.bind<IServer>(IServerKey).to(Server);
+        container.load(apiContainerModule);    
+        return container;
     }
 }

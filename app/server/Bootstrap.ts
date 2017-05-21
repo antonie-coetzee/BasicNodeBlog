@@ -1,9 +1,9 @@
 import {Container} from "inversify"
 
 import {IServer,IServerKey} from "./IServer"
-import {BnbContainerBuilder} from './ContainerBuilder'
+import {ContainerBuilder} from './ContainerBuilder'
 
-let container = new BnbContainerBuilder().build();
+let container = new ContainerBuilder().build();
 let server = container.get<IServer>(IServerKey);
 
 server.bootstrap();
