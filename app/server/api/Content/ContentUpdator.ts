@@ -5,7 +5,7 @@ import * as Git from "nodegit"
 import * as fs from "fs"
 
 @injectable()
-export class ContentUpdator implements IContentUpdator {
+export default class ContentUpdator implements IContentUpdator {
 
     async UpdateContent(repoPath: string, repoUrl: string): Promise<boolean> {
         if (repoPath == null) {

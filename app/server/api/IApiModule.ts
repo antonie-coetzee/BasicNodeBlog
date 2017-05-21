@@ -1,8 +1,8 @@
 import {Router} from "express";
 
-export let IApiModuleSymbol = Symbol("IApiModule");
+export const IApiModuleKey = "IApiModule";
 
 export interface IApiModule {
-    readonly basePath:string;
+    basePath:string;
     ConfigureRouter(router:Router) : Router;
 }

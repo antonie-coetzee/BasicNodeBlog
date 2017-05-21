@@ -1,16 +1,20 @@
-import { injectable} from "inversify";
+import { injectable, inject} from "inversify";
 import {Router} from "express";
 import {IApiModule} from "./../IApiModule"
+
+import { IContentUpdator, IContentUpdatorKey } from "./IContentUpdator"
 
 @injectable()
 export class ContentApi implements IApiModule {
     basePath:string = 'content/';
-    constructor() {}
+    
+    constructor(@inject(IContentUpdatorKey) private contentUpdator: IContentUpdator) {}
   
     ConfigureRouter(router:Router) : Router{
 
-        router.get('/',  (req, res) => {
-            res.send('Birds home page')
+        router.get('/update',  async (req, res) => {
+            await this.contentUpdator.UpdateContent("./Content", "https://github.com/WireJunky/BlogContent.git");
+            res.send('content updated..')
         })
     
         return router; 

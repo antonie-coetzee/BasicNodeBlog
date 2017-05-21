@@ -10,7 +10,7 @@
             "name": "Launch Program",
             "program": "${workspaceRoot}\\app\\server\\Bootstrap.ts",
             "cwd": "${workspaceRoot}",
-            "outFiles": ["${workspaceRoot}\\dist\\server\\*"],
+            "outFiles": ["${workspaceRoot}\\dist\\server\\**"],
             "skipFiles": [ "${workspaceRoot}/node_modules/**/*.js"],
             "sourceMaps": true,
             "stopOnEntry": false,
