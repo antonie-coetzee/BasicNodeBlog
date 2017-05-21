@@ -1,9 +1,8 @@
 import "reflect-metadata"
 import {Container, interfaces} from "inversify"
 
-import {IConfig, IConfigKey} from "./IConfig"
-import Config from "./config"
-
+import {IConfig, IConfigKey} from "./config/IConfig"
+import Config from "./config/Config"
 import  {IServer,IServerKey} from "./IServer"
 import  {Server} from "./Server"
 

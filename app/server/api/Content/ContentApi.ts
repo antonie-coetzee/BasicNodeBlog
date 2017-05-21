@@ -2,9 +2,8 @@ import { injectable, inject} from "inversify";
 import {Router} from "express";
 import {IApiModule} from "./../IApiModule"
 
-import {IConfig, IConfigKey} from "./../../IConfig"
+import {IConfig, IConfigKey} from "./../../config/IConfig"
 import { IContentUpdator, IContentUpdatorKey } from "./IContentUpdator"
-
 
 @injectable()
 export class ContentApi implements IApiModule {
