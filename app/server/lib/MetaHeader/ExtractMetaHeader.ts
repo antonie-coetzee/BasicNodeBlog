@@ -1,7 +1,7 @@
 import {IMetaHeader} from "./IMetaHeader"
 
-export default class ExtractMetaHeader{
-    static Extract(fileData:string):IMetaHeader{
+export class ExtractMetaHeader{
+    public static Extract(fileData:string):IMetaHeader{
         if(fileData == null){
             throw new TypeError("fileData");
         }

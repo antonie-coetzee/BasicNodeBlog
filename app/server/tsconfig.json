@@ -12,14 +12,14 @@
         "emitDecoratorMetadata": true,
         "types": [
             "node",
-            "reflect-metadata"
+            "reflect-metadata",
+            "jest"
          ],
         "typeRoots": [
-            "node_modules/@types"
+            "@types"
          ]
     },
      "exclude": [
-         "../../node_modules"
-     ]
-
+         "node_modules"
+     ]  
 }
