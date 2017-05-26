@@ -25,6 +25,22 @@
         },
         {
             "type": "node",
+            "request": "launch",
+            "name": "Debug Tests",
+            "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
+            "smartStep":true,
+            "args": [
+                "--config",
+                "${workspaceRoot}\\jest.json",
+                "--runInBand"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/dist/server/**/*"
+            ]
+        },        
+        {
+            "type": "node",
             "request": "attach",
             "name": "Attach to Process",
             "port": 5858

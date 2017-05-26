@@ -16,6 +16,7 @@ module.exports = function (wallaby) {
     env: {
       type: 'node',
       runner: "node"
-    }
+    },
+    debug: true
   };
 };

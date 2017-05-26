@@ -6,7 +6,7 @@ export class ExtractMetaHeader{
             throw new TypeError("fileData");
         }
         let matchResult = fileData.match(/<!-- meta([\s\S]*?)-->/);
-        if(matchResult.length == 0){
+        if(matchResult == null){
             throw new Error("meta header not present");
         }
         let metaHeaderJson = JSON.parse(matchResult[1]);

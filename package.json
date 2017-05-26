@@ -66,23 +66,9 @@
     "style-loader": "^0.13.2",
     "ts-jest": "^20.0.4",
     "ts-loader": "^2.0.0",
+    "typedoc": "^0.7.1",
     "typescript": "^2.1.5",
     "webpack": "^2.2.1",
     "webpack-visualizer-plugin": "^0.1.11"
-  },
-  "jest": {
-    "globals": {
-      "__TS_CONFIG__": "app/server/tsconfig.json"
-    },    
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json"
-    ]
-  }  
+  }
 }

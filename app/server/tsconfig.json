@@ -2,9 +2,9 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "allowJs": false,
-        "sourceMap": true,  
-        "lib": ["dom","es5", "es6","es2015.promise"],
+        "allowJs": false,       
+        "inlineSourceMap": true,
+        "lib": ["es5", "es6","es2015.promise","esnext"],
         "outDir" : "../../dist/server",
         "watch": true,
         "jsx": "react",
