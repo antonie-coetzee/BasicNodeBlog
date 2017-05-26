@@ -8,21 +8,6 @@ export class ContentReader implements IContentReader {
     async *read(path:string) : AsyncIterableIterator<string>{
 
         yield* this.itterateDirectory(fileType.Directory, path);
-
-        // itterate over year/month/day directories
-        // for(let yearPath of this.itterateDirectories(path)){
-        //     for(let monthPath of this.itterateDirectories(yearPath)){
-        //         for(let dayPath of this.itterateDirectories(monthPath)){
-        //             for(let blogposts of this.itterateDirectories(dayPath)){
-        //                 for(let file of this.itterateFiles(blogposts)){
-        //                     if(pathLib.extname(file) == ".markdown"){
-        //                         contentCallback(blogposts, fs.readFileSync(file, "utf8"))
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     async *itterateDirectory(filter:fileType, path:string) : AsyncIterableIterator<string>{
