@@ -2,6 +2,7 @@ import {IContentReader} from "./IContentReader"
 import * as fs from "fs"
 import * as pathLib from "path"
 
+
 (Symbol as any).asyncIterator = Symbol.asyncIterator || "__@@asyncIterator__";
 
 export class ContentReader implements IContentReader {
@@ -19,6 +20,9 @@ export class ContentReader implements IContentReader {
         return new Promise((resolve, reject) => {
             fs.readdir(path, async (err, files) => {
                 let contents:string[] = [];
+                if(files == null){
+                    reject('directory empty');
+                }
                 for(let file of files){
                     if (err) {
                         return reject(err);
