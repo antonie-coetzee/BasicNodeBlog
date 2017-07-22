@@ -2,7 +2,7 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "0.1.0",
-    "_runner": "terminal",
+    "runner": "terminal",
     "showOutput": "always",
     "tasks" : [ 
         {        
@@ -11,7 +11,7 @@
             "isBuildCommand": true,
             "isShellCommand": true, 
             //"args": ["--config", "./webpack.config.js", "--progress", "--optimize-minimize", "--define", "process.env.NODE_ENV='production'"],
-            "args": ["--config", "./webpack.config.js", "--progress", "--watch"], 
+            "args": ["--config", "./webpack.config.js", "--progress"], 
             "suppressTaskName": true
         },{
             "taskName": "typescript server build", 

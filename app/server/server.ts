@@ -18,7 +18,8 @@ export class Server implements IServer {
     
     bootstrap(){
         this.app = express();
-        this.app.use('/', express.static(__dirname + '/../public'))
+        let dir = __dirname + '/../../public';
+        this.app.use('/', express.static(__dirname + '/../../public'))
 
         // add API routers
         let modules = this.apiModules;

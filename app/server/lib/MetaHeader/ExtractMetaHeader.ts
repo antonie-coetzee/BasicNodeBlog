@@ -1,4 +1,4 @@
-import {IMetaHeader} from "./IMetaHeader"
+import {IMetaHeader} from "common/IMetaHeader"
 
 export class ExtractMetaHeader{
     public static Extract(fileData:string):IMetaHeader{

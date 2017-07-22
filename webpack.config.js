@@ -11,11 +11,12 @@ module.exports = {
     },
     output: {
         filename: '[name]-bundle.js',
-        path: './dist/public/',
+        path: path.resolve(__dirname, './dist/public/'),
         pathinfo: true,
     },
     resolve: {
-        extensions: ['.ts', '.js', '.tsx']
+        extensions: ['.ts', '.js', '.tsx'],
+        modules: [path.resolve(__dirname,'./app'), path.resolve(__dirname,'./node_modules')]
     },   
     module: {
       rules: [
@@ -27,7 +28,7 @@ module.exports = {
           test: /\.tsx?$/, 
           loader: 'ts-loader', 
           options: {
-            configFileName: './app/tsconfig.json',
+            configFileName:  'client/tsconfig.json',
             logInfoToStdOut: true
           }, 
           exclude: [/node_modules/]

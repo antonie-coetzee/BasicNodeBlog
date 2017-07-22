@@ -2,6 +2,7 @@ module.exports = function (wallaby) {
   return {
     files: [
       'app/server/**/*.ts*',
+      'app/server/**/*Test*',
       {pattern: 'app/server/**/*.test.ts', ignore: true}
     ],
 

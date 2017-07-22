@@ -1,4 +1,4 @@
-import {IMetaHeader} from "./../MetaHeader/IMetaHeader"
+import {IMetaHeader} from "./IMetaHeader"
 
 export interface IArticle {
     title:string;

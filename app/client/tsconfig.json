@@ -10,15 +10,17 @@
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "baseUrl": "../",
         "types": [
             "node",
             "reflect-metadata"
          ],
         "typeRoots": [
-            "node_modules/@types"
+            "@types"
          ]
     },
-     "exclude": [
-         "../../node_modules"
-     ]
+    "include": [
+         "../client/**/*",
+         "../common/**/*"
+      ]           
 }

@@ -1,7 +1,7 @@
 
 import {injectable} from "inversify"
 import { IContentUpdator } from "./IContentUpdator"
-import * as Git from "nodegit"
+import * as Git from "simple-git"
 import * as fs from "fs"
 
 @injectable()
@@ -26,7 +26,7 @@ export default class ContentUpdator implements IContentUpdator {
     }
 
     async CloneRepo(repoPath: string, repoUrl: string) {
-        await Git.Clone(repoUrl, repoPath);
+        await Git.clone(repoUrl, repoPath);
     }
 
     async PullRepo(repoPath: string) {

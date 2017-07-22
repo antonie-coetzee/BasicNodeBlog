@@ -10,6 +10,7 @@
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "baseUrl": "../",
         "types": [
             "node",
             "reflect-metadata",
@@ -19,6 +20,10 @@
             "@types"
          ]
     },
+      "include": [
+         "../server/**/*",
+         "../common/**/*"
+      ],        
      "exclude": [
          "node_modules"
      ]  

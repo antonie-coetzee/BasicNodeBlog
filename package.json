@@ -4,8 +4,8 @@
   "description": "Basic blog engine serving static content",
   "main": "index.js",
   "scripts": {
-    "build:prod": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --optimize-minimize --define process.env.NODE_ENV='production' --progress",
-    "build:dev": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --progress",
+    "buildprod": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --optimize-minimize --define process.env.NODE_ENV='production' --progress",
+    "builddev": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --progress",
     "test": "jest"
   },
   "repository": {
@@ -33,10 +33,10 @@
     "mobx": "^3.2.1",
     "mobx-react": "^4.2.2",
     "morgan": "^1.8.1",
-    "nodegit": "^0.18.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "reflect-metadata": "^0.1.9"
+    "reflect-metadata": "^0.1.9",
+    "simple-git": "^1.74.1"
   },
   "devDependencies": {
     "@types/body-parser": "0.0.34",
@@ -59,7 +59,6 @@
     "nodemon": "^1.11.0",
     "react-markdown": "^2.4.5",
     "react-router": "^3.0.2",
-    "redux-actions": "^1.2.1",
     "semantic-ui-css": "^2.2.9",
     "semantic-ui-react": "^0.67.0",
     "style-loader": "^0.13.2",

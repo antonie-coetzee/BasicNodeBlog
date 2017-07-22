@@ -6,5 +6,5 @@ import {ContentReader} from './lib/ContentReader/ContentReader'
 
 let container = new ContainerBuilder().build();
 
-//let server = container.get<IServer>(IServerKey);
-//server.bootstrap();
+let server = container.get<IServer>(IServerKey);
+server.bootstrap();
