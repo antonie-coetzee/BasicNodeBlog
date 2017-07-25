@@ -1,18 +1,20 @@
 const path = require('path');
 const webpack = require('webpack'); 
 
-const Visualizer = require('webpack-visualizer-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
     devtool: 'source-map',
     entry: {
-        client: path.resolve(__dirname, './app/client/client.tsx')
+        client: path.resolve(__dirname, './app/client/index.tsx')
     },
     output: {
-        filename: '[name]-bundle.js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, './dist/public/'),
-        pathinfo: true,
+        pathinfo: true
     },
     resolve: {
         extensions: ['.ts', '.js', '.tsx'],
@@ -42,10 +44,10 @@ module.exports = {
       ]
     },
     plugins: [
-      new ExtractTextPlugin('styles.css'),
-          //new webpack.optimize.UglifyJsPlugin(),
-          new Visualizer({
-             filename: './statistics.html'
-           })        
+        new ExtractTextPlugin('styles.css'),
+            new Visualizer({
+                filename: './statistics.html'
+            }),
+        new HtmlWebpackPlugin({hash:true, template:'app/client/index.ejs'})        
     ]
 };

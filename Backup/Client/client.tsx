@@ -2,6 +2,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as ReactMarkdown from "react-markdown"
 
+import * as webpack from "webpack"
+
 import 'semantic-ui-css/semantic.min.css';
 
 import { Dropdown } from 'semantic-ui-react'
@@ -9,7 +11,7 @@ import { Container } from 'semantic-ui-react'
 
 import { codeBlock } from './CodeBlock'
 
-import {IMetaHeader} from "common/IMetaHeader" 
+import {IMetaHeader} from "common/domain/IMetaHeader" 
 
 import {interfaces} from "inversify"
 
@@ -52,8 +54,6 @@ export class Post extends React.Component<any, any> implements PostComponent {
 # H1
 * item 1
     * item 2
-
-[<img src="./images/ants.jpg">](http://google.com.au/)
 
 # Live demo
 
@@ -99,12 +99,14 @@ A component by [VaffelNinja](http://vaffel.ninja) / Espen Hovlandsdal
             <div>
                 <ReactMarkdown source={this.markdown} renderers = {Object.assign({}, ReactMarkdown.renderers, { CodeBlock: codeBlock })} />
             </div>
-            <this.Tester></this.Tester>
+                  <this.Tester></this.Tester>      
         </Container>
     }
 }
 
 ReactDOM.render(
     <Post data="{markdown}" />,
-    document.getElementById("app")
+    document.getElementById("root")
 );
+
+ 
