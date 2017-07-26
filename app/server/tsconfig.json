@@ -14,10 +14,12 @@
         "types": [
             "node",
             "reflect-metadata",
-            "jest"
+            "jest",
+            "LazyInject"
          ],
         "typeRoots": [
-            "@types"
+            "@types",
+            "Common"
          ]
     },
       "include": [

@@ -1,7 +1,7 @@
 import {interfaces} from "inversify"
 
 // abstracts the construction of a layered container
-export interface ILayeredContainer {
+export interface IAppContainer {
     readonly container:interfaces.Container;
-    AddLayer(builder: (childContainer:interfaces.Container)=>void) : void
+    Add(builder: (childContainer:interfaces.Container)=>void) : void
 }

@@ -1,12 +1,22 @@
-import LayeredContainer from 'Common/Container/LayeredContainer'
+import AppContainer from 'Common/AppContainer/AppContainer'
+import {injectable, inject, interfaces} from "inversify";
+import getDecorators from "inversify-inject-decorators";
+
+// setup layered container
+let appContainer = new AppContainer();
+import "./lazyInject.js"
+declare var lazyInject: any;
+lazyInject = getDecorators(appContainer.container).lazyInject;
 
 import {IApplication, IApplicationKey} from "Client/Contracts/IApplication"
 import {Application} from "./Application"
 
-let layeredContainer = new LayeredContainer();
+import {ISearchBar, ISearchBarKey} from "Client/Contracts/ISearchBar"
+import {SearchBarEmpty} from "./SearchBar"
 
-layeredContainer.AddLayer((childContainer)=>{
-    childContainer.bind<IApplication>(IApplicationKey).toConstructor(Application);
+appContainer.Add((container)=>{
+    container.bind<ISearchBar>(ISearchBarKey).toConstructor(SearchBarEmpty);
+    container.bind<IApplication>(IApplicationKey).toConstructor(Application);
 })
 
-export default layeredContainer;
+export default appContainer;
