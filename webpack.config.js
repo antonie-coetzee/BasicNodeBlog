@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack'); 
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const Visualizer = require('webpack-visualizer-plugin');
@@ -27,19 +28,33 @@ module.exports = {
             loader : 'file-loader'
         },
         { 
-          test: /\.tsx?$/, 
-          loader: 'ts-loader', 
-          options: {
+            test: /\.tsx?$/, 
+            loader: 'ts-loader', 
+            options: {
             configFileName:  'client/tsconfig.json',
             logInfoToStdOut: true
-          }, 
-          exclude: [/node_modules/]
+            }, 
+            exclude: [/node_modules/]
         },
         {
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-               use: 'css-loader'
-            })
+            test: /\.s?css$/,
+            exclude: /node_modules/,
+            loader: ExtractTextPlugin.extract({
+                        fallbackLoader: "style-loader",
+                        loader: [
+                        { loader: 'css-loader', query: { modules: true, importLoaders: 3, localIdentName: '[name]__[local]__[hash:base64:5]' } },
+                        { loader: 'postcss-loader',options: {
+                                                        plugins: function () {
+                                                        return [
+                                                            require('postcss-google-font'),
+                                                            require('precss'),
+                                                            require('autoprefixer')
+                                                        ];
+                                                        }
+                                                    } 
+                            }
+                        ]
+                    })
         }
       ]
     },
