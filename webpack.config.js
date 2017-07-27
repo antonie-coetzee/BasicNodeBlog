@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack'); 
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const Visualizer = require('webpack-visualizer-plugin');
@@ -37,19 +36,23 @@ module.exports = {
             exclude: [/node_modules/]
         },
         {
-            test: /\.s?css$/,
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+               use: 'css-loader'
+            })
+        },
+        {
+            test: /\.scss$/,
             exclude: /node_modules/,
-            loader: ExtractTextPlugin.extract({
-                        fallbackLoader: "style-loader",
-                        loader: [
+            use: ExtractTextPlugin.extract({
+                        use: [
                         { loader: 'css-loader', query: { modules: true, importLoaders: 3, localIdentName: '[name]__[local]__[hash:base64:5]' } },
                         { loader: 'postcss-loader',options: {
                                                         plugins: function () {
-                                                        return [
-                                                            require('postcss-google-font'),
-                                                            require('precss'),
-                                                            require('autoprefixer')
-                                                        ];
+                                                            return [
+                                                                require('precss'),
+                                                                require('autoprefixer')
+                                                            ];
                                                         }
                                                     } 
                             }
