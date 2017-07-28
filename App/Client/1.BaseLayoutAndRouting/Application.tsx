@@ -10,7 +10,7 @@ import {IHeader, IHeaderKey} from "Client/Contracts/Layout/IHeader"
 import {ISideBar, ISideBarKey} from "Client/Contracts/Layout/ISideBar"
 import {IContent, IContentKey} from "Client/Contracts/Layout/IContent"
 
-import 'semantic-ui-css/semantic.min.css';
+//import 'semantic-ui-css/semantic.min.css';
 import "./test.scss"
 
 @injectable()
@@ -41,7 +41,7 @@ export class Application extends React.Component<any, any> implements IApplicati
             <Sidebar.Pushable as={Segment} className="vertical basic">
                 <this.SideBar visible={visible}/>
                 <Sidebar.Pusher as={Segment} className="vertical basic" dimmed={visible}>
-                    <Container textAlign="justified">
+                    <Container textAlign="justified" style="">
                         <this.Content/>                                 
                     </Container>                                     
                 </Sidebar.Pusher>

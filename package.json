@@ -65,8 +65,10 @@
     "inversify-inject-decorators": "^3.0.1",
     "jest": "^20.0.4",
     "marked": "^0.3.6",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "react-markdown": "^2.4.5",
+    "sass-loader": "^6.0.6",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.67.0",
     "style-loader": "^0.13.2",
@@ -74,6 +76,7 @@
     "ts-loader": "^2.3.2",
     "typedoc": "^0.7.2",
     "typescript": "^2.4.2",
+    "typings-for-css-modules-loader": "^1.5.0",
     "webpack": "^2.7.0",
     "webpack-dev-server": "^2.6.1",
     "webpack-visualizer-plugin": "^0.1.11"

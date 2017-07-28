@@ -5,6 +5,8 @@ import {ISideBar, ISideBarProps} from "Client/Contracts/Layout/ISideBar"
 
 import { Sidebar, Menu, Icon} from 'semantic-ui-react'
 
+import * as test from "./test.scss"
+
 @injectable()
 export class SideBar extends React.PureComponent<ISideBarProps, any> implements ISideBar  {
     constructor(props:ISideBarProps) {

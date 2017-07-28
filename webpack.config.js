@@ -38,25 +38,26 @@ module.exports = {
         {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
-               use: 'css-loader'
-            })
+                        use: [
+                        { loader: 'typings-for-css-modules-loader?silent', query: { modules: false, importLoaders: 0, localIdentName: '[name]__[local]__[hash:base64:5]' } }
+                        ]
+                    })
         },
         {
             test: /\.scss$/,
             exclude: /node_modules/,
             use: ExtractTextPlugin.extract({
-                        use: [
-                        { loader: 'css-loader', query: { modules: true, importLoaders: 3, localIdentName: '[name]__[local]__[hash:base64:5]' } },
-                        { loader: 'postcss-loader',options: {
-                                                        plugins: function () {
-                                                            return [
-                                                                require('precss'),
-                                                                require('autoprefixer')
-                                                            ];
-                                                        }
-                                                    } 
-                            }
-                        ]
+                        use:[{
+                            loader: "style-loader" // creates style nodes from JS strings
+                        }, {
+                            loader: 'typings-for-css-modules-loader?modules&sass', query: { modules: true, importLoaders: 1, localIdentName: '[name]__[local]__[hash:base64:5]' }
+                        }, {
+                            loader: "sass-loader" // compiles Sass to CSS
+                        }] 
+                        
+ //                       [
+ //                       { loader: 'typings-for-css-modules-loader?modules&sass', query: { modules: true, importLoaders: 1, localIdentName: '[name]__[local]__[hash:base64:5]' } }
+ //                       ]
                     })
         }
       ]
@@ -66,6 +67,9 @@ module.exports = {
             new Visualizer({
                 filename: './statistics.html'
             }),
-        new HtmlWebpackPlugin({hash:true, template:'app/client/index.ejs'})        
+        new HtmlWebpackPlugin({hash:true, template:'app/client/index.ejs'}),
+        new webpack.WatchIgnorePlugin([
+                /scss\.d\.ts$/
+            ])       
     ]
 };

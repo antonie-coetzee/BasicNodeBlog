@@ -3,7 +3,7 @@ import {injectable} from "inversify";
 
 import {IHeader} from "Client/Contracts/Layout/IHeader"
 
-import {Container} from "semantic-ui-react"
+import {Container, Header as UIHeader} from "semantic-ui-react"
 
 @injectable()
 export class Header extends React.Component<any, any> implements IHeader  {
@@ -13,7 +13,7 @@ export class Header extends React.Component<any, any> implements IHeader  {
 
     render() {
         return <Container>
-                Header container...
+                <UIHeader as="h1" textAlign="center">Header container...</UIHeader>                
         </Container>
     }
 }

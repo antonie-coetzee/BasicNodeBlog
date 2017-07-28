@@ -1,5 +1,4 @@
 import layer from "client/1.BaseLayoutAndRouting/Layer"
-//import layer from "client/2.SearchComponent/Layer"
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
