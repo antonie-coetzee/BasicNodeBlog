@@ -68,6 +68,7 @@
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "react-markdown": "^2.4.5",
+    "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.6",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.67.0",

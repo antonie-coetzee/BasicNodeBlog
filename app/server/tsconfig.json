@@ -2,11 +2,11 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "allowJs": false,       
-        "inlineSourceMap": true,
+        "allowJs": true,       
+        "sourceMap": true,
         "lib": ["es5", "es6","es2015.promise","esnext"],
         "outDir" : "../../dist/server",
-        "watch": true,
+        "watch": false,
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
@@ -14,12 +14,10 @@
         "types": [
             "node",
             "reflect-metadata",
-            "jest",
-            "LazyInject"
+            "jest"
          ],
         "typeRoots": [
-            "@types",
-            "Common"
+            "@types"
          ]
     },
       "include": [
