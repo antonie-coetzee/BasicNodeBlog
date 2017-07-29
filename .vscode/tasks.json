@@ -14,12 +14,11 @@
             "args": ["--config", "./webpack.config.js", "--progress"], 
             "suppressTaskName": true
         },{
-            "taskName": "typescript server build", 
+            "taskName": "server build", 
             "command": "node",
             "isBuildCommand": true,
             "isShellCommand": true,
             "args": ["${workspaceRoot}\\node_modules\\typescript\\bin\\tsc", "-p" , "${workspaceRoot}"],
-            //"args": ["-p", "${workspaceRoot}/app"],
             "suppressTaskName": true
         }
     ]
