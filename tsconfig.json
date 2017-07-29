@@ -1,16 +1,16 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es5",
         "module": "commonjs",
         "allowJs": true,       
         "sourceMap": true,
-        "lib": ["es5", "es6","es2015.promise","esnext"],
-        "outDir" : "../../dist/server",
+        "lib": ["es5", "es6","es2015.promise","esnext","dom"],
+        "outDir" : "./Dist",
         "watch": false,
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "baseUrl": "../",
+        "baseUrl": "App/",
         "types": [
             "node",
             "reflect-metadata",
@@ -21,8 +21,7 @@
          ]
     },
       "include": [
-         "../server/**/*",
-         "../common/**/*"
+         "App/**/*"
       ],        
      "exclude": [
          "node_modules"

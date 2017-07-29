@@ -81,17 +81,8 @@
       "version": "4.0.49",
       "resolved": "https://registry.npmjs.org/@types/express-serve-static-core/-/express-serve-static-core-4.0.49.tgz",
       "integrity": "sha512-b7mVHoURu1xaP/V6xw1sYwyv9V0EZ7euyi+sdnbnTZxEkAh4/hzPsI6Eflq+ZzHQ/Tgl7l16Jz+0oz8F46MLnA==",
-      "dev": true,
       "requires": {
-        "@types/node": "8.0.14"
-      },
-      "dependencies": {
-        "@types/node": {
-          "version": "8.0.14",
-          "resolved": "https://registry.npmjs.org/@types/node/-/node-8.0.14.tgz",
-          "integrity": "sha512-lrtgE/5FeTdcuxgsDbLUIFJ33dTp4TkbKkTDZt/ueUMeqmGYqJRQd908q5Yj9EzzWSMonEhMr1q/CQlgVGEt4w==",
-          "dev": true
-        }
+        "@types/node": "7.0.39"
       }
     },
     "@types/fs-extra": {
@@ -171,8 +162,7 @@
     "@types/node": {
       "version": "7.0.39",
       "resolved": "https://registry.npmjs.org/@types/node/-/node-7.0.39.tgz",
-      "integrity": "sha512-KQHAZeVsk4UIT9XaR6cn4WpHZzimK6UBD1UomQKfQQFmTlUHaNBzeuov+TM4+kigLO0IJt4I5OOsshcCyA9gSA==",
-      "dev": true
+      "integrity": "sha512-KQHAZeVsk4UIT9XaR6cn4WpHZzimK6UBD1UomQKfQQFmTlUHaNBzeuov+TM4+kigLO0IJt4I5OOsshcCyA9gSA=="
     },
     "@types/react": {
       "version": "15.0.39",

@@ -1,16 +1,15 @@
 module.exports = function (wallaby) {
   return {
-    files: [
-      'app/server/**/*.ts*',
-      'app/client/**/*.ts*',
-      'app/server/**/*Test*',
-      {pattern: 'app/server/**/*.test.ts', ignore: true},
-      {pattern: 'app/client/**/*.test.tsx', ignore: true}
+    files: [     
+      'App/**/*.ts',
+     // {pattern: 'app/**/*.snap', load: false, instrument: false},
+      {pattern: 'App/**/*.test.ts', ignore: true},
+      {pattern: 'App**/*.test.tsx', ignore: true, load: false}
     ],
 
     tests: [
-      'app/server/**/*.test.ts',
-      'app/client/**/*.test.tsx'
+      'App/**/*.test.ts',
+      'App/**/*.test.tsx'
     ],
 
     compilers: {

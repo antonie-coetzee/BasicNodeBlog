@@ -7,7 +7,8 @@
     "buildprod": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --optimize-minimize --define process.env.NODE_ENV='production' --progress",
     "builddev": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --progress",
     "start": ".\\node_modules\\.bin\\webpack-dev-server -d --content-base dist/public --progress --inline",
-    "test": "jest"
+    "test": "jest",
+    "updatesnapshot": "jest --updateSnapshot"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "test": "test"
   },
   "dependencies": {
+    "@types/express-serve-static-core": "^4.0.49",
     "autoprefixer": "^7.1.2",
     "body-parser": "^1.17.0",
     "cookie-parser": "^1.4.3",

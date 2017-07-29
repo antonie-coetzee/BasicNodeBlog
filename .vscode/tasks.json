@@ -18,7 +18,7 @@
             "command": "node",
             "isBuildCommand": true,
             "isShellCommand": true,
-            "args": ["${workspaceRoot}\\node_modules\\typescript\\bin\\tsc", "-p" , "${workspaceRoot}/app/server"],
+            "args": ["${workspaceRoot}\\node_modules\\typescript\\bin\\tsc", "-p" , "${workspaceRoot}"],
             //"args": ["-p", "${workspaceRoot}/app"],
             "suppressTaskName": true
         }

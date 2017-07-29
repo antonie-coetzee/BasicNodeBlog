@@ -30,7 +30,7 @@ module.exports = {
             test: /\.tsx?$/, 
             loader: 'ts-loader', 
             options: {
-            configFileName:  'client/tsconfig.json',
+            configFileName:  './tsconfig.json',
             logInfoToStdOut: true
             }, 
             exclude: [/node_modules/]

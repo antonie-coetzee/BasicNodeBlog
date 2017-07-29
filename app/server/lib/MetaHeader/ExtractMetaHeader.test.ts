@@ -20,6 +20,7 @@ describe('extracting meta header', () => {
 
     let header = null;
     expect(() => {ExtractMetaHeader.Extract(header)}).toThrowError("fileData");
+    
   });  
 
   it('throws an exception if header is not found', async () => {
