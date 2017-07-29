@@ -10,8 +10,8 @@ import {IHeader, IHeaderKey} from "Client/Contracts/Layout/IHeader"
 import {ISideBar, ISideBarKey} from "Client/Contracts/Layout/ISideBar"
 import {IContent, IContentKey} from "Client/Contracts/Layout/IContent"
 
-//import 'semantic-ui-css/semantic.min.css';
-import "./test.scss"
+import 'semantic-ui-css/semantic.min.css';
+import {sideBar, someClass, someOtherClass} from "Client/1.BaseLayoutAndRouting/test.scss"
 
 @injectable()
 export class Application extends React.Component<any, any> implements IApplication  {
@@ -34,14 +34,15 @@ export class Application extends React.Component<any, any> implements IApplicati
         
         const toggleVisibility = () => this.setState({ visible: !this.state.visible })
         const { visible } = this.state
+        const styles = "vertical basic" + sideBar ;
         return<div>           
             <Segment vertical={true} attached={true}>
                 <this.Header />
             </Segment>                  
-            <Sidebar.Pushable as={Segment} className="vertical basic">
+            <Sidebar.Pushable as={Segment} className={styles}>
                 <this.SideBar visible={visible}/>
                 <Sidebar.Pusher as={Segment} className="vertical basic" dimmed={visible}>
-                    <Container textAlign="justified" style="">
+                    <Container textAlign="justified">
                         <this.Content/>                                 
                     </Container>                                     
                 </Sidebar.Pusher>

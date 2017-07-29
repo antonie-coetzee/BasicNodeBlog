@@ -1,7 +1,3 @@
-export interface ITestScss {
-  'sideBar': string;
-  'some-class': string;
-  'someOtherClass': string;
-}
-
-export const locals: ITestScss;
+export const sideBar: string;
+export const someClass: string;
+export const someOtherClass: string;

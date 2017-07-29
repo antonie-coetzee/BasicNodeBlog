@@ -17,7 +17,7 @@ module.exports = {
         pathinfo: true
     },
     resolve: {
-        extensions: ['.ts', '.js', '.tsx'],
+        extensions: ['.ts', '.js', '.tsx', 'd.ts'],
         modules: [path.resolve(__dirname,'./app'), path.resolve(__dirname,'./node_modules')]
     },   
     module: {
@@ -39,25 +39,24 @@ module.exports = {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
                         use: [
-                        { loader: 'typings-for-css-modules-loader?silent', query: { modules: false, importLoaders: 0, localIdentName: '[name]__[local]__[hash:base64:5]' } }
+                            { 
+                                loader: 'css-loader'
+                            }
                         ]
                     })
-        },
+        },        
         {
             test: /\.scss$/,
-            exclude: /node_modules/,
             use: ExtractTextPlugin.extract({
-                        use:[{
-                            loader: "style-loader" // creates style nodes from JS strings
-                        }, {
-                            loader: 'typings-for-css-modules-loader?modules&sass', query: { modules: true, importLoaders: 1, localIdentName: '[name]__[local]__[hash:base64:5]' }
-                        }, {
-                            loader: "sass-loader" // compiles Sass to CSS
-                        }] 
-                        
- //                       [
- //                       { loader: 'typings-for-css-modules-loader?modules&sass', query: { modules: true, importLoaders: 1, localIdentName: '[name]__[local]__[hash:base64:5]' } }
- //                       ]
+                        use: [
+                            { 
+                                loader: 'typings-for-css-modules-loader', 
+                                    query: {modules:true, import:true, namedExport:true, camelCase:true, url:false, localIdentName: '[name]__[local]__[hash:base64:5]' } 
+                            },
+                            {
+                                loader: 'sass-loader' 
+                            }
+                        ]
                     })
         }
       ]
