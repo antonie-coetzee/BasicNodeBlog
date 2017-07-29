@@ -12,7 +12,6 @@ export default class Link extends React.Component {
 
     this._onMouseEnter = this._onMouseEnter.bind(this);
     this._onMouseLeave = this._onMouseLeave.bind(this);
-
     this.state = {
       class: STATUS.NORMAL,
     };
@@ -33,6 +32,7 @@ export default class Link extends React.Component {
         onMouseEnter={this._onMouseEnter}
         onMouseLeave={this._onMouseLeave}>
         {this.props.children}
+        <a></a>
       </a>
     );
   }
@@ -44,7 +44,7 @@ import * as renderer from 'react-test-renderer';
 describe('Link changes the class when hovered', () => {
     it('trial', () => {
         const component = renderer.create(
-          <Link>Facebook</Link> 
+          <Link>Facebook</Link>          
         );
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();

@@ -2,9 +2,9 @@ module.exports = function (wallaby) {
   return {
     files: [     
       'App/**/*.ts',
-     // {pattern: 'app/**/*.snap', load: false, instrument: false},
+      {pattern: 'App/**/*.tf.*', ignore: true},
       {pattern: 'App/**/*.test.ts', ignore: true},
-      {pattern: 'App**/*.test.tsx', ignore: true, load: false}
+      {pattern: 'App/**/*.test.tsx', ignore: true}
     ],
 
     tests: [
