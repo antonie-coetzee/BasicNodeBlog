@@ -6,9 +6,9 @@ const contentPath:string = __dirname + "/test.files/";
 describe('reading content from nested directories', () => {
 
   beforeAll(() => {
-    // if(!fs.existsSync(contentPath)){
-    //   fs.mkdirSync(contentPath);
-    // }
+    if(!fs.existsSync(contentPath)){
+      fs.mkdirSync(contentPath);
+    }
   });
 
   it('trial', async () => {
