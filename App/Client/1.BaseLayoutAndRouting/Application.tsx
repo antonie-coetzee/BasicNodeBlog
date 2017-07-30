@@ -1,4 +1,5 @@
 import {injectable, interfaces} from "inversify";
+import {observer} from 'mobx-react';
 import "Common/AppContainer/LazyInject"
 
 import * as React from "react";
@@ -9,10 +10,14 @@ import {IApplication} from "Client/Contracts/Layout/IApplication"
 import {IHeader, IHeaderKey} from "Client/Contracts/Layout/IHeader"
 import {ISideBar, ISideBarKey} from "Client/Contracts/Layout/ISideBar"
 import {IContent, IContentKey} from "Client/Contracts/Layout/IContent"
+import {ISideBarControl, ISideBarControlKey} from "Client/Contracts/Layout/ISideBarControl"
 
 import 'semantic-ui-css/semantic.min.css';
+
+import DevTools from 'mobx-react-devtools';
 import {sideBar, someClass, someOtherClass} from "Client/1.BaseLayoutAndRouting/test.scss"
 
+@observer
 @injectable()
 export class Application extends React.Component<any, any> implements IApplication  {
 
@@ -22,32 +27,32 @@ export class Application extends React.Component<any, any> implements IApplicati
     @lazyInject(ISideBarKey)
     public SideBar : interfaces.Newable<ISideBar>;
 
+    @lazyInject(ISideBarControlKey)
+    public sideBarControl : ISideBarControl;    
+
     @lazyInject(IContentKey)
     public Content : interfaces.Newable<IContent>;
 
     constructor() {
         super();
-        this.state = { visible: false }
     }
 
-    render() {
-        
-        const toggleVisibility = () => this.setState({ visible: !this.state.visible })
-        const { visible } = this.state
+
+    render() {        
         const styles = "vertical basic" + sideBar ;
         return<div>           
             <Segment vertical={true} attached={true}>
                 <this.Header />
             </Segment>                  
             <Sidebar.Pushable as={Segment} className={styles}>
-                <this.SideBar visible={visible}/>
-                <Sidebar.Pusher as={Segment} className="vertical basic" dimmed={visible}>
+                <this.SideBar visible={this.sideBarControl.visible}/>
+                <Sidebar.Pusher as={Segment} className="vertical basic" dimmed={this.sideBarControl.visible}>
                     <Container textAlign="justified">
                         <this.Content/>                                 
                     </Container>                                     
                 </Sidebar.Pusher>
             </Sidebar.Pushable>  
-            <Button onClick={toggleVisibility} primary>Toggle Visibility</Button>                                                                
+            <DevTools/>                                                         
         </div>       
     }
 }

@@ -51,7 +51,13 @@ module.exports = {
                         use: [
                             { 
                                 loader: 'typings-for-css-modules-loader', 
-                                    query: {modules:true, import:true, namedExport:true, camelCase:true, url:false, localIdentName: '[name]__[local]__[hash:base64:5]' } 
+                                    query: {
+                                        modules:true, 
+                                        import:true, 
+                                        namedExport:true, 
+                                        camelCase:true, 
+                                        url:false, 
+                                        localIdentName: '[name]__[local]__[hash:base64:5]' } 
                             },
                             {
                                 loader: 'sass-loader' 
