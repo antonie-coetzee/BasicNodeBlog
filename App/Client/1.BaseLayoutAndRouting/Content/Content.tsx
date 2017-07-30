@@ -1,7 +1,7 @@
 import * as React from "react";
 import {injectable} from "inversify";
 
-import {IContent} from "Client/Contracts/Layout/IContent"
+import {IContent} from "./IContent"
 
 @injectable()
 export class Content extends React.Component<any, any> implements IContent  {

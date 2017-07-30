@@ -3,4 +3,4 @@ export interface ISideBarService{
     toggleVisible() : void;
 }
 
-export let ISideBarService = "ISideBarService";
+export let ISideBarServiceKey = "ISideBarService";
