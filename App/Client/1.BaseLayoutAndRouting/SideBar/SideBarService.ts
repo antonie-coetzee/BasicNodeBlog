@@ -1,16 +1,12 @@
 import {injectable} from "inversify";
 import {observable} from "mobx";
 
-import {ISideBarControl} from "Client/Contracts/Layout/ISideBarControl"
+import {ISideBarService} from "./ISideBarService"
 
 @injectable()
-export class SideBarControl implements ISideBarControl  {
+export class SideBarService implements ISideBarService  {
     @observable
     public visible:boolean = false;
-
-    constructor() {
-        this.visible = false;
-    }
 
     public toggleVisible():void{
         this.visible = !this.visible;

@@ -1,8 +1,11 @@
 import {injectable, interfaces} from "inversify";
-import {observer} from 'mobx-react';
 import "Common/AppContainer/LazyInject"
 
 import * as React from "react";
+import {observer} from 'mobx-react';
+import DevTools from 'mobx-react-devtools';
+
+import 'semantic-ui-css/semantic.min.css';
 import {Container} from "semantic-ui-react"
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 
@@ -11,11 +14,6 @@ import {IHeader, IHeaderKey} from "Client/Contracts/Layout/IHeader"
 import {ISideBar, ISideBarKey} from "Client/Contracts/Layout/ISideBar"
 import {IContent, IContentKey} from "Client/Contracts/Layout/IContent"
 import {ISideBarControl, ISideBarControlKey} from "Client/Contracts/Layout/ISideBarControl"
-
-import 'semantic-ui-css/semantic.min.css';
-
-import DevTools from 'mobx-react-devtools';
-import {sideBar, someClass, someOtherClass} from "Client/1.BaseLayoutAndRouting/test.scss"
 
 @observer
 @injectable()
@@ -39,7 +37,7 @@ export class Application extends React.Component<any, any> implements IApplicati
 
 
     render() {        
-        const styles = "vertical basic" + sideBar ;
+        const styles = "vertical basic";
         return<div>           
             <Segment vertical={true} attached={true}>
                 <this.Header />

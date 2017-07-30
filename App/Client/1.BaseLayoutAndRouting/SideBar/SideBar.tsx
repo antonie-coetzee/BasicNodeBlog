@@ -1,11 +1,9 @@
 import * as React from "react";
 import {injectable} from "inversify";
 
-import {ISideBar, ISideBarProps} from "Client/Contracts/Layout/ISideBar"
+import {ISideBar, ISideBarProps} from "./ISideBar"
 
-import { Sidebar, Menu, Icon} from 'semantic-ui-react'
-
-//import * as test from "Clienttest.scss"
+import { Sidebar as UISidebar, Menu, Icon} from 'semantic-ui-react'
 
 @injectable()
 export class SideBar extends React.PureComponent<ISideBarProps, any> implements ISideBar  {
@@ -14,7 +12,7 @@ export class SideBar extends React.PureComponent<ISideBarProps, any> implements 
     }
 
     render() {
-        return <Sidebar as={Menu} animation='overlay' width='wide' visible={this.props.visible} icon='labeled' vertical>
+        return <UISidebar as={Menu} animation='overlay' width='wide' visible={this.props.visible} icon='labeled' vertical>
                     <Menu.Item name='home'>
                     <Icon name='home' />
                     Home
@@ -27,6 +25,6 @@ export class SideBar extends React.PureComponent<ISideBarProps, any> implements 
                     <Icon name='camera' />
                     Channels
                     </Menu.Item>
-                </Sidebar>
+                </UISidebar>
     }
 }

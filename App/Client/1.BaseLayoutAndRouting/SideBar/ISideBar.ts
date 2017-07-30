@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export interface ISideBarProps{
+export interface ISideBarProps  {
     visible:boolean;
 }
 
