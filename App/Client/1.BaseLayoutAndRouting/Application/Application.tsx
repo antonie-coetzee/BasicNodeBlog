@@ -37,7 +37,7 @@ export class Application extends React.Component<any, any> implements IApplicati
    
     render() {   
         const styles = "vertical basic";    
-        return <div>
+        return <Route>
             <Segment vertical={true} attached={true}>
                 <this.Header />
             </Segment>                  
@@ -50,6 +50,6 @@ export class Application extends React.Component<any, any> implements IApplicati
                 </Sidebar.Pusher>
             </Sidebar.Pushable>  
             <DevTools/>   
-        </div>    
+        </Route>    
     }
 }

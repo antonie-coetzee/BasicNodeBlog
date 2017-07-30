@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Link} from 'react-router-dom'
 import {injectable, interfaces} from "inversify";
 
 import {ISideBarService, ISideBarServiceKey} from "../SideBar/ISideBarService"
@@ -23,6 +24,7 @@ export class Header extends React.Component<any, any> implements IHeader  {
     render() {
         return <Container>
                 <UIHeader as="h1" textAlign="center">Header container...</UIHeader>  
+                <Link to={`/test`}>{'test'}</Link>
                 <Button onClick={this.toggleVisible} primary>Toggle Visibility</Button>                    
         </Container>
     }
