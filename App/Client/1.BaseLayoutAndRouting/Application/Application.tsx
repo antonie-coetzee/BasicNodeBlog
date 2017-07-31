@@ -2,7 +2,7 @@ import {injectable, interfaces} from "inversify";
 import "Common/AppContainer/LazyInject"
 
 import * as React from "react";
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, withRouter} from 'react-router-dom'
 import {observer} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
@@ -15,6 +15,7 @@ import {IContent, IContentKey} from "../Content/IContent"
 import 'semantic-ui-css/semantic.min.css';
 import {Container, Sidebar, Segment, Button, Menu, Image, Icon, Header} from 'semantic-ui-react'
 
+@withRouter 
 @observer
 @injectable()
 export class Application extends React.Component<any, any> implements IApplication  {
@@ -37,7 +38,7 @@ export class Application extends React.Component<any, any> implements IApplicati
    
     render() {   
         const styles = "vertical basic";    
-        return <Route>
+        return <div>
             <Segment vertical={true} attached={true}>
                 <this.Header />
             </Segment>                  
@@ -49,7 +50,8 @@ export class Application extends React.Component<any, any> implements IApplicati
                     </Container>                                     
                 </Sidebar.Pusher>
             </Sidebar.Pushable>  
-            <DevTools/>   
-        </Route>    
+            <DevTools/>  
+    </div>    
+
     }
 }
