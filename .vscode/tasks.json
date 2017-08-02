@@ -13,12 +13,12 @@
             //"args": ["--config", "./webpack.config.js", "--progress", "--optimize-minimize", "--define", "process.env.NODE_ENV='production'"],
             "args": ["--config", "./webpack.config.js", "--progress"], 
             "suppressTaskName": true
-        },{
+        },{ 
             "taskName": "server build", 
             "command": "node",
             "isBuildCommand": true,
             "isShellCommand": true,
-            "args": ["${workspaceRoot}\\node_modules\\typescript\\bin\\tsc", "-p" , "${workspaceRoot}"],
+            "args": ["${workspaceRoot}/node_modules/typescript/bin/tsc", "-p" , "${workspaceRoot}"],
             "suppressTaskName": true
         }
     ]
