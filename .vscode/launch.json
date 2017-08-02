@@ -38,6 +38,7 @@
         "cwd": "${workspaceRoot}",
         "port": 9229,
         "protocol": "inspector",
+        "smartStep": true,
         "console": "integratedTerminal"
         },      
         {
