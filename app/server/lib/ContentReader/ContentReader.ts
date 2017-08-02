@@ -1,17 +1,17 @@
 import {IContentReader} from "./IContentReader"
 import * as fs from "fs"
 import * as pathLib from "path"
-
+import * as logger from "winston"
 
 (Symbol as any).asyncIterator = Symbol.asyncIterator || "__@@asyncIterator__";
 
 export class ContentReader implements IContentReader {
     async *read(path:string) : AsyncIterableIterator<string>{
-
+        logger.debug("reading content from %s", path);
         yield* this.itterateDirectory(fileType.Directory, path);
     }
 
-    async *itterateDirectory(filter:fileType, path:string) : AsyncIterableIterator<string>{
+    async *itterateDirectory(filter:fileType, path:string) : AsyncIterableIterator<string>{   
         let items = await this.readDirectory(filter, path);
         yield* items
     }
@@ -23,16 +23,18 @@ export class ContentReader implements IContentReader {
                 if(files == null){
                     reject('directory empty');
                 }
+                if (err) {
+                    logger.error('reading files of directory %s', path);
+                    return reject(err);
+                }
                 for(let file of files){
-                    if (err) {
-                        return reject(err);
-                    }
                     let filePath = path + file;
                     let stats:fs.Stats = null;
                     try{
                         stats = await this.fileStat(filePath);
                     }
                     catch(err){
+                        logger.error('reading stats of file with path: %s', filePath);
                         reject(err);
                     }                
                     if (filter == fileType.Directory && stats.isDirectory()) {

@@ -1,10 +1,10 @@
 import { injectable, inject, Container, interfaces,multiInject } from "inversify";
 import "reflect-metadata";
+import * as logger from "winston"
 
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as express from "express";
-import * as logger from "morgan";
 import * as path from "path";
 
 import {IApiModule, IApiModuleKey} from "./api/IApimodule"
@@ -19,20 +19,22 @@ export class Server implements IServer {
     bootstrap(){
         this.app = express();
         let dir = __dirname + '/../../public';
-        this.app.use('/', express.static(__dirname + '/../../public'))
+        logger.debug("serving static files from: %s", dir);
+        this.app.use('/', express.static(__dirname + '/../Dist//public'))
 
         // add API routers
+        logger.debug("loading API modules");
         let modules = this.apiModules;
         if(modules != null){
             modules.forEach(element => {
-                console.log(`server: adding api module at, ${element.basePath}`);
+                logger.debug("adding module at path: %s", element.basePath);
                 let router = express.Router();
                 this.app.use('/api/' + element.basePath, element.ConfigureRouter(router));
             });
         }
 
         this.app.listen(8080, function () {
-            console.log('listening on port 8080');
+            logger.debug("listening on port: %s", "8080");
         })
         return this;
     }

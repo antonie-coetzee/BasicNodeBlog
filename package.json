@@ -30,6 +30,7 @@
     "test": "test"
   },
   "dependencies": {
+    "@types/winston": "^2.3.4",
     "autoprefixer": "^7.1.2",
     "body-parser": "^1.17.0",
     "cookie-parser": "^1.4.3",
@@ -41,7 +42,8 @@
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",
     "reflect-metadata": "^0.1.9",
-    "simple-git": "^1.74.1"
+    "simple-git": "^1.74.1",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "@types/body-parser": "0.0.34",
