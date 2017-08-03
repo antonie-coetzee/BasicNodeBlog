@@ -18,7 +18,7 @@ export class Server implements IServer {
     
     bootstrap(){
         this.app = express();
-        let dir = __dirname + '/../public';
+        let dir = path.resolve(__dirname + '/../public');
         logger.debug("serving static files from: %s", dir);
         this.app.use('/', express.static(dir));
 
@@ -27,12 +27,17 @@ export class Server implements IServer {
         let modules = this.apiModules;
         if(modules != null){
             modules.forEach(element => {
-                logger.debug("adding module at path: %s", element.basePath);
+                let apiPath = '/api/' + element.basePath;
+                logger.debug("adding module at: %s", apiPath);
                 let router = express.Router();
-                this.app.use('/api/' + element.basePath, element.ConfigureRouter(router));
+                this.app.use(apiPath, element.ConfigureRouter(router));
             });
         }
 
+        this.app.get('/*', function(req, res){
+            res.sendFile(dir + '/index.html');
+        });
+        
         this.app.listen(8080, function () {
             logger.debug("listening on port: %s", "8080");
         })
