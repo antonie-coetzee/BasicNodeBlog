@@ -4,9 +4,10 @@
   "description": "Basic blog engine serving static content",
   "main": "index.js",
   "scripts": {
-    "buildprod": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --optimize-minimize --define process.env.NODE_ENV='production' --progress",
-    "builddev": ".\\node_modules\\.bin\\webpack --config ./webpack.config.js --progress",
-    "start": ".\\node_modules\\.bin\\webpack-dev-server -d --content-base dist/public --progress --inline",
+    "buildprod": "./node_modules/.bin/webpack --config ./webpack.config.js --optimize-minimize --define process.env.NODE_ENV='production' --progress",
+    "builddev": "./node_modules/.bin/webpack --config ./webpack.config.js --progress",
+    "buildserver": "node ./copy.config.js && tsc",
+    "start": "./node_modules/.bin/webpack-dev-server -d --content-base dist/public --progress --inline",
     "test": "jest",
     "updatesnapshot": "jest --updateSnapshot",
     "debug": "node --debug-brk --inspect ./node_modules/jest/bin/jest -i"
@@ -35,6 +36,7 @@
     "body-parser": "^1.17.0",
     "cookie-parser": "^1.4.3",
     "inversify": "^3.0.0",
+    "mkdirp": "^0.5.1",
     "mobx": "^3.2.2",
     "mobx-react": "^4.2.2",
     "morgan": "^1.8.1",
