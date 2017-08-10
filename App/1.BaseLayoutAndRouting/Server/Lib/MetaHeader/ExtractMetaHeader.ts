@@ -1,4 +1,4 @@
-import {IMetaHeader} from "common/Domain/IMetaHeader"
+import {IMetaHeader} from "../../../Common/Domain/IMetaHeader"
 
 export class ExtractMetaHeader{
     public static Extract(fileData:string):IMetaHeader{

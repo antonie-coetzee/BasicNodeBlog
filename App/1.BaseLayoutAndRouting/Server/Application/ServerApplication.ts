@@ -1,3 +1,5 @@
+import {IServerApplication, IServerApplicationKey} from "0.Bootstrap/Common/Application/IServerApplication"
+
 import { injectable, inject, Container, interfaces,multiInject } from "inversify";
 import "reflect-metadata";
 import * as logger from "winston"
@@ -7,18 +9,17 @@ import * as cookieParser from "cookie-parser";
 import * as express from "express";
 import * as path from "path";
 
-import {IApiModule, IApiModuleKey} from "./api/IApimodule"
-import {IServer, IServerKey} from "./IServer"
+import {IApiModule, IApiModuleKey} from "./../api/IApimodule"
 
 @injectable()
-export class Server implements IServer {
+export class ServerApplication implements IServerApplication {
     public app: express.Application;
 
     constructor(@multiInject(IApiModuleKey) private apiModules: IApiModule[]) {}
     
-    bootstrap(){
+    Bootstrap(){
         this.app = express();
-        let dir = path.resolve(__dirname + '/../public');
+        let dir = path.resolve(__dirname + '/../../../public');
         logger.debug("serving static files from: %s", dir);
         this.app.use('/', express.static(dir));
 

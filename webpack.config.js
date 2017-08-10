@@ -9,7 +9,7 @@ const Visualizer = require('webpack-visualizer-plugin');
 module.exports = {
     devtool: 'source-map',
     entry: {
-        client: path.resolve(__dirname, './App/Client/index.tsx')
+        client: path.resolve(__dirname, './App/Client.tsx')
     },
     output: {
         filename: 'bundle.js',
@@ -75,7 +75,7 @@ module.exports = {
             new Visualizer({
                 filename: './statistics.html'
             }),
-        new HtmlWebpackPlugin({hash:true, template:'App/Client/index.ejs'}),
+        new HtmlWebpackPlugin({hash:true, template:'App/Client.ejs'}),
         new webpack.WatchIgnorePlugin([
                 /scss\.d\.ts$/
             ])       

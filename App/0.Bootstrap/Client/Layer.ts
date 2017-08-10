@@ -1,4 +1,4 @@
-import AppContainer from 'Common/AppContainer/AppContainer'
+import AppContainer from '../Common/AppContainer/AppContainer'
 import getDecorators from "inversify-inject-decorators";
 
 // setup layered container and property injector

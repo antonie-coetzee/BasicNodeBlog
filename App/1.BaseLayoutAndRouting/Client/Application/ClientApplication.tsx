@@ -1,12 +1,12 @@
 import {injectable, interfaces} from "inversify";
-import "Common/AppContainer/LazyInject"
+import "0.Bootstrap/Common/AppContainer/LazyInject"
 
 import * as React from "react";
 import {BrowserRouter, Route, withRouter} from 'react-router-dom'
 import {observer} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
-import {IApplication} from "Client/IApplication"
+import {IClientApplication} from "0.Bootstrap/Common/Application/IClientApplication"
 import {IHeader, IHeaderKey} from "../Header/IHeader"
 import {ISideBar, ISideBarKey} from "../SideBar/ISideBar"
 import {ISideBarService, ISideBarServiceKey } from "../SideBar/ISideBarService"
@@ -18,7 +18,7 @@ import {Container, Sidebar, Segment, Button, Menu, Image, Icon, Header} from 'se
 @withRouter 
 @observer
 @injectable()
-export class Application extends React.Component<any, any> implements IApplication  {
+export class ClientApplication extends React.Component<any, any> implements IClientApplication  {
 
     @lazyInject(IHeaderKey)
     public Header : interfaces.Newable<IHeader>;
@@ -52,6 +52,5 @@ export class Application extends React.Component<any, any> implements IApplicati
             </Sidebar.Pushable>  
             <DevTools/>  
     </div>    
-
     }
 }
