@@ -1,13 +1,13 @@
 
 import {injectable} from "inversify"
 import { IContentUpdator } from "./IContentUpdator"
-import * as Git from "simple-git"
+import * as Git from "simple-git/promise"
 import * as fs from "fs"
 
 @injectable()
 export default class ContentUpdator implements IContentUpdator {
 
-    async UpdateContent(repoPath: string, repoUrl: string): Promise<boolean> {
+    async UpdateContent(repoPath: string, repoUrl: string): Promise<boolean> {        
         if (repoPath == null) {
             throw new TypeError("repoPath");
         }
@@ -15,30 +15,16 @@ export default class ContentUpdator implements IContentUpdator {
             throw new TypeError("repoUrl");
         }
 
-        var exists = await this.filePathExists(repoPath);
-        if (exists) {
-            await this.PullRepo(repoPath);
-            return true;
-        } else {          
-            await this.CloneRepo(repoPath, repoUrl);
-            return false;
-        }
-    }
-
-    async CloneRepo(repoPath: string, repoUrl: string) {
-        await Git.clone(repoUrl, repoPath);
-    }
-
-    async PullRepo(repoPath: string) {
-        var repository;
-        await Git.Repository.open(repoPath)
-            .then(function (repo) {
-                repository = repo;
-                return repo.fetchAll();
-            })
-            .then(function () {
-                repository.mergeBranches("master", "origin/master");
-            });
+        await Git().clone(repoUrl, repoPath);
+        return true;
+        // var exists = await this.filePathExists(repoPath);
+        // if (exists) {
+        //     await Git().pull(repoPath);
+        //     return true;
+        // } else {          
+        //     await Git().clone(repoUrl, repoPath);
+        //     return false;
+        // }
     }
 
     filePathExists(filePath) : Promise<boolean> {
