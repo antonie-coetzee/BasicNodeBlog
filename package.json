@@ -8,7 +8,7 @@
     "builddev": "./node_modules/.bin/webpack --config ./webpack.config.js --progress",
     "buildserver": "node ./copy.config.js && tsc",
     "start": "./node_modules/.bin/webpack-dev-server -d --content-base dist/public --progress --inline",
-    "test": "jest",
+    "test": "node ./copy.config.js && tsc && jest",
     "updatesnapshot": "jest --updateSnapshot",
     "debug": "node --debug-brk --inspect ./node_modules/jest/bin/jest -i"
   },

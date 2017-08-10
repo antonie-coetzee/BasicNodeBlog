@@ -15,16 +15,14 @@ export default class ContentUpdator implements IContentUpdator {
             throw new TypeError("repoUrl");
         }
 
-        await Git().clone(repoUrl, repoPath);
-        return true;
-        // var exists = await this.filePathExists(repoPath);
-        // if (exists) {
-        //     await Git().pull(repoPath);
-        //     return true;
-        // } else {          
-        //     await Git().clone(repoUrl, repoPath);
-        //     return false;
-        // }
+        var exists = await this.filePathExists(repoPath);
+        if (exists) {
+            await Git().pull(repoPath);
+            return true;
+        } else {          
+            await Git().clone(repoUrl, repoPath);
+            return false;
+        }
     }
 
     filePathExists(filePath) : Promise<boolean> {

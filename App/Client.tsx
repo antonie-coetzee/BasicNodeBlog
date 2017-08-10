@@ -11,9 +11,8 @@ layer.Initialize();
 const Application = layer.container.get<interfaces.Newable<IClientApplication>>(IClientApplicationKey);
 
 ReactDOM.render(
-                <BrowserRouter>   
-                    <Application/>
-                </BrowserRouter>
-                ,
+    <BrowserRouter>   
+        <Application/>
+    </BrowserRouter>,
     document.getElementById("root")
 ); 
