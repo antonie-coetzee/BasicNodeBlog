@@ -3,7 +3,7 @@ import {IExpressApplication, IExpressApplicationKey} from "./IExpressApplication
 
 import { injectable, inject, Container, interfaces,multiInject } from "inversify";
 import "reflect-metadata";
-import * as logger from "winston"
+import {ILogger, ILoggerKey} from "../../Common/Services/Logging/ILogger"
 
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
@@ -16,20 +16,21 @@ import {IApiModule, IApiModuleKey} from "./../api/IApimodule"
 export class ServerApplication implements IServerApplication {
 
     constructor(@inject(IExpressApplicationKey) private app:IExpressApplication,  
-                @multiInject(IApiModuleKey) private apiModules: IApiModule[]) {}
+                @multiInject(IApiModuleKey) private apiModules: IApiModule[], 
+                @inject(ILoggerKey) private logger:ILogger) {}
     
     Bootstrap(){
         let dir = path.resolve(__dirname + '/../../../public');
-        logger.debug("serving static files from: %s", dir);
+        this.logger.Debug("serving static files from: %s", dir);
         this.app.instance.use('/', express.static(dir));
 
         // add API routers
-        logger.debug("loading API modules");
+        this.logger.Debug("loading API modules");
         let modules = this.apiModules;
         if(modules != null){
             modules.forEach(element => {
                 let apiPath = '/api/' + element.basePath;
-                logger.debug("adding module at: %s", apiPath);
+                this.logger.Debug("adding module at: %s", apiPath);
                 let router = express.Router();
                 this.app.instance.use(apiPath, element.ConfigureRouter(router));
             });
@@ -39,8 +40,8 @@ export class ServerApplication implements IServerApplication {
             res.sendFile(dir + '/index.html');
         });
         
-        this.app.instance.listen(8080, function () {
-            logger.debug("listening on port: %s", "8080");
+        this.app.instance.listen(8080, ()=> {
+            this.logger.Info("listening on port: %s", "8080");
         })
         return this;
     }
