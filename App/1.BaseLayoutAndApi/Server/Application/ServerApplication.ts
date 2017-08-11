@@ -1,4 +1,5 @@
-import {IServerApplication, IServerApplicationKey} from "0.Bootstrap/Common/Application/IServerApplication"
+import {IServerApplication, IServerApplicationKey} from "../../../0.Bootstrap/Common/Application/IServerApplication"
+import {IExpressApplication, IExpressApplicationKey} from "./IExpressApplication"
 
 import { injectable, inject, Container, interfaces,multiInject } from "inversify";
 import "reflect-metadata";
@@ -13,15 +14,14 @@ import {IApiModule, IApiModuleKey} from "./../api/IApimodule"
 
 @injectable()
 export class ServerApplication implements IServerApplication {
-    public app: express.Application;
 
-    constructor(@multiInject(IApiModuleKey) private apiModules: IApiModule[]) {}
+    constructor(@inject(IExpressApplicationKey) private app:IExpressApplication,  
+                @multiInject(IApiModuleKey) private apiModules: IApiModule[]) {}
     
     Bootstrap(){
-        this.app = express();
         let dir = path.resolve(__dirname + '/../../../public');
         logger.debug("serving static files from: %s", dir);
-        this.app.use('/', express.static(dir));
+        this.app.instance.use('/', express.static(dir));
 
         // add API routers
         logger.debug("loading API modules");
@@ -31,15 +31,15 @@ export class ServerApplication implements IServerApplication {
                 let apiPath = '/api/' + element.basePath;
                 logger.debug("adding module at: %s", apiPath);
                 let router = express.Router();
-                this.app.use(apiPath, element.ConfigureRouter(router));
+                this.app.instance.use(apiPath, element.ConfigureRouter(router));
             });
         }
 
-        this.app.get('/*', function(req, res){
+        this.app.instance.get('/*', function(req, res){
             res.sendFile(dir + '/index.html');
         });
         
-        this.app.listen(8080, function () {
+        this.app.instance.listen(8080, function () {
             logger.debug("listening on port: %s", "8080");
         })
         return this;

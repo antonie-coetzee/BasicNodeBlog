@@ -75,7 +75,7 @@ module.exports = {
             new Visualizer({
                 filename: './statistics.html'
             }),
-        new HtmlWebpackPlugin({hash:true, template:'App/Client.ejs'}),
+        new HtmlWebpackPlugin({hash:true, template:'App/Index.ejs'}),
         new webpack.WatchIgnorePlugin([
                 /scss\.d\.ts$/
             ])       
