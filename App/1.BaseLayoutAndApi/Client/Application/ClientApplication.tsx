@@ -6,6 +6,7 @@ import {BrowserRouter, Route, withRouter} from 'react-router-dom'
 import {observer} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
+import {ILogger, ILoggerKey} from "../../Common/Services/Logging/ILogger"
 import {IClientApplication} from "0.Bootstrap/Common/Application/IClientApplication"
 import {IHeader, IHeaderKey} from "../Header/IHeader"
 import {ISideBar, ISideBarKey} from "../SideBar/ISideBar"
@@ -19,6 +20,9 @@ import {Container, Sidebar, Segment, Button, Menu, Image, Icon, Header} from 'se
 @observer
 @injectable()
 export class ClientApplication extends React.Component<any, any> implements IClientApplication  {
+
+    @lazyInject(ILoggerKey)
+    public logger : ILogger;
 
     @lazyInject(IHeaderKey)
     public Header : interfaces.Newable<IHeader>;
@@ -37,7 +41,8 @@ export class ClientApplication extends React.Component<any, any> implements ICli
     }
    
     render() {   
-        const styles = "vertical basic";    
+        const styles = "vertical basic";  
+        this.logger.Info("some info from client logger");  
         return <div>
             <Segment vertical={true} attached={true}>
                 <this.Header />
@@ -51,6 +56,6 @@ export class ClientApplication extends React.Component<any, any> implements ICli
                 </Sidebar.Pusher>
             </Sidebar.Pushable>  
             <DevTools/>  
-    </div>    
+        </div>    
     }
 }

@@ -5,13 +5,12 @@ import * as express from "express";
 import {IConfig, IConfigKey} from "./config/IConfig"
 import Config from "./config/Config"
 
-import {ILogger, ILoggerKey} from "../Common/Services/Logging/ILogger"
+import {loggingModule} from "../Common/Services/Logging/LoggingModule"
 
-import {ILoggerFactory, ILoggerFactoryKey} from "../Common/Services/Logging/ILoggerFactory"
-import {LoggerFactory} from "../Common/Services/Logging/LoggerFactory"
-
-import {ILoggerConfig, ILoggerConfigKey} from "../Common/Services/Logging/ILoggerConfig"
-import {ServerLoggerConfig} from "./Config/ServerLoggerConfig"
+import {ILoggerConfig, ILoggerConfigKey} from "../Server/Lib/Logging/ILoggerConfig"
+import {LoggerConfig} from "./Config/LoggerConfig"
+import {ILoggerFactory,ILoggerFactoryKey} from "../Common/Services/Logging/ILoggerFactory"
+import {LoggerFactory} from "../Server/Lib/Logging/LoggerFactory"
 
 import {IExpressApplication,IExpressApplicationKey} from "./Application/IExpressApplication"
 import {ExpressApplication} from "./Application/ExpressApplication"
@@ -22,16 +21,11 @@ import  {ServerApplication} from "./Application/ServerApplication"
 import {apiContainerModule} from "./api/ApiContainerModule"
 
 layer.AddLayer((container)=>{
-    container.bind<IConfig>(IConfigKey).to(Config);
+    container.bind<IConfig>(IConfigKey).to(Config).inSingletonScope();
 
-    container.bind<ILoggerConfig>(ILoggerConfigKey).to(ServerLoggerConfig);
-    container.bind<ILoggerFactory>(ILoggerFactoryKey).to(LoggerFactory).inSingletonScope();
-    container.bind<ILogger>(ILoggerKey).toDynamicValue(
-        (context)=>{
-            let factory = context.container.get<ILoggerFactory>(ILoggerFactoryKey);
-            let binding = context.plan.rootRequest.bindings[0]; //take first binding
-            return factory.Create(binding.implementationType.name);
-        });
+    container.load(loggingModule);
+    container.bind<ILoggerConfig>(ILoggerConfigKey).to(LoggerConfig);
+    container.bind<ILoggerFactory>(ILoggerFactoryKey).to(LoggerFactory);
 
     container.bind<IExpressApplication>(IExpressApplicationKey).to(ExpressApplication).inSingletonScope();
     container.bind<IServerApplication>(IServerApplicationKey).to(ServerApplication);

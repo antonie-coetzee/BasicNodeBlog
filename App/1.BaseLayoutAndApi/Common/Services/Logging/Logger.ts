@@ -1,12 +1,10 @@
 import {injectable} from "inversify";
 import {ILogger} from "./ILogger"
 
-import * as winston from "winston"
-
 @injectable()
 export class Logger implements ILogger {
 
-    constructor(private logger:winston.LoggerInstance, private className:string) {
+    constructor(private logger:(level:string, message:string, meta:any)=>void, private preFix:string) {
     }
     
     Error(message:string, meta?:any):void{
@@ -20,16 +18,12 @@ export class Logger implements ILogger {
     Info(message:string, meta?:any):void{
         this.log('info', message, meta);
     }
-
-    Verbose(message:string, meta?:any):void{
-        this.log('verbose', message, meta);
-    }
     
     Debug(message:string, meta?:any):void{
         this.log('debug', message, meta);
     }
 
     private log(level:string, message:string, meta?:any):void{
-        this.logger.log(level, `${this.className}: ${message}`, meta);
+        this.logger(level, `${this.preFix}: ${message}`, meta);
     }
 }

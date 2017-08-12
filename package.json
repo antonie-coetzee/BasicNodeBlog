@@ -31,11 +31,13 @@
     "test": "test"
   },
   "dependencies": {
+    "@types/loglevel": "^1.4.29",
     "@types/winston": "^2.3.4",
     "autoprefixer": "^7.1.2",
     "body-parser": "^1.17.0",
     "cookie-parser": "^1.4.3",
     "inversify": "^3.0.0",
+    "loglevel": "^1.4.1",
     "mkdirp": "^0.5.1",
     "mobx": "^3.2.2",
     "mobx-react": "^4.2.2",

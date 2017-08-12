@@ -1,10 +1,10 @@
 import {injectable, inject} from "inversify";
 import * as winston from "winston"
 
-import {ILoggerConfig} from "../../Common/Services/Logging/ILoggerConfig"
+import {ILoggerConfig} from "../Lib/Logging/ILoggerConfig"
 
 @injectable()
-export class ServerLoggerConfig implements ILoggerConfig {
+export class LoggerConfig implements ILoggerConfig {
     public options:winston.LoggerOptions
 
     constructor() {

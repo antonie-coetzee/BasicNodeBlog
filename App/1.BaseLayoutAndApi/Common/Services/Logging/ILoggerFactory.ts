@@ -1,7 +1,7 @@
 import {ILogger} from "./ILogger"
 
 export interface ILoggerFactory {
-    Create(className:string):ILogger;
+    Create(preFix:string):ILogger;
 }
 
 export const ILoggerFactoryKey = "ILoggerFactory";
