@@ -1,636 +1,635 @@
-interface IStyleSass {
-  'is-clearfix': string;
-  'is-pulled-left': string;
-  'is-pulled-right': string;
-  'is-clipped': string;
-  'is-overlay': string;
-  'is-size-1': string;
-  'is-size-1-mobile': string;
-  'is-size-1-tablet': string;
-  'is-size-1-touch': string;
-  'is-size-1-desktop': string;
-  'is-size-1-widescreen': string;
-  'is-size-1-fullhd': string;
-  'is-size-2': string;
-  'is-size-2-mobile': string;
-  'is-size-2-tablet': string;
-  'is-size-2-touch': string;
-  'is-size-2-desktop': string;
-  'is-size-2-widescreen': string;
-  'is-size-2-fullhd': string;
-  'is-size-3': string;
-  'is-size-3-mobile': string;
-  'is-size-3-tablet': string;
-  'is-size-3-touch': string;
-  'is-size-3-desktop': string;
-  'is-size-3-widescreen': string;
-  'is-size-3-fullhd': string;
-  'is-size-4': string;
-  'is-size-4-mobile': string;
-  'is-size-4-tablet': string;
-  'is-size-4-touch': string;
-  'is-size-4-desktop': string;
-  'is-size-4-widescreen': string;
-  'is-size-4-fullhd': string;
-  'is-size-5': string;
-  'is-size-5-mobile': string;
-  'is-size-5-tablet': string;
-  'is-size-5-touch': string;
-  'is-size-5-desktop': string;
-  'is-size-5-widescreen': string;
-  'is-size-5-fullhd': string;
-  'is-size-6': string;
-  'is-size-6-mobile': string;
-  'is-size-6-tablet': string;
-  'is-size-6-touch': string;
-  'is-size-6-desktop': string;
-  'is-size-6-widescreen': string;
-  'is-size-6-fullhd': string;
-  'is-size-7': string;
-  'is-size-7-mobile': string;
-  'is-size-7-tablet': string;
-  'is-size-7-touch': string;
-  'is-size-7-desktop': string;
-  'is-size-7-widescreen': string;
-  'is-size-7-fullhd': string;
-  'has-text-centered': string;
-  'has-text-centered-mobile': string;
-  'has-text-centered-tablet': string;
-  'has-text-centered-tablet-only': string;
-  'has-text-centered-touch': string;
-  'has-text-centered-desktop': string;
-  'has-text-centered-desktop-only': string;
-  'has-text-centered-widescreen': string;
-  'has-text-centered-widescreen-only': string;
-  'has-text-centered-fullhd': string;
-  'has-text-left': string;
-  'has-text-left-mobile': string;
-  'has-text-left-tablet': string;
-  'has-text-left-tablet-only': string;
-  'has-text-left-touch': string;
-  'has-text-left-desktop': string;
-  'has-text-left-desktop-only': string;
-  'has-text-left-widescreen': string;
-  'has-text-left-widescreen-only': string;
-  'has-text-left-fullhd': string;
-  'has-text-right': string;
-  'has-text-right-mobile': string;
-  'has-text-right-tablet': string;
-  'has-text-right-tablet-only': string;
-  'has-text-right-touch': string;
-  'has-text-right-desktop': string;
-  'has-text-right-desktop-only': string;
-  'has-text-right-widescreen': string;
-  'has-text-right-widescreen-only': string;
-  'has-text-right-fullhd': string;
-  'is-capitalized': string;
-  'is-lowercase': string;
-  'is-uppercase': string;
-  'has-text-white': string;
-  'has-text-black': string;
-  'has-text-light': string;
-  'has-text-dark': string;
-  'has-text-primary': string;
-  'has-text-info': string;
-  'has-text-success': string;
-  'has-text-warning': string;
-  'has-text-danger': string;
-  'has-text-black-bis': string;
-  'has-text-black-ter': string;
-  'has-text-grey-darker': string;
-  'has-text-grey-dark': string;
-  'has-text-grey': string;
-  'has-text-grey-light': string;
-  'has-text-grey-lighter': string;
-  'has-text-white-ter': string;
-  'has-text-white-bis': string;
-  'is-block': string;
-  'is-block-mobile': string;
-  'is-block-tablet': string;
-  'is-block-tablet-only': string;
-  'is-block-touch': string;
-  'is-block-desktop': string;
-  'is-block-desktop-only': string;
-  'is-block-widescreen': string;
-  'is-block-widescreen-only': string;
-  'is-block-fullhd': string;
-  'is-flex': string;
-  'is-flex-mobile': string;
-  'is-flex-tablet': string;
-  'is-flex-tablet-only': string;
-  'is-flex-touch': string;
-  'is-flex-desktop': string;
-  'is-flex-desktop-only': string;
-  'is-flex-widescreen': string;
-  'is-flex-widescreen-only': string;
-  'is-flex-fullhd': string;
-  'is-inline': string;
-  'is-inline-mobile': string;
-  'is-inline-tablet': string;
-  'is-inline-tablet-only': string;
-  'is-inline-touch': string;
-  'is-inline-desktop': string;
-  'is-inline-desktop-only': string;
-  'is-inline-widescreen': string;
-  'is-inline-widescreen-only': string;
-  'is-inline-fullhd': string;
-  'is-inline-block': string;
-  'is-inline-block-mobile': string;
-  'is-inline-block-tablet': string;
-  'is-inline-block-tablet-only': string;
-  'is-inline-block-touch': string;
-  'is-inline-block-desktop': string;
-  'is-inline-block-desktop-only': string;
-  'is-inline-block-widescreen': string;
-  'is-inline-block-widescreen-only': string;
-  'is-inline-block-fullhd': string;
-  'is-inline-flex': string;
-  'is-inline-flex-mobile': string;
-  'is-inline-flex-tablet': string;
-  'is-inline-flex-tablet-only': string;
-  'is-inline-flex-touch': string;
-  'is-inline-flex-desktop': string;
-  'is-inline-flex-desktop-only': string;
-  'is-inline-flex-widescreen': string;
-  'is-inline-flex-widescreen-only': string;
-  'is-inline-flex-fullhd': string;
-  'is-hidden': string;
-  'is-hidden-mobile': string;
-  'is-hidden-tablet': string;
-  'is-hidden-tablet-only': string;
-  'is-hidden-touch': string;
-  'is-hidden-desktop': string;
-  'is-hidden-desktop-only': string;
-  'is-hidden-widescreen': string;
-  'is-hidden-widescreen-only': string;
-  'is-hidden-fullhd': string;
-  'is-marginless': string;
-  'is-paddingless': string;
-  'is-radiusless': string;
-  'is-shadowless': string;
-  'is-unselectable': string;
-  'box': string;
-  'button': string;
-  'is-focused': string;
-  'is-active': string;
-  'icon': string;
-  'is-small': string;
-  'is-medium': string;
-  'is-large': string;
-  'is-hovered': string;
-  'is-link': string;
-  'is-white': string;
-  'is-inverted': string;
-  'is-loading': string;
-  'is-outlined': string;
-  'is-black': string;
-  'is-light': string;
-  'is-dark': string;
-  'is-primary': string;
-  'is-info': string;
-  'is-success': string;
-  'is-warning': string;
-  'is-danger': string;
-  'is-fullwidth': string;
-  'spinAround': string;
-  'is-static': string;
-  'container': string;
-  'is-fluid': string;
-  'is-widescreen': string;
-  'is-fullhd': string;
-  'content': string;
-  'input': string;
-  'textarea': string;
-  'checkbox': string;
-  'radio': string;
-  'select': string;
-  'is-multiple': string;
-  'is-disabled': string;
-  'file': string;
-  'file-cta': string;
-  'file-icon': string;
-  'fa': string;
-  'has-name': string;
-  'file-name': string;
-  'is-centered': string;
-  'is-right': string;
-  'is-boxed': string;
-  'file-label': string;
-  'file-input': string;
-  'label': string;
-  'help': string;
-  'field': string;
-  'has-addons': string;
-  'control': string;
-  'is-expanded': string;
-  'has-addons-centered': string;
-  'has-addons-right': string;
-  'has-addons-fullwidth': string;
-  'is-grouped': string;
-  'is-grouped-centered': string;
-  'is-grouped-right': string;
-  'is-grouped-multiline': string;
-  'is-horizontal': string;
-  'field-label': string;
-  'is-normal': string;
-  'field-body': string;
-  'is-narrow': string;
-  'has-icon': string;
-  'has-icon-right': string;
-  'has-icons-left': string;
-  'has-icons-right': string;
-  'is-left': string;
-  'image': string;
-  'is-square': string;
-  'is-1by1': string;
-  'is-4by3': string;
-  'is-3by2': string;
-  'is-16by9': string;
-  'is-2by1': string;
-  'is-16x16': string;
-  'is-24x24': string;
-  'is-32x32': string;
-  'is-48x48': string;
-  'is-64x64': string;
-  'is-96x96': string;
-  'is-128x128': string;
-  'notification': string;
-  'delete': string;
-  'title': string;
-  'subtitle': string;
-  'progress': string;
-  'table': string;
-  'is-selected': string;
-  'is-bordered': string;
-  'is-striped': string;
-  'tags': string;
-  'tag': string;
-  'is-delete': string;
-  'is-rounded': string;
-  'highlight': string;
-  'is-spaced': string;
-  'is-1': string;
-  'is-2': string;
-  'is-3': string;
-  'is-4': string;
-  'is-5': string;
-  'is-6': string;
-  'is-7': string;
-  'block': string;
-  'heading': string;
-  'loader': string;
-  'number': string;
-  'breadcrumb': string;
-  'has-arrow-separator': string;
-  'has-bullet-separator': string;
-  'has-dot-separator': string;
-  'has-succeeds-separator': string;
-  'card': string;
-  'card-header': string;
-  'card-header-title': string;
-  'card-header-icon': string;
-  'card-image': string;
-  'card-content': string;
-  'card-footer': string;
-  'card-footer-item': string;
-  'media': string;
-  'dropdown': string;
-  'dropdown-menu': string;
-  'is-hoverable': string;
-  'dropdown-content': string;
-  'dropdown-item': string;
-  'dropdown-divider': string;
-  'level': string;
-  'is-mobile': string;
-  'level-left': string;
-  'level-right': string;
-  'level-item': string;
-  'is-flexible': string;
-  'media-left': string;
-  'media-right': string;
-  'media-content': string;
-  'menu': string;
-  'menu-list': string;
-  'menu-label': string;
-  'message': string;
-  'message-header': string;
-  'message-body': string;
-  'modal': string;
-  'modal-background': string;
-  'modal-content': string;
-  'modal-card': string;
-  'modal-close': string;
-  'modal-card-head': string;
-  'modal-card-foot': string;
-  'modal-card-title': string;
-  'modal-card-body': string;
-  'nav-toggle': string;
-  'nav-item': string;
-  'is-tab': string;
-  'is-brand': string;
-  'nav-left': string;
-  'nav-right': string;
-  'nav-center': string;
-  'nav-menu': string;
-  'nav': string;
-  'has-shadow': string;
-  'navbar': string;
-  'navbar-brand': string;
-  'navbar-burger': string;
-  'navbar-menu': string;
-  'navbar-item': string;
-  'navbar-link': string;
-  'has-dropdown': string;
-  'navbar-content': string;
-  'navbar-dropdown': string;
-  'navbar-divider': string;
-  'navbar-start': string;
-  'navbar-end': string;
-  'is-transparent': string;
-  'pagination': string;
-  'pagination-list': string;
-  'pagination-previous': string;
-  'pagination-next': string;
-  'pagination-link': string;
-  'pagination-ellipsis': string;
-  'is-current': string;
-  'panel': string;
-  'panel-heading': string;
-  'panel-tabs': string;
-  'panel-block': string;
-  'panel-list': string;
-  'is-wrapped': string;
-  'panel-icon': string;
-  'tabs': string;
-  'is-center': string;
-  'is-toggle': string;
-  'column': string;
-  'columns': string;
-  'is-full': string;
-  'is-three-quarters': string;
-  'is-two-thirds': string;
-  'is-half': string;
-  'is-one-third': string;
-  'is-one-quarter': string;
-  'is-offset-three-quarters': string;
-  'is-offset-two-thirds': string;
-  'is-offset-half': string;
-  'is-offset-one-third': string;
-  'is-offset-one-quarter': string;
-  'is-offset-1': string;
-  'is-offset-2': string;
-  'is-offset-3': string;
-  'is-offset-4': string;
-  'is-offset-5': string;
-  'is-offset-6': string;
-  'is-offset-7': string;
-  'is-8': string;
-  'is-offset-8': string;
-  'is-9': string;
-  'is-offset-9': string;
-  'is-10': string;
-  'is-offset-10': string;
-  'is-11': string;
-  'is-offset-11': string;
-  'is-12': string;
-  'is-offset-12': string;
-  'is-narrow-mobile': string;
-  'is-full-mobile': string;
-  'is-three-quarters-mobile': string;
-  'is-two-thirds-mobile': string;
-  'is-half-mobile': string;
-  'is-one-third-mobile': string;
-  'is-one-quarter-mobile': string;
-  'is-offset-three-quarters-mobile': string;
-  'is-offset-two-thirds-mobile': string;
-  'is-offset-half-mobile': string;
-  'is-offset-one-third-mobile': string;
-  'is-offset-one-quarter-mobile': string;
-  'is-1-mobile': string;
-  'is-offset-1-mobile': string;
-  'is-2-mobile': string;
-  'is-offset-2-mobile': string;
-  'is-3-mobile': string;
-  'is-offset-3-mobile': string;
-  'is-4-mobile': string;
-  'is-offset-4-mobile': string;
-  'is-5-mobile': string;
-  'is-offset-5-mobile': string;
-  'is-6-mobile': string;
-  'is-offset-6-mobile': string;
-  'is-7-mobile': string;
-  'is-offset-7-mobile': string;
-  'is-8-mobile': string;
-  'is-offset-8-mobile': string;
-  'is-9-mobile': string;
-  'is-offset-9-mobile': string;
-  'is-10-mobile': string;
-  'is-offset-10-mobile': string;
-  'is-11-mobile': string;
-  'is-offset-11-mobile': string;
-  'is-12-mobile': string;
-  'is-offset-12-mobile': string;
-  'is-narrow-tablet': string;
-  'is-full-tablet': string;
-  'is-three-quarters-tablet': string;
-  'is-two-thirds-tablet': string;
-  'is-half-tablet': string;
-  'is-one-third-tablet': string;
-  'is-one-quarter-tablet': string;
-  'is-offset-three-quarters-tablet': string;
-  'is-offset-two-thirds-tablet': string;
-  'is-offset-half-tablet': string;
-  'is-offset-one-third-tablet': string;
-  'is-offset-one-quarter-tablet': string;
-  'is-1-tablet': string;
-  'is-offset-1-tablet': string;
-  'is-2-tablet': string;
-  'is-offset-2-tablet': string;
-  'is-3-tablet': string;
-  'is-offset-3-tablet': string;
-  'is-4-tablet': string;
-  'is-offset-4-tablet': string;
-  'is-5-tablet': string;
-  'is-offset-5-tablet': string;
-  'is-6-tablet': string;
-  'is-offset-6-tablet': string;
-  'is-7-tablet': string;
-  'is-offset-7-tablet': string;
-  'is-8-tablet': string;
-  'is-offset-8-tablet': string;
-  'is-9-tablet': string;
-  'is-offset-9-tablet': string;
-  'is-10-tablet': string;
-  'is-offset-10-tablet': string;
-  'is-11-tablet': string;
-  'is-offset-11-tablet': string;
-  'is-12-tablet': string;
-  'is-offset-12-tablet': string;
-  'is-narrow-touch': string;
-  'is-full-touch': string;
-  'is-three-quarters-touch': string;
-  'is-two-thirds-touch': string;
-  'is-half-touch': string;
-  'is-one-third-touch': string;
-  'is-one-quarter-touch': string;
-  'is-offset-three-quarters-touch': string;
-  'is-offset-two-thirds-touch': string;
-  'is-offset-half-touch': string;
-  'is-offset-one-third-touch': string;
-  'is-offset-one-quarter-touch': string;
-  'is-1-touch': string;
-  'is-offset-1-touch': string;
-  'is-2-touch': string;
-  'is-offset-2-touch': string;
-  'is-3-touch': string;
-  'is-offset-3-touch': string;
-  'is-4-touch': string;
-  'is-offset-4-touch': string;
-  'is-5-touch': string;
-  'is-offset-5-touch': string;
-  'is-6-touch': string;
-  'is-offset-6-touch': string;
-  'is-7-touch': string;
-  'is-offset-7-touch': string;
-  'is-8-touch': string;
-  'is-offset-8-touch': string;
-  'is-9-touch': string;
-  'is-offset-9-touch': string;
-  'is-10-touch': string;
-  'is-offset-10-touch': string;
-  'is-11-touch': string;
-  'is-offset-11-touch': string;
-  'is-12-touch': string;
-  'is-offset-12-touch': string;
-  'is-narrow-desktop': string;
-  'is-full-desktop': string;
-  'is-three-quarters-desktop': string;
-  'is-two-thirds-desktop': string;
-  'is-half-desktop': string;
-  'is-one-third-desktop': string;
-  'is-one-quarter-desktop': string;
-  'is-offset-three-quarters-desktop': string;
-  'is-offset-two-thirds-desktop': string;
-  'is-offset-half-desktop': string;
-  'is-offset-one-third-desktop': string;
-  'is-offset-one-quarter-desktop': string;
-  'is-1-desktop': string;
-  'is-offset-1-desktop': string;
-  'is-2-desktop': string;
-  'is-offset-2-desktop': string;
-  'is-3-desktop': string;
-  'is-offset-3-desktop': string;
-  'is-4-desktop': string;
-  'is-offset-4-desktop': string;
-  'is-5-desktop': string;
-  'is-offset-5-desktop': string;
-  'is-6-desktop': string;
-  'is-offset-6-desktop': string;
-  'is-7-desktop': string;
-  'is-offset-7-desktop': string;
-  'is-8-desktop': string;
-  'is-offset-8-desktop': string;
-  'is-9-desktop': string;
-  'is-offset-9-desktop': string;
-  'is-10-desktop': string;
-  'is-offset-10-desktop': string;
-  'is-11-desktop': string;
-  'is-offset-11-desktop': string;
-  'is-12-desktop': string;
-  'is-offset-12-desktop': string;
-  'is-narrow-widescreen': string;
-  'is-full-widescreen': string;
-  'is-three-quarters-widescreen': string;
-  'is-two-thirds-widescreen': string;
-  'is-half-widescreen': string;
-  'is-one-third-widescreen': string;
-  'is-one-quarter-widescreen': string;
-  'is-offset-three-quarters-widescreen': string;
-  'is-offset-two-thirds-widescreen': string;
-  'is-offset-half-widescreen': string;
-  'is-offset-one-third-widescreen': string;
-  'is-offset-one-quarter-widescreen': string;
-  'is-1-widescreen': string;
-  'is-offset-1-widescreen': string;
-  'is-2-widescreen': string;
-  'is-offset-2-widescreen': string;
-  'is-3-widescreen': string;
-  'is-offset-3-widescreen': string;
-  'is-4-widescreen': string;
-  'is-offset-4-widescreen': string;
-  'is-5-widescreen': string;
-  'is-offset-5-widescreen': string;
-  'is-6-widescreen': string;
-  'is-offset-6-widescreen': string;
-  'is-7-widescreen': string;
-  'is-offset-7-widescreen': string;
-  'is-8-widescreen': string;
-  'is-offset-8-widescreen': string;
-  'is-9-widescreen': string;
-  'is-offset-9-widescreen': string;
-  'is-10-widescreen': string;
-  'is-offset-10-widescreen': string;
-  'is-11-widescreen': string;
-  'is-offset-11-widescreen': string;
-  'is-12-widescreen': string;
-  'is-offset-12-widescreen': string;
-  'is-narrow-fullhd': string;
-  'is-full-fullhd': string;
-  'is-three-quarters-fullhd': string;
-  'is-two-thirds-fullhd': string;
-  'is-half-fullhd': string;
-  'is-one-third-fullhd': string;
-  'is-one-quarter-fullhd': string;
-  'is-offset-three-quarters-fullhd': string;
-  'is-offset-two-thirds-fullhd': string;
-  'is-offset-half-fullhd': string;
-  'is-offset-one-third-fullhd': string;
-  'is-offset-one-quarter-fullhd': string;
-  'is-1-fullhd': string;
-  'is-offset-1-fullhd': string;
-  'is-2-fullhd': string;
-  'is-offset-2-fullhd': string;
-  'is-3-fullhd': string;
-  'is-offset-3-fullhd': string;
-  'is-4-fullhd': string;
-  'is-offset-4-fullhd': string;
-  'is-5-fullhd': string;
-  'is-offset-5-fullhd': string;
-  'is-6-fullhd': string;
-  'is-offset-6-fullhd': string;
-  'is-7-fullhd': string;
-  'is-offset-7-fullhd': string;
-  'is-8-fullhd': string;
-  'is-offset-8-fullhd': string;
-  'is-9-fullhd': string;
-  'is-offset-9-fullhd': string;
-  'is-10-fullhd': string;
-  'is-offset-10-fullhd': string;
-  'is-11-fullhd': string;
-  'is-offset-11-fullhd': string;
-  'is-12-fullhd': string;
-  'is-offset-12-fullhd': string;
-  'is-gapless': string;
-  'is-grid': string;
-  'is-multiline': string;
-  'is-vcentered': string;
-  'is-desktop': string;
-  'tile': string;
-  'is-ancestor': string;
-  'is-child': string;
-  'is-parent': string;
-  'is-vertical': string;
-  'hero': string;
-  'is-bold': string;
-  'hero-body': string;
-  'is-halfheight': string;
-  'is-fullheight': string;
-  'hero-video': string;
-  'hero-buttons': string;
-  'hero-head': string;
-  'hero-foot': string;
-  'section': string;
-  'footer': string;
+declare enum StyleSass {
+   "is-clearfix" = "is-clearfix",
+   "is-pulled-left" = "is-pulled-left",
+   "is-pulled-right" = "is-pulled-right",
+   "is-clipped" = "is-clipped",
+   "is-overlay" = "is-overlay",
+   "is-size-1" = "is-size-1",
+   "is-size-1-mobile" = "is-size-1-mobile",
+   "is-size-1-tablet" = "is-size-1-tablet",
+   "is-size-1-touch" = "is-size-1-touch",
+   "is-size-1-desktop" = "is-size-1-desktop",
+   "is-size-1-widescreen" = "is-size-1-widescreen",
+   "is-size-1-fullhd" = "is-size-1-fullhd",
+   "is-size-2" = "is-size-2",
+   "is-size-2-mobile" = "is-size-2-mobile",
+   "is-size-2-tablet" = "is-size-2-tablet",
+   "is-size-2-touch" = "is-size-2-touch",
+   "is-size-2-desktop" = "is-size-2-desktop",
+   "is-size-2-widescreen" = "is-size-2-widescreen",
+   "is-size-2-fullhd" = "is-size-2-fullhd",
+   "is-size-3" = "is-size-3",
+   "is-size-3-mobile" = "is-size-3-mobile",
+   "is-size-3-tablet" = "is-size-3-tablet",
+   "is-size-3-touch" = "is-size-3-touch",
+   "is-size-3-desktop" = "is-size-3-desktop",
+   "is-size-3-widescreen" = "is-size-3-widescreen",
+   "is-size-3-fullhd" = "is-size-3-fullhd",
+   "is-size-4" = "is-size-4",
+   "is-size-4-mobile" = "is-size-4-mobile",
+   "is-size-4-tablet" = "is-size-4-tablet",
+   "is-size-4-touch" = "is-size-4-touch",
+   "is-size-4-desktop" = "is-size-4-desktop",
+   "is-size-4-widescreen" = "is-size-4-widescreen",
+   "is-size-4-fullhd" = "is-size-4-fullhd",
+   "is-size-5" = "is-size-5",
+   "is-size-5-mobile" = "is-size-5-mobile",
+   "is-size-5-tablet" = "is-size-5-tablet",
+   "is-size-5-touch" = "is-size-5-touch",
+   "is-size-5-desktop" = "is-size-5-desktop",
+   "is-size-5-widescreen" = "is-size-5-widescreen",
+   "is-size-5-fullhd" = "is-size-5-fullhd",
+   "is-size-6" = "is-size-6",
+   "is-size-6-mobile" = "is-size-6-mobile",
+   "is-size-6-tablet" = "is-size-6-tablet",
+   "is-size-6-touch" = "is-size-6-touch",
+   "is-size-6-desktop" = "is-size-6-desktop",
+   "is-size-6-widescreen" = "is-size-6-widescreen",
+   "is-size-6-fullhd" = "is-size-6-fullhd",
+   "is-size-7" = "is-size-7",
+   "is-size-7-mobile" = "is-size-7-mobile",
+   "is-size-7-tablet" = "is-size-7-tablet",
+   "is-size-7-touch" = "is-size-7-touch",
+   "is-size-7-desktop" = "is-size-7-desktop",
+   "is-size-7-widescreen" = "is-size-7-widescreen",
+   "is-size-7-fullhd" = "is-size-7-fullhd",
+   "has-text-centered" = "has-text-centered",
+   "has-text-centered-mobile" = "has-text-centered-mobile",
+   "has-text-centered-tablet" = "has-text-centered-tablet",
+   "has-text-centered-tablet-only" = "has-text-centered-tablet-only",
+   "has-text-centered-touch" = "has-text-centered-touch",
+   "has-text-centered-desktop" = "has-text-centered-desktop",
+   "has-text-centered-desktop-only" = "has-text-centered-desktop-only",
+   "has-text-centered-widescreen" = "has-text-centered-widescreen",
+   "has-text-centered-widescreen-only" = "has-text-centered-widescreen-only",
+   "has-text-centered-fullhd" = "has-text-centered-fullhd",
+   "has-text-left" = "has-text-left",
+   "has-text-left-mobile" = "has-text-left-mobile",
+   "has-text-left-tablet" = "has-text-left-tablet",
+   "has-text-left-tablet-only" = "has-text-left-tablet-only",
+   "has-text-left-touch" = "has-text-left-touch",
+   "has-text-left-desktop" = "has-text-left-desktop",
+   "has-text-left-desktop-only" = "has-text-left-desktop-only",
+   "has-text-left-widescreen" = "has-text-left-widescreen",
+   "has-text-left-widescreen-only" = "has-text-left-widescreen-only",
+   "has-text-left-fullhd" = "has-text-left-fullhd",
+   "has-text-right" = "has-text-right",
+   "has-text-right-mobile" = "has-text-right-mobile",
+   "has-text-right-tablet" = "has-text-right-tablet",
+   "has-text-right-tablet-only" = "has-text-right-tablet-only",
+   "has-text-right-touch" = "has-text-right-touch",
+   "has-text-right-desktop" = "has-text-right-desktop",
+   "has-text-right-desktop-only" = "has-text-right-desktop-only",
+   "has-text-right-widescreen" = "has-text-right-widescreen",
+   "has-text-right-widescreen-only" = "has-text-right-widescreen-only",
+   "has-text-right-fullhd" = "has-text-right-fullhd",
+   "is-capitalized" = "is-capitalized",
+   "is-lowercase" = "is-lowercase",
+   "is-uppercase" = "is-uppercase",
+   "has-text-white" = "has-text-white",
+   "has-text-black" = "has-text-black",
+   "has-text-light" = "has-text-light",
+   "has-text-dark" = "has-text-dark",
+   "has-text-primary" = "has-text-primary",
+   "has-text-info" = "has-text-info",
+   "has-text-success" = "has-text-success",
+   "has-text-warning" = "has-text-warning",
+   "has-text-danger" = "has-text-danger",
+   "has-text-black-bis" = "has-text-black-bis",
+   "has-text-black-ter" = "has-text-black-ter",
+   "has-text-grey-darker" = "has-text-grey-darker",
+   "has-text-grey-dark" = "has-text-grey-dark",
+   "has-text-grey" = "has-text-grey",
+   "has-text-grey-light" = "has-text-grey-light",
+   "has-text-grey-lighter" = "has-text-grey-lighter",
+   "has-text-white-ter" = "has-text-white-ter",
+   "has-text-white-bis" = "has-text-white-bis",
+   "is-block" = "is-block",
+   "is-block-mobile" = "is-block-mobile",
+   "is-block-tablet" = "is-block-tablet",
+   "is-block-tablet-only" = "is-block-tablet-only",
+   "is-block-touch" = "is-block-touch",
+   "is-block-desktop" = "is-block-desktop",
+   "is-block-desktop-only" = "is-block-desktop-only",
+   "is-block-widescreen" = "is-block-widescreen",
+   "is-block-widescreen-only" = "is-block-widescreen-only",
+   "is-block-fullhd" = "is-block-fullhd",
+   "is-flex" = "is-flex",
+   "is-flex-mobile" = "is-flex-mobile",
+   "is-flex-tablet" = "is-flex-tablet",
+   "is-flex-tablet-only" = "is-flex-tablet-only",
+   "is-flex-touch" = "is-flex-touch",
+   "is-flex-desktop" = "is-flex-desktop",
+   "is-flex-desktop-only" = "is-flex-desktop-only",
+   "is-flex-widescreen" = "is-flex-widescreen",
+   "is-flex-widescreen-only" = "is-flex-widescreen-only",
+   "is-flex-fullhd" = "is-flex-fullhd",
+   "is-inline" = "is-inline",
+   "is-inline-mobile" = "is-inline-mobile",
+   "is-inline-tablet" = "is-inline-tablet",
+   "is-inline-tablet-only" = "is-inline-tablet-only",
+   "is-inline-touch" = "is-inline-touch",
+   "is-inline-desktop" = "is-inline-desktop",
+   "is-inline-desktop-only" = "is-inline-desktop-only",
+   "is-inline-widescreen" = "is-inline-widescreen",
+   "is-inline-widescreen-only" = "is-inline-widescreen-only",
+   "is-inline-fullhd" = "is-inline-fullhd",
+   "is-inline-block" = "is-inline-block",
+   "is-inline-block-mobile" = "is-inline-block-mobile",
+   "is-inline-block-tablet" = "is-inline-block-tablet",
+   "is-inline-block-tablet-only" = "is-inline-block-tablet-only",
+   "is-inline-block-touch" = "is-inline-block-touch",
+   "is-inline-block-desktop" = "is-inline-block-desktop",
+   "is-inline-block-desktop-only" = "is-inline-block-desktop-only",
+   "is-inline-block-widescreen" = "is-inline-block-widescreen",
+   "is-inline-block-widescreen-only" = "is-inline-block-widescreen-only",
+   "is-inline-block-fullhd" = "is-inline-block-fullhd",
+   "is-inline-flex" = "is-inline-flex",
+   "is-inline-flex-mobile" = "is-inline-flex-mobile",
+   "is-inline-flex-tablet" = "is-inline-flex-tablet",
+   "is-inline-flex-tablet-only" = "is-inline-flex-tablet-only",
+   "is-inline-flex-touch" = "is-inline-flex-touch",
+   "is-inline-flex-desktop" = "is-inline-flex-desktop",
+   "is-inline-flex-desktop-only" = "is-inline-flex-desktop-only",
+   "is-inline-flex-widescreen" = "is-inline-flex-widescreen",
+   "is-inline-flex-widescreen-only" = "is-inline-flex-widescreen-only",
+   "is-inline-flex-fullhd" = "is-inline-flex-fullhd",
+   "is-hidden" = "is-hidden",
+   "is-hidden-mobile" = "is-hidden-mobile",
+   "is-hidden-tablet" = "is-hidden-tablet",
+   "is-hidden-tablet-only" = "is-hidden-tablet-only",
+   "is-hidden-touch" = "is-hidden-touch",
+   "is-hidden-desktop" = "is-hidden-desktop",
+   "is-hidden-desktop-only" = "is-hidden-desktop-only",
+   "is-hidden-widescreen" = "is-hidden-widescreen",
+   "is-hidden-widescreen-only" = "is-hidden-widescreen-only",
+   "is-hidden-fullhd" = "is-hidden-fullhd",
+   "is-marginless" = "is-marginless",
+   "is-paddingless" = "is-paddingless",
+   "is-radiusless" = "is-radiusless",
+   "is-shadowless" = "is-shadowless",
+   "is-unselectable" = "is-unselectable",
+   "box" = "box",
+   "button" = "button",
+   "is-focused" = "is-focused",
+   "is-active" = "is-active",
+   "icon" = "icon",
+   "is-small" = "is-small",
+   "is-medium" = "is-medium",
+   "is-large" = "is-large",
+   "is-hovered" = "is-hovered",
+   "is-link" = "is-link",
+   "is-white" = "is-white",
+   "is-inverted" = "is-inverted",
+   "is-loading" = "is-loading",
+   "is-outlined" = "is-outlined",
+   "is-black" = "is-black",
+   "is-light" = "is-light",
+   "is-dark" = "is-dark",
+   "is-primary" = "is-primary",
+   "is-info" = "is-info",
+   "is-success" = "is-success",
+   "is-warning" = "is-warning",
+   "is-danger" = "is-danger",
+   "is-fullwidth" = "is-fullwidth",
+   "spinAround" = "spinAround",
+   "is-static" = "is-static",
+   "container" = "container",
+   "is-fluid" = "is-fluid",
+   "is-widescreen" = "is-widescreen",
+   "is-fullhd" = "is-fullhd",
+   "content" = "content",
+   "input" = "input",
+   "textarea" = "textarea",
+   "checkbox" = "checkbox",
+   "radio" = "radio",
+   "select" = "select",
+   "is-multiple" = "is-multiple",
+   "is-disabled" = "is-disabled",
+   "file" = "file",
+   "file-cta" = "file-cta",
+   "file-icon" = "file-icon",
+   "fa" = "fa",
+   "has-name" = "has-name",
+   "file-name" = "file-name",
+   "is-centered" = "is-centered",
+   "is-right" = "is-right",
+   "is-boxed" = "is-boxed",
+   "file-label" = "file-label",
+   "file-input" = "file-input",
+   "label" = "label",
+   "help" = "help",
+   "field" = "field",
+   "has-addons" = "has-addons",
+   "control" = "control",
+   "is-expanded" = "is-expanded",
+   "has-addons-centered" = "has-addons-centered",
+   "has-addons-right" = "has-addons-right",
+   "has-addons-fullwidth" = "has-addons-fullwidth",
+   "is-grouped" = "is-grouped",
+   "is-grouped-centered" = "is-grouped-centered",
+   "is-grouped-right" = "is-grouped-right",
+   "is-grouped-multiline" = "is-grouped-multiline",
+   "is-horizontal" = "is-horizontal",
+   "field-label" = "field-label",
+   "is-normal" = "is-normal",
+   "field-body" = "field-body",
+   "is-narrow" = "is-narrow",
+   "has-icon" = "has-icon",
+   "has-icon-right" = "has-icon-right",
+   "has-icons-left" = "has-icons-left",
+   "has-icons-right" = "has-icons-right",
+   "is-left" = "is-left",
+   "image" = "image",
+   "is-square" = "is-square",
+   "is-1by1" = "is-1by1",
+   "is-4by3" = "is-4by3",
+   "is-3by2" = "is-3by2",
+   "is-16by9" = "is-16by9",
+   "is-2by1" = "is-2by1",
+   "is-16x16" = "is-16x16",
+   "is-24x24" = "is-24x24",
+   "is-32x32" = "is-32x32",
+   "is-48x48" = "is-48x48",
+   "is-64x64" = "is-64x64",
+   "is-96x96" = "is-96x96",
+   "is-128x128" = "is-128x128",
+   "notification" = "notification",
+   "delete" = "delete",
+   "title" = "title",
+   "subtitle" = "subtitle",
+   "progress" = "progress",
+   "table" = "table",
+   "is-selected" = "is-selected",
+   "is-bordered" = "is-bordered",
+   "is-striped" = "is-striped",
+   "tags" = "tags",
+   "tag" = "tag",
+   "is-delete" = "is-delete",
+   "is-rounded" = "is-rounded",
+   "highlight" = "highlight",
+   "is-spaced" = "is-spaced",
+   "is-1" = "is-1",
+   "is-2" = "is-2",
+   "is-3" = "is-3",
+   "is-4" = "is-4",
+   "is-5" = "is-5",
+   "is-6" = "is-6",
+   "is-7" = "is-7",
+   "block" = "block",
+   "heading" = "heading",
+   "loader" = "loader",
+   "number" = "number",
+   "breadcrumb" = "breadcrumb",
+   "has-arrow-separator" = "has-arrow-separator",
+   "has-bullet-separator" = "has-bullet-separator",
+   "has-dot-separator" = "has-dot-separator",
+   "has-succeeds-separator" = "has-succeeds-separator",
+   "card" = "card",
+   "card-header" = "card-header",
+   "card-header-title" = "card-header-title",
+   "card-header-icon" = "card-header-icon",
+   "card-image" = "card-image",
+   "card-content" = "card-content",
+   "card-footer" = "card-footer",
+   "card-footer-item" = "card-footer-item",
+   "media" = "media",
+   "dropdown" = "dropdown",
+   "dropdown-menu" = "dropdown-menu",
+   "is-hoverable" = "is-hoverable",
+   "dropdown-content" = "dropdown-content",
+   "dropdown-item" = "dropdown-item",
+   "dropdown-divider" = "dropdown-divider",
+   "level" = "level",
+   "is-mobile" = "is-mobile",
+   "level-left" = "level-left",
+   "level-right" = "level-right",
+   "level-item" = "level-item",
+   "is-flexible" = "is-flexible",
+   "media-left" = "media-left",
+   "media-right" = "media-right",
+   "media-content" = "media-content",
+   "menu" = "menu",
+   "menu-list" = "menu-list",
+   "menu-label" = "menu-label",
+   "message" = "message",
+   "message-header" = "message-header",
+   "message-body" = "message-body",
+   "modal" = "modal",
+   "modal-background" = "modal-background",
+   "modal-content" = "modal-content",
+   "modal-card" = "modal-card",
+   "modal-close" = "modal-close",
+   "modal-card-head" = "modal-card-head",
+   "modal-card-foot" = "modal-card-foot",
+   "modal-card-title" = "modal-card-title",
+   "modal-card-body" = "modal-card-body",
+   "nav-toggle" = "nav-toggle",
+   "nav-item" = "nav-item",
+   "is-tab" = "is-tab",
+   "is-brand" = "is-brand",
+   "nav-left" = "nav-left",
+   "nav-right" = "nav-right",
+   "nav-center" = "nav-center",
+   "nav-menu" = "nav-menu",
+   "nav" = "nav",
+   "has-shadow" = "has-shadow",
+   "navbar" = "navbar",
+   "navbar-brand" = "navbar-brand",
+   "navbar-burger" = "navbar-burger",
+   "navbar-menu" = "navbar-menu",
+   "navbar-item" = "navbar-item",
+   "navbar-link" = "navbar-link",
+   "has-dropdown" = "has-dropdown",
+   "navbar-content" = "navbar-content",
+   "navbar-dropdown" = "navbar-dropdown",
+   "navbar-divider" = "navbar-divider",
+   "navbar-start" = "navbar-start",
+   "navbar-end" = "navbar-end",
+   "is-transparent" = "is-transparent",
+   "pagination" = "pagination",
+   "pagination-list" = "pagination-list",
+   "pagination-previous" = "pagination-previous",
+   "pagination-next" = "pagination-next",
+   "pagination-link" = "pagination-link",
+   "pagination-ellipsis" = "pagination-ellipsis",
+   "is-current" = "is-current",
+   "panel" = "panel",
+   "panel-heading" = "panel-heading",
+   "panel-tabs" = "panel-tabs",
+   "panel-block" = "panel-block",
+   "panel-list" = "panel-list",
+   "is-wrapped" = "is-wrapped",
+   "panel-icon" = "panel-icon",
+   "tabs" = "tabs",
+   "is-center" = "is-center",
+   "is-toggle" = "is-toggle",
+   "column" = "column",
+   "columns" = "columns",
+   "is-full" = "is-full",
+   "is-three-quarters" = "is-three-quarters",
+   "is-two-thirds" = "is-two-thirds",
+   "is-half" = "is-half",
+   "is-one-third" = "is-one-third",
+   "is-one-quarter" = "is-one-quarter",
+   "is-offset-three-quarters" = "is-offset-three-quarters",
+   "is-offset-two-thirds" = "is-offset-two-thirds",
+   "is-offset-half" = "is-offset-half",
+   "is-offset-one-third" = "is-offset-one-third",
+   "is-offset-one-quarter" = "is-offset-one-quarter",
+   "is-offset-1" = "is-offset-1",
+   "is-offset-2" = "is-offset-2",
+   "is-offset-3" = "is-offset-3",
+   "is-offset-4" = "is-offset-4",
+   "is-offset-5" = "is-offset-5",
+   "is-offset-6" = "is-offset-6",
+   "is-offset-7" = "is-offset-7",
+   "is-8" = "is-8",
+   "is-offset-8" = "is-offset-8",
+   "is-9" = "is-9",
+   "is-offset-9" = "is-offset-9",
+   "is-10" = "is-10",
+   "is-offset-10" = "is-offset-10",
+   "is-11" = "is-11",
+   "is-offset-11" = "is-offset-11",
+   "is-12" = "is-12",
+   "is-offset-12" = "is-offset-12",
+   "is-narrow-mobile" = "is-narrow-mobile",
+   "is-full-mobile" = "is-full-mobile",
+   "is-three-quarters-mobile" = "is-three-quarters-mobile",
+   "is-two-thirds-mobile" = "is-two-thirds-mobile",
+   "is-half-mobile" = "is-half-mobile",
+   "is-one-third-mobile" = "is-one-third-mobile",
+   "is-one-quarter-mobile" = "is-one-quarter-mobile",
+   "is-offset-three-quarters-mobile" = "is-offset-three-quarters-mobile",
+   "is-offset-two-thirds-mobile" = "is-offset-two-thirds-mobile",
+   "is-offset-half-mobile" = "is-offset-half-mobile",
+   "is-offset-one-third-mobile" = "is-offset-one-third-mobile",
+   "is-offset-one-quarter-mobile" = "is-offset-one-quarter-mobile",
+   "is-1-mobile" = "is-1-mobile",
+   "is-offset-1-mobile" = "is-offset-1-mobile",
+   "is-2-mobile" = "is-2-mobile",
+   "is-offset-2-mobile" = "is-offset-2-mobile",
+   "is-3-mobile" = "is-3-mobile",
+   "is-offset-3-mobile" = "is-offset-3-mobile",
+   "is-4-mobile" = "is-4-mobile",
+   "is-offset-4-mobile" = "is-offset-4-mobile",
+   "is-5-mobile" = "is-5-mobile",
+   "is-offset-5-mobile" = "is-offset-5-mobile",
+   "is-6-mobile" = "is-6-mobile",
+   "is-offset-6-mobile" = "is-offset-6-mobile",
+   "is-7-mobile" = "is-7-mobile",
+   "is-offset-7-mobile" = "is-offset-7-mobile",
+   "is-8-mobile" = "is-8-mobile",
+   "is-offset-8-mobile" = "is-offset-8-mobile",
+   "is-9-mobile" = "is-9-mobile",
+   "is-offset-9-mobile" = "is-offset-9-mobile",
+   "is-10-mobile" = "is-10-mobile",
+   "is-offset-10-mobile" = "is-offset-10-mobile",
+   "is-11-mobile" = "is-11-mobile",
+   "is-offset-11-mobile" = "is-offset-11-mobile",
+   "is-12-mobile" = "is-12-mobile",
+   "is-offset-12-mobile" = "is-offset-12-mobile",
+   "is-narrow-tablet" = "is-narrow-tablet",
+   "is-full-tablet" = "is-full-tablet",
+   "is-three-quarters-tablet" = "is-three-quarters-tablet",
+   "is-two-thirds-tablet" = "is-two-thirds-tablet",
+   "is-half-tablet" = "is-half-tablet",
+   "is-one-third-tablet" = "is-one-third-tablet",
+   "is-one-quarter-tablet" = "is-one-quarter-tablet",
+   "is-offset-three-quarters-tablet" = "is-offset-three-quarters-tablet",
+   "is-offset-two-thirds-tablet" = "is-offset-two-thirds-tablet",
+   "is-offset-half-tablet" = "is-offset-half-tablet",
+   "is-offset-one-third-tablet" = "is-offset-one-third-tablet",
+   "is-offset-one-quarter-tablet" = "is-offset-one-quarter-tablet",
+   "is-1-tablet" = "is-1-tablet",
+   "is-offset-1-tablet" = "is-offset-1-tablet",
+   "is-2-tablet" = "is-2-tablet",
+   "is-offset-2-tablet" = "is-offset-2-tablet",
+   "is-3-tablet" = "is-3-tablet",
+   "is-offset-3-tablet" = "is-offset-3-tablet",
+   "is-4-tablet" = "is-4-tablet",
+   "is-offset-4-tablet" = "is-offset-4-tablet",
+   "is-5-tablet" = "is-5-tablet",
+   "is-offset-5-tablet" = "is-offset-5-tablet",
+   "is-6-tablet" = "is-6-tablet",
+   "is-offset-6-tablet" = "is-offset-6-tablet",
+   "is-7-tablet" = "is-7-tablet",
+   "is-offset-7-tablet" = "is-offset-7-tablet",
+   "is-8-tablet" = "is-8-tablet",
+   "is-offset-8-tablet" = "is-offset-8-tablet",
+   "is-9-tablet" = "is-9-tablet",
+   "is-offset-9-tablet" = "is-offset-9-tablet",
+   "is-10-tablet" = "is-10-tablet",
+   "is-offset-10-tablet" = "is-offset-10-tablet",
+   "is-11-tablet" = "is-11-tablet",
+   "is-offset-11-tablet" = "is-offset-11-tablet",
+   "is-12-tablet" = "is-12-tablet",
+   "is-offset-12-tablet" = "is-offset-12-tablet",
+   "is-narrow-touch" = "is-narrow-touch",
+   "is-full-touch" = "is-full-touch",
+   "is-three-quarters-touch" = "is-three-quarters-touch",
+   "is-two-thirds-touch" = "is-two-thirds-touch",
+   "is-half-touch" = "is-half-touch",
+   "is-one-third-touch" = "is-one-third-touch",
+   "is-one-quarter-touch" = "is-one-quarter-touch",
+   "is-offset-three-quarters-touch" = "is-offset-three-quarters-touch",
+   "is-offset-two-thirds-touch" = "is-offset-two-thirds-touch",
+   "is-offset-half-touch" = "is-offset-half-touch",
+   "is-offset-one-third-touch" = "is-offset-one-third-touch",
+   "is-offset-one-quarter-touch" = "is-offset-one-quarter-touch",
+   "is-1-touch" = "is-1-touch",
+   "is-offset-1-touch" = "is-offset-1-touch",
+   "is-2-touch" = "is-2-touch",
+   "is-offset-2-touch" = "is-offset-2-touch",
+   "is-3-touch" = "is-3-touch",
+   "is-offset-3-touch" = "is-offset-3-touch",
+   "is-4-touch" = "is-4-touch",
+   "is-offset-4-touch" = "is-offset-4-touch",
+   "is-5-touch" = "is-5-touch",
+   "is-offset-5-touch" = "is-offset-5-touch",
+   "is-6-touch" = "is-6-touch",
+   "is-offset-6-touch" = "is-offset-6-touch",
+   "is-7-touch" = "is-7-touch",
+   "is-offset-7-touch" = "is-offset-7-touch",
+   "is-8-touch" = "is-8-touch",
+   "is-offset-8-touch" = "is-offset-8-touch",
+   "is-9-touch" = "is-9-touch",
+   "is-offset-9-touch" = "is-offset-9-touch",
+   "is-10-touch" = "is-10-touch",
+   "is-offset-10-touch" = "is-offset-10-touch",
+   "is-11-touch" = "is-11-touch",
+   "is-offset-11-touch" = "is-offset-11-touch",
+   "is-12-touch" = "is-12-touch",
+   "is-offset-12-touch" = "is-offset-12-touch",
+   "is-narrow-desktop" = "is-narrow-desktop",
+   "is-full-desktop" = "is-full-desktop",
+   "is-three-quarters-desktop" = "is-three-quarters-desktop",
+   "is-two-thirds-desktop" = "is-two-thirds-desktop",
+   "is-half-desktop" = "is-half-desktop",
+   "is-one-third-desktop" = "is-one-third-desktop",
+   "is-one-quarter-desktop" = "is-one-quarter-desktop",
+   "is-offset-three-quarters-desktop" = "is-offset-three-quarters-desktop",
+   "is-offset-two-thirds-desktop" = "is-offset-two-thirds-desktop",
+   "is-offset-half-desktop" = "is-offset-half-desktop",
+   "is-offset-one-third-desktop" = "is-offset-one-third-desktop",
+   "is-offset-one-quarter-desktop" = "is-offset-one-quarter-desktop",
+   "is-1-desktop" = "is-1-desktop",
+   "is-offset-1-desktop" = "is-offset-1-desktop",
+   "is-2-desktop" = "is-2-desktop",
+   "is-offset-2-desktop" = "is-offset-2-desktop",
+   "is-3-desktop" = "is-3-desktop",
+   "is-offset-3-desktop" = "is-offset-3-desktop",
+   "is-4-desktop" = "is-4-desktop",
+   "is-offset-4-desktop" = "is-offset-4-desktop",
+   "is-5-desktop" = "is-5-desktop",
+   "is-offset-5-desktop" = "is-offset-5-desktop",
+   "is-6-desktop" = "is-6-desktop",
+   "is-offset-6-desktop" = "is-offset-6-desktop",
+   "is-7-desktop" = "is-7-desktop",
+   "is-offset-7-desktop" = "is-offset-7-desktop",
+   "is-8-desktop" = "is-8-desktop",
+   "is-offset-8-desktop" = "is-offset-8-desktop",
+   "is-9-desktop" = "is-9-desktop",
+   "is-offset-9-desktop" = "is-offset-9-desktop",
+   "is-10-desktop" = "is-10-desktop",
+   "is-offset-10-desktop" = "is-offset-10-desktop",
+   "is-11-desktop" = "is-11-desktop",
+   "is-offset-11-desktop" = "is-offset-11-desktop",
+   "is-12-desktop" = "is-12-desktop",
+   "is-offset-12-desktop" = "is-offset-12-desktop",
+   "is-narrow-widescreen" = "is-narrow-widescreen",
+   "is-full-widescreen" = "is-full-widescreen",
+   "is-three-quarters-widescreen" = "is-three-quarters-widescreen",
+   "is-two-thirds-widescreen" = "is-two-thirds-widescreen",
+   "is-half-widescreen" = "is-half-widescreen",
+   "is-one-third-widescreen" = "is-one-third-widescreen",
+   "is-one-quarter-widescreen" = "is-one-quarter-widescreen",
+   "is-offset-three-quarters-widescreen" = "is-offset-three-quarters-widescreen",
+   "is-offset-two-thirds-widescreen" = "is-offset-two-thirds-widescreen",
+   "is-offset-half-widescreen" = "is-offset-half-widescreen",
+   "is-offset-one-third-widescreen" = "is-offset-one-third-widescreen",
+   "is-offset-one-quarter-widescreen" = "is-offset-one-quarter-widescreen",
+   "is-1-widescreen" = "is-1-widescreen",
+   "is-offset-1-widescreen" = "is-offset-1-widescreen",
+   "is-2-widescreen" = "is-2-widescreen",
+   "is-offset-2-widescreen" = "is-offset-2-widescreen",
+   "is-3-widescreen" = "is-3-widescreen",
+   "is-offset-3-widescreen" = "is-offset-3-widescreen",
+   "is-4-widescreen" = "is-4-widescreen",
+   "is-offset-4-widescreen" = "is-offset-4-widescreen",
+   "is-5-widescreen" = "is-5-widescreen",
+   "is-offset-5-widescreen" = "is-offset-5-widescreen",
+   "is-6-widescreen" = "is-6-widescreen",
+   "is-offset-6-widescreen" = "is-offset-6-widescreen",
+   "is-7-widescreen" = "is-7-widescreen",
+   "is-offset-7-widescreen" = "is-offset-7-widescreen",
+   "is-8-widescreen" = "is-8-widescreen",
+   "is-offset-8-widescreen" = "is-offset-8-widescreen",
+   "is-9-widescreen" = "is-9-widescreen",
+   "is-offset-9-widescreen" = "is-offset-9-widescreen",
+   "is-10-widescreen" = "is-10-widescreen",
+   "is-offset-10-widescreen" = "is-offset-10-widescreen",
+   "is-11-widescreen" = "is-11-widescreen",
+   "is-offset-11-widescreen" = "is-offset-11-widescreen",
+   "is-12-widescreen" = "is-12-widescreen",
+   "is-offset-12-widescreen" = "is-offset-12-widescreen",
+   "is-narrow-fullhd" = "is-narrow-fullhd",
+   "is-full-fullhd" = "is-full-fullhd",
+   "is-three-quarters-fullhd" = "is-three-quarters-fullhd",
+   "is-two-thirds-fullhd" = "is-two-thirds-fullhd",
+   "is-half-fullhd" = "is-half-fullhd",
+   "is-one-third-fullhd" = "is-one-third-fullhd",
+   "is-one-quarter-fullhd" = "is-one-quarter-fullhd",
+   "is-offset-three-quarters-fullhd" = "is-offset-three-quarters-fullhd",
+   "is-offset-two-thirds-fullhd" = "is-offset-two-thirds-fullhd",
+   "is-offset-half-fullhd" = "is-offset-half-fullhd",
+   "is-offset-one-third-fullhd" = "is-offset-one-third-fullhd",
+   "is-offset-one-quarter-fullhd" = "is-offset-one-quarter-fullhd",
+   "is-1-fullhd" = "is-1-fullhd",
+   "is-offset-1-fullhd" = "is-offset-1-fullhd",
+   "is-2-fullhd" = "is-2-fullhd",
+   "is-offset-2-fullhd" = "is-offset-2-fullhd",
+   "is-3-fullhd" = "is-3-fullhd",
+   "is-offset-3-fullhd" = "is-offset-3-fullhd",
+   "is-4-fullhd" = "is-4-fullhd",
+   "is-offset-4-fullhd" = "is-offset-4-fullhd",
+   "is-5-fullhd" = "is-5-fullhd",
+   "is-offset-5-fullhd" = "is-offset-5-fullhd",
+   "is-6-fullhd" = "is-6-fullhd",
+   "is-offset-6-fullhd" = "is-offset-6-fullhd",
+   "is-7-fullhd" = "is-7-fullhd",
+   "is-offset-7-fullhd" = "is-offset-7-fullhd",
+   "is-8-fullhd" = "is-8-fullhd",
+   "is-offset-8-fullhd" = "is-offset-8-fullhd",
+   "is-9-fullhd" = "is-9-fullhd",
+   "is-offset-9-fullhd" = "is-offset-9-fullhd",
+   "is-10-fullhd" = "is-10-fullhd",
+   "is-offset-10-fullhd" = "is-offset-10-fullhd",
+   "is-11-fullhd" = "is-11-fullhd",
+   "is-offset-11-fullhd" = "is-offset-11-fullhd",
+   "is-12-fullhd" = "is-12-fullhd",
+   "is-offset-12-fullhd" = "is-offset-12-fullhd",
+   "is-gapless" = "is-gapless",
+   "is-grid" = "is-grid",
+   "is-multiline" = "is-multiline",
+   "is-vcentered" = "is-vcentered",
+   "is-desktop" = "is-desktop",
+   "tile" = "tile",
+   "is-ancestor" = "is-ancestor",
+   "is-child" = "is-child",
+   "is-parent" = "is-parent",
+   "is-vertical" = "is-vertical",
+   "hero" = "hero",
+   "is-bold" = "is-bold",
+   "hero-body" = "hero-body",
+   "is-halfheight" = "is-halfheight",
+   "is-fullheight" = "is-fullheight",
+   "hero-video" = "hero-video",
+   "hero-buttons" = "hero-buttons",
+   "hero-head" = "hero-head",
+   "hero-foot" = "hero-foot",
+   "section" = "section",
+   "footer" = "footer",
 }
-export default IStyleSass;
-
+export default StyleSass;

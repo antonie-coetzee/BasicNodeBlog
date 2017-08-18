@@ -14,7 +14,7 @@ import {ISideBarService, ISideBarServiceKey } from "../SideBar/ISideBarService"
 import {IContent, IContentKey} from "../Content/IContent"
 
 import "./Style.sass"
-import * as style from "./Style.sass"
+import style from "./Style.sass"
 
 @withRouter 
 @observer
@@ -41,7 +41,7 @@ export class ClientApplication extends React.Component<any, any> implements ICli
     }
    
     render() {   
-        const styles = "vertical basic " + style.block;  
+        const styles = "vertical basic " + style.delete;  
         this.logger.Info("some info from client logger");  
         return <div>
 
