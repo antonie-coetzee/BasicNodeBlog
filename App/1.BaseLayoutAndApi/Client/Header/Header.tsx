@@ -5,8 +5,6 @@ import {injectable, interfaces} from "inversify";
 import {ISideBarService, ISideBarServiceKey} from "../SideBar/ISideBarService"
 import {IHeader} from "./IHeader"
 
-import {Container, Button, Header as UIHeader} from "semantic-ui-react"
-
 @injectable()
 export class Header extends React.Component<any, any> implements IHeader  {
 
@@ -22,10 +20,6 @@ export class Header extends React.Component<any, any> implements IHeader  {
     }
 
     render() {
-        return <Container>
-                <UIHeader as="h1" textAlign="center">Header container...</UIHeader>  
-                <Link to={`/test`}>{'test'}</Link>
-                <Button onClick={this.toggleVisible} primary>Toggle Visibility</Button>                    
-        </Container>
+        return <div></div>
     }
 }

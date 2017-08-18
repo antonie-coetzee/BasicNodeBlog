@@ -13,8 +13,8 @@ import {ISideBar, ISideBarKey} from "../SideBar/ISideBar"
 import {ISideBarService, ISideBarServiceKey } from "../SideBar/ISideBarService"
 import {IContent, IContentKey} from "../Content/IContent"
 
-import 'semantic-ui-css/semantic.min.css';
-import {Container, Sidebar, Segment, Button, Menu, Image, Icon, Header} from 'semantic-ui-react'
+import "./Style.sass"
+import * as style from "./Style.sass"
 
 @withRouter 
 @observer
@@ -41,20 +41,10 @@ export class ClientApplication extends React.Component<any, any> implements ICli
     }
    
     render() {   
-        const styles = "vertical basic";  
+        const styles = "vertical basic " + style.block;  
         this.logger.Info("some info from client logger");  
         return <div>
-            <Segment vertical={true} attached={true}>
-                <this.Header />
-            </Segment>                  
-            <Sidebar.Pushable as={Segment} className={styles}>
-                <this.SideBar visible={this.sideBarService.visible}/>
-                <Sidebar.Pusher as={Segment} className="vertical basic" dimmed={this.sideBarService.visible}>
-                    <Container textAlign="justified">
-                        <Route path='/test' component={this.Content}/>                             
-                    </Container>                                     
-                </Sidebar.Pusher>
-            </Sidebar.Pushable>  
+
             <DevTools/>  
         </div>    
     }

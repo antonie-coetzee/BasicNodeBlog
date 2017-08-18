@@ -49,18 +49,15 @@ module.exports = {
                     })
         },        
         {
-            test: /\.scss$/,
+            test: /\.sass$/,
             use: ExtractTextPlugin.extract({
                         use: [
                             { 
                                 loader: 'typings-for-css-modules-loader', 
                                     query: {
                                         modules:true, 
-                                        import:true, 
-                                        namedExport:true, 
-                                        camelCase:true, 
                                         url:false, 
-                                        localIdentName: '[name]__[local]__[hash:base64:5]' } 
+                                        localIdentName: '[local]' } 
                             },
                             {
                                 loader: 'sass-loader' 
@@ -77,7 +74,7 @@ module.exports = {
             }),
         new HtmlWebpackPlugin({hash:true, template:'App/Index.ejs'}),
         new webpack.WatchIgnorePlugin([
-                /scss\.d\.ts$/
+                /sass\.d\.ts$/
             ])       
     ]
 };
