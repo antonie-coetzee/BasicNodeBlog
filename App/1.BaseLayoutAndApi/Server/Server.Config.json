@@ -1,3 +1,6 @@
 {
-    "contentUrl":"https://github.com/WireJunky/BlogContent.git"
+    "content": {
+        "repoUrl": "https://github.com/WireJunky/BlogContent.git",
+        "localPath":"./Dist/Content"
+    }
 }

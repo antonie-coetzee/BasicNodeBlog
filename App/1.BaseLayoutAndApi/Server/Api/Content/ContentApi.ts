@@ -16,7 +16,7 @@ export class ContentApi implements IApiModule {
   
     ConfigureRouter(router:Router) : Router{
         router.get('/update',  async (req, res) => {
-            await this.contentRepository.SyncWithRepository("./dist/server/content", this.config.contentUrl);
+            await this.contentRepository.SyncWithRepository(this.config.contentLocalPath, this.config.contentUrl);
             res.send('content updated..')
         })
     

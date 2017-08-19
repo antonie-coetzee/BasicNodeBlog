@@ -2,7 +2,6 @@
 import {injectable} from "inversify"
 import { IContentRepository } from "./IContentRepository"
 import * as Git from "simple-git/promise"
-import * as Gitbase from "simple-git"
 import * as fs from "fs"
 
 @injectable()
