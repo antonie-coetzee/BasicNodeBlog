@@ -1,6 +1,6 @@
 import * as fs from "fs"
 import "reflect-metadata";
-import ContentUpdator from "./ContentUpdator"
+import ContentRepository from "./ContentRepository"
 
 const contentPath:string = __dirname + "/test.repo/";
 
@@ -21,26 +21,26 @@ describe('Pull or if not exists clones git repository', () => {
 
     beforeAll(() => {
         if(!fs.existsSync(contentPath)){
-            fs.mkdirSync(contentPath);
+            fs.mkdirSync(contentPath); // create empty directory before test
         }else{
-            rmDir(contentPath);
+            rmDir(contentPath); //exists from previous test, remove
         }
     });
 
     it('Clone remote repo into local directory', async () => {
-        let updator = new ContentUpdator();
-        await updator.UpdateContent(contentPath, "https://github.com/WireJunky/BlogContent.git");
+        let crep = new ContentRepository();
+        await crep.SyncWithRepository(contentPath, "https://github.com/WireJunky/BlogContent.git");
 
         let readmeExists = fs.existsSync(contentPath + "/README.md");
         expect(readmeExists).toBe(true);
     });
     
     it('Clone remote repo then pull', async () => {
-        let updator = new ContentUpdator();
+        let crep = new ContentRepository();
         // first update should clone the repo
-        await updator.UpdateContent(contentPath, "https://github.com/WireJunky/BlogContent.git");
+        await crep.SyncWithRepository(contentPath, "https://github.com/WireJunky/BlogContent.git");
         // second update should pull
-        await updator.UpdateContent(contentPath, "https://github.com/WireJunky/BlogContent.git");
+        await crep.SyncWithRepository(contentPath, "https://github.com/WireJunky/BlogContent.git");
         let readmeExists = fs.existsSync(contentPath + "/README.md");
         expect(readmeExists).toBe(true);
     });    

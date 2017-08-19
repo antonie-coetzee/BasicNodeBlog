@@ -1,26 +1,29 @@
 
 import {injectable} from "inversify"
-import { IContentUpdator } from "./IContentUpdator"
+import { IContentRepository } from "./IContentRepository"
 import * as Git from "simple-git/promise"
+import * as Gitbase from "simple-git"
 import * as fs from "fs"
 
 @injectable()
-export default class ContentUpdator implements IContentUpdator {
+export default class ContentRepository implements IContentRepository{
 
-    async UpdateContent(repoPath: string, repoUrl: string): Promise<boolean> {        
-        if (repoPath == null) {
-            throw new TypeError("repoPath");
+    async SyncWithRepository(localPath: string, repoUrl: string, branch:string = "master"): Promise<boolean> {        
+        if (localPath == null) {
+            throw new TypeError("localPath");
         }
         if (repoUrl == null) {
             throw new TypeError("repoUrl");
         }
 
-        var exists = await this.filePathExists(repoPath);
+        var exists = await this.filePathExists(localPath);
         if (exists) {
-            await Git().pull(repoPath);
+            await Git().pull(localPath)
+            Git(localPath).checkout(branch);
             return true;
         } else {          
-            await Git().clone(repoUrl, repoPath);
+            await Git().clone(repoUrl, localPath);
+            Git(localPath).checkout(branch);
             return false;
         }
     }

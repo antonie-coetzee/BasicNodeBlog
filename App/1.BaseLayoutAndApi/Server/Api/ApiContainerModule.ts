@@ -2,12 +2,12 @@
 import {injectable, ContainerModule, interfaces, multiInject} from "inversify"
 import {IApiModule, IApiModuleKey} from "./IApiModule"
 
-import {IContentUpdator, IContentUpdatorKey} from "./Content/IContentUpdator"
-import ContentUpdator from "./Content/ContentUpdator"
+import {IContentRepository, IContentRepositoryKey} from "../Lib/Content/Repository/IContentRepository"
+import ContentRepository from "../Lib/Content/Repository/ContentRepository"
 import {ContentApi} from "./Content/ContentApi"
 
 export let apiContainerModule = new ContainerModule(
     (bind: interfaces.Bind)=>{       
-        bind<IContentUpdator>(IContentUpdatorKey).to(ContentUpdator);
+        bind<IContentRepository>(IContentRepositoryKey).to(ContentRepository);
         bind<IApiModule>(IApiModuleKey).to(ContentApi);
     });
