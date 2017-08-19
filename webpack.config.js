@@ -74,7 +74,7 @@ module.exports = {
             }),
         new HtmlWebpackPlugin({hash:true, template:'App/Index.ejs'}),
         new webpack.WatchIgnorePlugin([
-                /sass\.d\.ts$/
+                /sass\.ts$/
             ])       
     ]
 };

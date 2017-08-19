@@ -1,4 +1,4 @@
-declare enum StyleSass {
+const enum StyleSass {
    "is-clearfix" = "is-clearfix",
    "is-pulled-left" = "is-pulled-left",
    "is-pulled-right" = "is-pulled-right",

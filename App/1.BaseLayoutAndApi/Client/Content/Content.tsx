@@ -8,7 +8,6 @@ export class Content extends React.Component<any, any> implements IContent  {
     constructor() {
         super();
     }
-
     render() {
         //return <img className="ui image" src="https://react.semantic-ui.com/assets/images/wireframe/paragraph.png"/>  
         return <p>
