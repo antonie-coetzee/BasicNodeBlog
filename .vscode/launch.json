@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Debug Server",
             "program": "${workspaceRoot}/App/Server.ts",
             "cwd": "${workspaceRoot}",
             "outFiles": ["${workspaceRoot}/Dist/**"],

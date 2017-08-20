@@ -1,14 +1,11 @@
+import "reflect-metadata";
+
 import {IServerApplication, IServerApplicationKey} from "../../../0.Bootstrap/Common/Application/IServerApplication"
 import {IExpressApplication, IExpressApplicationKey} from "./IExpressApplication"
-
-import { injectable, inject, Container, interfaces,multiInject } from "inversify";
-import "reflect-metadata";
+import {injectable, inject, Container, interfaces,multiInject} from "inversify";
 import {ILogger, ILoggerKey} from "../../Common/Services/Logging/ILogger"
 
-import * as bodyParser from "body-parser";
-import * as cookieParser from "cookie-parser";
 import * as express from "express";
-import * as path from "path";
 
 import {IMiddleware, IMiddlewareKey} from "./../Middleware/IMiddleware"
 import {IApiModule, IApiModuleKey} from "./../api/Rest/IApimodule"
@@ -22,17 +19,12 @@ export class ServerApplication implements IServerApplication {
                 @inject(ILoggerKey) private logger:ILogger) {}
     
     Bootstrap(){
-        // 
-        let dir = path.resolve(__dirname + '/../../../public');
-        this.logger.Debug("serving static files from: %s", dir);
-        this.app.instance.use('/', express.static(dir));
-
         // add middleware
         this.logger.Debug("loading middleware, from high to low priority");
         if(this.middleware != null){
             this.middleware.sort((a,b)=>a.priority - b.priority);
             this.middleware.forEach(element => {
-                this.logger.Debug(`adding middleware with name: "${element.name}" and priority: ${element.priority} at: ${element.path}`);
+                this.logger.Debug(`adding middleware: "${element.name}", priority: ${element.priority}, at: ${element.path}`);
                 this.app.instance.use(element.path, element.handlers);
             });
         }
@@ -48,11 +40,6 @@ export class ServerApplication implements IServerApplication {
                 this.app.instance.use(apiPath, element.ConfigureRouter(router));
             });
         }
-
-        // client side routing, server to return index
-        this.app.instance.get('/*', function(req, res){
-            res.sendFile(dir + '/index.html');
-        });
         
         // TODO: sort out with config
         this.app.instance.listen(8080, ()=> {
