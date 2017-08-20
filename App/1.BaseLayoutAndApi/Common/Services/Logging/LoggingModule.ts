@@ -8,7 +8,7 @@ export const loggingModule = new ContainerModule(
         bind<ILogger>(ILoggerKey).toDynamicValue(
             (context)=>{
                 let factory = context.container.get<ILoggerFactory>(ILoggerFactoryKey);
-                let binding = context.plan.rootRequest.serviceIdentifier; //take first binding
+                let binding = context.plan.rootRequest.serviceIdentifier;
                 return factory.Create(binding.toString());
             }).inSingletonScope();
     });
