@@ -4,13 +4,13 @@
   "description": "Basic blog engine serving static content",
   "main": "index.js",
   "scripts": {
-    "buildprod": "./node_modules/.bin/webpack --config ./webpack.config.js --optimize-minimize --define process.env.NODE_ENV='production' --progress",
-    "builddev": "./node_modules/.bin/webpack --config ./webpack.config.js --progress",
-    "buildserver": "node ./copy.config.js && tsc",
+    "build-prod": "./node_modules/.bin/webpack --config ./webpack.client.config.prod.js --progress",
+    "build-dev": "./node_modules/.bin/webpack --config ./webpack.client.config.js --progress",
+    "build-server": "node ./copy.config.js && tsc",
     "start": "./node_modules/.bin/webpack-dev-server -d --content-base dist/public --progress --inline",
-    "test": "node ./copy.config.js && tsc && jest",
-    "updatesnapshot": "jest --updateSnapshot",
-    "debug": "node --debug-brk --inspect ./node_modules/jest/bin/jest -i"
+    "pretest": "npm run build-server",
+    "test": "jest",
+    "update-snapshots": "jest --updateSnapshot"
   },
   "repository": {
     "type": "git",
@@ -85,6 +85,7 @@
     "typings-for-css-modules-loader": "https://github.com/WireJunky/typings-for-css-modules-loader/tarball/master",
     "webpack": "^2.7.0",
     "webpack-dev-server": "^2.6.1",
+    "webpack-merge": "^4.1.0",
     "webpack-visualizer-plugin": "^0.1.11"
   }
 }
