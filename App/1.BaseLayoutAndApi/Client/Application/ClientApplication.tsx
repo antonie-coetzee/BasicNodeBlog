@@ -41,7 +41,7 @@ export class ClientApplication extends React.Component<any, any> implements ICli
     }
    
     render() {   
-        const styles = "vertical basic " + style.delete;  
+        const styles = "vertical basic " + style.is11Desktop;
         this.logger.Info("some info from client logger");  
         return <div>
 

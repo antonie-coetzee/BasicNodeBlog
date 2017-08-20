@@ -7996,7 +7996,7 @@
     },
     "typings-for-css-modules-loader": {
       "version": "https://github.com/WireJunky/typings-for-css-modules-loader/tarball/master",
-      "integrity": "sha1-d1BdHAIbwPVBUGaUBdcBX4wSHJM=",
+      "integrity": "sha1-oStdTd/uz7URSQ/Gwryxe1jBU3M=",
       "dev": true,
       "requires": {
         "colour": "0.7.1",
