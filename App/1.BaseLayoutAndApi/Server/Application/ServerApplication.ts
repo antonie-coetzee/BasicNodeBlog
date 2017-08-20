@@ -20,7 +20,7 @@ export class ServerApplication implements IServerApplication {
     
     Bootstrap(){
         // add middleware
-        this.logger.Debug("loading middleware, from high to low priority");
+        this.logger.Debug("loading middleware");
         if(this.middleware != null){
             this.middleware.sort((a,b)=>a.priority - b.priority);
             this.middleware.forEach(element => {
