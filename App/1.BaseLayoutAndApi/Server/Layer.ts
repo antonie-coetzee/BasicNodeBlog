@@ -18,7 +18,8 @@ import {ExpressApplication} from "./Application/ExpressApplication"
 import  {IServerApplication,IServerApplicationKey} from "../../0.Bootstrap/Common/Application/IServerApplication"
 import  {ServerApplication} from "./Application/ServerApplication"
 
-import {apiContainerModule} from "./api/ApiContainerModule"
+import {middlewareContainerModule} from "./Middleware/MiddlewareContainerModule"
+import {apiContainerModule} from "./api/Rest/ApiContainerModule"
 
 layer.AddLayer((container)=>{
     container.bind<IConfig>(IConfigKey).to(Config).inSingletonScope();
@@ -29,6 +30,7 @@ layer.AddLayer((container)=>{
 
     container.bind<IExpressApplication>(IExpressApplicationKey).to(ExpressApplication).inSingletonScope();
     container.bind<IServerApplication>(IServerApplicationKey).to(ServerApplication);
+    container.load(middlewareContainerModule); 
     container.load(apiContainerModule);    
 })
 

@@ -1,9 +1,8 @@
-
 import {injectable, ContainerModule, interfaces, multiInject} from "inversify"
 import {IApiModule, IApiModuleKey} from "./IApiModule"
 
-import {IContentRepository, IContentRepositoryKey} from "../Lib/Content/Repository/IContentRepository"
-import ContentRepository from "../Lib/Content/Repository/ContentRepository"
+import {IContentRepository, IContentRepositoryKey} from "../../Lib/Content/Repository/IContentRepository"
+import ContentRepository from "../../Lib/Content/Repository/ContentRepository"
 import {ContentApi} from "./Content/ContentApi"
 
 export let apiContainerModule = new ContainerModule(
