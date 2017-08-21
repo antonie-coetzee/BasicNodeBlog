@@ -1,0 +1,12 @@
+import layer from '../../1.Framework/Server/Layer'
+import {Container, interfaces} from "inversify"
+
+import {middlewareContainerModule} from "./Middleware/MiddlewareContainerModule"
+import {apiContainerModule} from "./api/ApiContainerModule"
+
+layer.AddLayer((container)=>{
+    container.load(middlewareContainerModule); 
+    container.load(apiContainerModule);    
+})
+
+export default layer;

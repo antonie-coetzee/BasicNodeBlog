@@ -1,4 +1,4 @@
-import layer from "./1.BaseLayoutAndApi/Server/Layer"
+import layer from "./2.Application/Server/Layer"
 
 import {interfaces} from "inversify"
 import {IServerApplication, IServerApplicationKey} from "./0.Bootstrap/Common/Application/IServerApplication"

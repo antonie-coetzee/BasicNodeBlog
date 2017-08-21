@@ -3,7 +3,7 @@ let path = require('path')
 let mkdirp = require('mkdirp');
 
 let destDir = './Dist';
-let srcConfigFile = './App/1.BaseLayoutAndApi/Server/Server.Config.json';
+let srcConfigFile = './App/1.Framework/Server/Server.Config.json';
 
 console.log('copying Config.json... cwd: ' + __dirname);
 console.log(`creating ${destDir} directory`);
