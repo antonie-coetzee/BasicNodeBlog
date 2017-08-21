@@ -1,6 +1,7 @@
 import "0.Bootstrap/Common/AppContainer/LazyInject"
 
 import * as React from "react";
+import {BrowserRouter} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 import {observer} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
@@ -31,13 +32,20 @@ export class ClientApplication extends React.Component<any, any> implements ICli
     constructor() {
         super();
     }
+
+    DevTools(){
+        if(process.env.NODE_ENV == 'production'){
+            return (null);
+        }
+        return <DevTools/>       
+    }
    
     render() {   
         return <div>
-            <this.Header/>
-            <this.SideBar/>
-            <this.Content/>
-            <DevTools/>  
-        </div>    
+                    <this.Header/>
+                    <this.SideBar/>
+                    <this.Content/>
+                    <this.DevTools/>  
+                </div>         
     }
 }
