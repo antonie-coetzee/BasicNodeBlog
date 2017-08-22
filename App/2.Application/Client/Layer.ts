@@ -3,14 +3,14 @@ import layer from '../../1.Framework/Client/Layer'
 import {IHeader, IHeaderKey} from "../../1.Framework/Client/Header/IHeader"
 import {Header} from "./Header/Header"
 
-import {ISideBar, ISideBarKey} from "../../1.Framework/Client/SideBar/ISideBar"
-import {SideBar} from "./SideBar/SideBar"
+import {ISideBar, ISideBarKey} from "../../1.Framework/Client/Container/SideBar/ISideBar"
+import {SideBar} from "./Container/SideBar/SideBar"
 
-import {ISideBarService, ISideBarServiceKey} from "./SideBar/ISideBarService"
-import {SideBarService} from "./SideBar/SideBarService"
+import {ISideBarService, ISideBarServiceKey} from "./Container/SideBar/ISideBarService"
+import {SideBarService} from "./Container/SideBar/SideBarService"
 
-import {IContent, IContentKey} from "../../1.Framework/Client/Content/IContent"
-import {Content} from "./Content/Content"
+import {IContent, IContentKey} from "../../1.Framework/Client/Container/Content/IContent"
+import {Content} from "./Container/Content/Content"
 
 layer.AddLayer((container)=>{
     container.bind<IHeader>(IHeaderKey).toConstructor(Header);

@@ -1,4 +1,4 @@
-interface IStyleSass {
+export interface IStyleSass {
   'is-clearfix': string;
   'is-pulled-left': string;
   'is-pulled-right': string;
@@ -632,5 +632,5 @@ interface IStyleSass {
   'section': string;
   'footer': string;
 }
-declare const style: IStyleSass;
-export default style;
+const locals: IStyleSass;
+export default locals;
