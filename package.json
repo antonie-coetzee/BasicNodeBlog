@@ -36,6 +36,7 @@
     "autoprefixer": "^7.1.2",
     "body-parser": "^1.17.0",
     "bulma": "^0.5.1",
+    "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
     "inversify": "^3.0.0",
     "loglevel": "^1.4.1",

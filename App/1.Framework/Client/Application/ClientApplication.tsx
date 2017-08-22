@@ -12,8 +12,8 @@ import {IHeader, IHeaderKey} from "../Header/IHeader"
 import {ISideBar, ISideBarKey} from "../SideBar/ISideBar"
 import {IContent, IContentKey} from "../Content/IContent"
 
-import "./Style.sass"
-import style from "./Style.sass"
+import "../Style/Style.sass"
+import style from "../Style/Style.sass"
 
 @withRouter 
 @observer
