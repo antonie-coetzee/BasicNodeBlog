@@ -6,7 +6,7 @@ import * as classNames from "classnames"
 import {ISideBarService, ISideBarServiceKey} from "../Container/SideBar/ISideBarService"
 import {IHeader} from "../../../1.Framework/Client/Header/IHeader"
 
-import style from "../../../1.Framework/Client/Style/Style.sass"
+import style from "Style.sass"
 
 @injectable()
 export class Header extends React.Component<any, any> implements IHeader  {
@@ -19,7 +19,7 @@ export class Header extends React.Component<any, any> implements IHeader  {
     }
 
     render() {
-        return<section className="hero">        
+        return<section className={style.hero}>        
             <div className="hero-body">
               <div className="container">
                 <h1 className="title">

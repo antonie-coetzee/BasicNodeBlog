@@ -4,7 +4,9 @@ import {IContainer} from "./IContainer"
 import {ISideBar, ISideBarKey} from "../Container/SideBar/ISideBar"
 import {IContent, IContentKey} from "../Container/Content/IContent"
 
-import style from "../Style/Style.sass"
+import {ILoggerKey, ILogger} from "../../../1.Framework/Common/Services/Logging/ILogger"
+
+import style from "Style.sass"
 
 @injectable()
 export class Container extends React.PureComponent<any, any> implements IContainer  {
@@ -15,8 +17,12 @@ export class Container extends React.PureComponent<any, any> implements IContain
     @lazyInject(IContentKey)
     public Content : interfaces.Newable<IContent>;
 
+    @lazyInject(ILoggerKey)
+    public logger:ILogger
+
     constructor() {
         super();
+        this.logger.Info("some info from the container component")
     }
 
     render() {

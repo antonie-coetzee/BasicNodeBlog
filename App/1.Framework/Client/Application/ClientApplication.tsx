@@ -12,10 +12,6 @@ import {IClientApplication} from "0.Bootstrap/Common/Application/IClientApplicat
 import {IHeader, IHeaderKey} from "../Header/IHeader"
 import {IContainer, IContainerKey} from "../Container/IContainer"
 
-
-import "../Style/Style.sass"
-import style from "../Style/Style.sass"
-
 @withRouter 
 @observer
 @injectable()
