@@ -36,15 +36,16 @@ export class Header extends React.Component<any, any> implements IHeader  {
                                 <this.MenuBar></this.MenuBar>
                             </div>
                         }
+                        {(this.ResponsiveService.IsMobile || this.ResponsiveService.IsTablet) &&
+                                    <this.SideBarControl></this.SideBarControl>
+                        }  
                         <div className={classNames(style.heroBody, {[style.removeTopPadding]:this.ResponsiveService.IsDesktop})}>
                             <div className={classNames(style.container, style.hasTextCentered, style.isSize4Touch)}>   
-                                {(this.ResponsiveService.IsMobile || this.ResponsiveService.IsTablet) &&
-                                    <this.SideBarControl></this.SideBarControl>
-                                }                                
-                                <h1 className={classNames(style.title, style.isSize1Touch)}>
+                              
+                                <h1 className={classNames(style.title, style.isSize2Touch)}>
                                     Technically A Blog
                                 </h1>
-                                <h2 className={classNames(style.subtitle, style.isSize2Touch)}>
+                                <h2 className={classNames(style.subtitle, style.isSize3Touch)}>
                                     or so I think...
                                 </h2>
                             </div>

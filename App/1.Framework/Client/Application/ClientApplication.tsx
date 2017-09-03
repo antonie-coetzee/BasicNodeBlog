@@ -34,7 +34,7 @@ export class ClientApplication extends React.Component<any, any> implements ICli
     render() {   
         return <div>              
                     <this.Container/>
-                    <this.DevTools/>  
+                    {/* <this.DevTools/>   */}
                 </div>         
     }
 }
