@@ -15,6 +15,9 @@ import {SideBar} from "./Container/SideBar/SideBar"
 import {ISideBarService, ISideBarServiceKey} from "./Container/SideBar/ISideBarService"
 import {SideBarService} from "./Container/SideBar/SideBarService"
 
+import {ISideBarControl, ISideBarControlKey} from "./Container/Header/SideBarControl/ISideBarControl"
+import {SideBarControl} from "./Container/Header/SideBarControl/SideBarControl"
+
 import {IContent, IContentKey} from "../../1.Framework/Client/Container/Content/IContent"
 import {Content} from "./Container/Content/Content"
 
@@ -25,6 +28,7 @@ layer.AddLayer((container)=>{
     container.bind<IContent>(IContentKey).toConstructor(Content);
     container.bind<IContainer>(IContainerKey).toConstructor(Container);
     container.bind<IMenuBar>(IMenuBarKey).toConstructor(MenuBar);
+    container.bind<ISideBarControl>(ISideBarControlKey).toConstructor(SideBarControl);
 })
 
 export default layer;

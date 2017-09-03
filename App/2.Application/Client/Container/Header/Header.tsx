@@ -4,9 +4,9 @@ import {injectable, interfaces} from "inversify";
 import * as classNames from "classnames"
 
 import {IResponsiveService, IResponsiveServiceKey} from "../../../../1.Framework/Client/Lib/Responsive/IResponsiveService"
-import {ISideBarService, ISideBarServiceKey} from "../../Container/SideBar/ISideBarService"
 import {IHeader} from "../../../../1.Framework/Client/Container/Header/IHeader"
 import {IMenuBar,IMenuBarKey} from "./MenuBar/IMenuBar" 
+import {ISideBarControl, ISideBarControlKey} from "./SideBarControl/ISideBarControl"
 
 import style from "Style.sass"
 
@@ -21,8 +21,8 @@ export class Header extends React.Component<any, any> implements IHeader  {
     @lazyInject(IMenuBarKey)
     public MenuBar : interfaces.Newable<IMenuBar>;
 
-    @lazyInject(ISideBarServiceKey)
-    private sideBarService : ISideBarService;
+    @lazyInject(ISideBarControlKey)
+    public SideBarControl : interfaces.Newable<ISideBarControl>;
 
     constructor() {
         super();
@@ -38,10 +38,13 @@ export class Header extends React.Component<any, any> implements IHeader  {
                         }
                         <div className={classNames(style.heroBody, {[style.removeTopPadding]:this.ResponsiveService.IsDesktop})}>
                             <div className={classNames(style.container, style.hasTextCentered, style.isSize4Touch)}>   
-                                <h1 className={classNames(style.title, style.isSize2Touch)}>
+                                {(this.ResponsiveService.IsMobile || this.ResponsiveService.IsTablet) &&
+                                    <this.SideBarControl></this.SideBarControl>
+                                }                                
+                                <h1 className={classNames(style.title, style.isSize1Touch)}>
                                     Technically A Blog
                                 </h1>
-                                <h2 className={classNames(style.subtitle, style.isSize3Touch)}>
+                                <h2 className={classNames(style.subtitle, style.isSize2Touch)}>
                                     or so I think...
                                 </h2>
                             </div>

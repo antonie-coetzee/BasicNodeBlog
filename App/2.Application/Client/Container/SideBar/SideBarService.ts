@@ -1,5 +1,5 @@
 import {injectable} from "inversify";
-import {observable} from "mobx";
+import {observable, action} from "mobx";
 
 import {ISideBarService} from "./ISideBarService"
 
@@ -8,7 +8,7 @@ export class SideBarService implements ISideBarService  {
     @observable
     public visible:boolean = false;
 
-    public toggleVisible():void{
+    @action public ToggleVisible():void{
         this.visible = !this.visible;
     }
 }
