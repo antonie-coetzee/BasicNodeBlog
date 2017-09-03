@@ -1,7 +1,13 @@
 import layer from '../../1.Framework/Client/Layer'
 
-import {IHeader, IHeaderKey} from "../../1.Framework/Client/Header/IHeader"
-import {Header} from "./Header/Header"
+import {IContainer, IContainerKey} from "../../1.Framework/Client/Container/IContainer"
+import {Container} from "./Container/Container"
+
+import {IHeader, IHeaderKey} from "../../1.Framework/Client/Container/Header/IHeader"
+import {Header} from "./Container/Header/Header"
+
+import {IMenuBar,IMenuBarKey} from "./Container/Header/MenuBar/IMenuBar"
+import {MenuBar} from "./Container/Header/MenuBar/MenuBar"
 
 import {ISideBar, ISideBarKey} from "../../1.Framework/Client/Container/SideBar/ISideBar"
 import {SideBar} from "./Container/SideBar/SideBar"
@@ -17,6 +23,8 @@ layer.AddLayer((container)=>{
     container.bind<ISideBar>(ISideBarKey).toConstructor(SideBar);
     container.bind<ISideBarService>(ISideBarServiceKey).to(SideBarService).inSingletonScope();
     container.bind<IContent>(IContentKey).toConstructor(Content);
+    container.bind<IContainer>(IContainerKey).toConstructor(Container);
+    container.bind<IMenuBar>(IMenuBarKey).toConstructor(MenuBar);
 })
 
 export default layer;

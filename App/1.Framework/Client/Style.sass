@@ -1,0 +1,22 @@
+.image
+    image-rendering: -webkit-optimize-contrast
+
+$loader-size: 6em
+.app-loader
+    &:empty
+        -webkit-animation: spinAround 500ms infinite linear
+        animation: spinAround 500ms infinite linear
+        border: 6px solid #dbdbdb
+        border-radius: 290486px
+        border-right-color: transparent
+        border-top-color: transparent
+        content: ""
+        display: block
+        height: $loader-size
+        max-width: 100%
+        max-height: 100%
+        left: calc(50% - #{$loader-size / 2})
+        top: calc(50% - #{$loader-size / 2})
+        width: $loader-size
+        position: absolute
+        margin:auto        

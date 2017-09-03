@@ -26,9 +26,24 @@ module.exports = {
     module: {
       rules: [
         {
-            test: /\.(png|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-            loader : 'file-loader'
+            test: /\.(png|jpe?g|gif|ico|svg)$/,
+            loader : 'file-loader',
+            options: {
+                name: 'assets/[name].[ext]',
+            }
         },
+        { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+            loader: "url-loader?limit=10000&mimetype=application/font-woff" ,
+            options: {
+                name: 'font/[name].[ext]',
+            }
+        },
+        { test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+            loader: "file-loader",
+            options: {
+                name: 'font/[name].[ext]',
+            }
+        },    
         { 
             test: /\.tsx?$/, 
             loader: 'ts-loader', 
@@ -49,14 +64,14 @@ module.exports = {
                     })
         },        
         {
-            test: /\.sass$/,
+            test: /\.(sass|scss)$/,
             use: ExtractTextPlugin.extract({
                         use: [
                             { 
                                 loader: 'typings-for-css-modules-loader', 
                                     query: {
                                         modules:true, 
-                                        url:false, 
+                                        url:true, 
                                         localIdentName: '[local]' } 
                             },
                             {
@@ -64,7 +79,7 @@ module.exports = {
                             }
                         ]
                     })
-        }
+        }       
       ]
     },
     plugins: [

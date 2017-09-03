@@ -1,7 +1,12 @@
 import * as React from "react";
 import {injectable} from "inversify";
+import * as classNames from "classnames";
 
 import {ISideBar} from "../../../../1.Framework/Client/Container/SideBar/ISideBar"
+
+import style from "Style.sass"
+
+const profile = require('./profile.jpg')
 
 @injectable()
 export class SideBar extends React.PureComponent<any, any> implements ISideBar  {
@@ -10,14 +15,17 @@ export class SideBar extends React.PureComponent<any, any> implements ISideBar  
     }
 
     render() {
-        return <aside className="menu">
-        <p className="menu-label">
-          General
-        </p>
-        <ul className="menu-list">
-          <li><a>Dashboard</a></li>
-          <li><a>Customers</a></li>
-        </ul>
+        return <aside className={style.menu}>
+          <div className={classNames(style.card, style.profileCard)}>
+            <div className={style.cardImage}>
+              <figure className={classNames(style.image, style.is1by1)}>
+                <img src={profile} alt="Image"></img>
+              </figure>
+            </div>
+            <div className={style.cardContent}>
+                <p className={classNames(style.title, style.is6, style.hasTextCentered)}>Antonie Coetzee</p>             
+            </div>
+          </div>          
         <p className="menu-label">
           Administration
         </p>
@@ -34,14 +42,6 @@ export class SideBar extends React.PureComponent<any, any> implements ISideBar  
           <li><a>Invitations</a></li>
           <li><a>Cloud Storage Environment Settings</a></li>
           <li><a>Authentication</a></li>
-        </ul>
-        <p className="menu-label">
-          Transactions
-        </p>
-        <ul className="menu-list">
-          <li><a>Payments</a></li>
-          <li><a>Transfers</a></li>
-          <li><a>Balance</a></li>
         </ul>
       </aside>
     }

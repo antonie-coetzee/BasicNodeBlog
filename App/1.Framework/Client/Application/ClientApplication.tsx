@@ -9,16 +9,13 @@ import DevTools from 'mobx-react-devtools';
 import {injectable, interfaces} from "inversify";
 import {IClientApplication} from "0.Bootstrap/Common/Application/IClientApplication"
 
-import {IHeader, IHeaderKey} from "../Header/IHeader"
+
 import {IContainer, IContainerKey} from "../Container/IContainer"
 
 @withRouter 
 @observer
 @injectable()
 export class ClientApplication extends React.Component<any, any> implements IClientApplication  {
-
-    @lazyInject(IHeaderKey)
-    public Header : interfaces.Newable<IHeader>;
 
     @lazyInject(IContainerKey)
     public Container : interfaces.Newable<IContainer>;
@@ -35,8 +32,7 @@ export class ClientApplication extends React.Component<any, any> implements ICli
     }
    
     render() {   
-        return <div>
-                    <this.Header/>
+        return <div>              
                     <this.Container/>
                     <this.DevTools/>  
                 </div>         
