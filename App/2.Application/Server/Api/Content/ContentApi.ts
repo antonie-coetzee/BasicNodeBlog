@@ -12,7 +12,7 @@ export class ContentApi implements IApiModule {
     constructor(
         @inject(IContentRepositoryKey) private contentRepository: IContentRepository,
         @inject(IConfigKey) private config: IConfig
-        ) {}
+    ) {}
   
     ConfigureRouter(router:Router) : Router{
         router.get('/update',  async (req, res) => {

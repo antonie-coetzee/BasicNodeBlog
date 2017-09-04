@@ -25,7 +25,7 @@ export class SideBarControl extends React.Component<any, any> implements ISideBa
                                 {[style.fadeRight]:!this.SideBarService.visible},
                                 {[style.fadeLeft]:this.SideBarService.visible})}> 
                     <a className={classNames(style.isPrimary, style.isPaddingless)}
-                        onClick={()=>{this.SideBarService.ToggleVisible()}}>
+                                onClick={()=>{this.SideBarService.ToggleVisible()}}>
                         <span className={classNames(style.icon)}>
                             <i className={classNames(
                                 style.fa, 

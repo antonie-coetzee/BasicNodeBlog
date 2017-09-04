@@ -9,7 +9,6 @@ import DevTools from 'mobx-react-devtools';
 import {injectable, interfaces} from "inversify";
 import {IClientApplication} from "0.Bootstrap/Common/Application/IClientApplication"
 
-
 import {IContainer, IContainerKey} from "../Container/IContainer"
 
 @withRouter 
@@ -34,7 +33,7 @@ export class ClientApplication extends React.Component<any, any> implements ICli
     render() {   
         return <div>              
                     <this.Container/>
-                    {/* <this.DevTools/>   */}
+                    <this.DevTools/>
                 </div>         
     }
 }

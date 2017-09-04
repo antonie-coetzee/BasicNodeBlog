@@ -5,10 +5,12 @@ import {ISideBarService} from "./ISideBarService"
 
 @injectable()
 export class SideBarService implements ISideBarService  {
+    
     @observable
     public visible:boolean = false;
 
-    @action public ToggleVisible():void{
+    @action 
+    public ToggleVisible():void{
         this.visible = !this.visible;
     }
 }

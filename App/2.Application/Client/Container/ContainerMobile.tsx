@@ -44,7 +44,6 @@ export class ContainerMobile extends React.PureComponent<IContainerProps, any> {
                 panel:this.panelRef, 
                 menu: this.menuRef, 
                 padding: 256,
-
             });
         // publish open/close events
         this.slideOut.on("open", ()=>{this.SideBarService.visible = true;})
