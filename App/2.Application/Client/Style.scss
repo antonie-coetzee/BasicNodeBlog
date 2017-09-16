@@ -1,4 +1,4 @@
-@import "../../1.Framework/client/Style";
+@import "../../1.Framework/Client/Style";
 
 $fa-font-path: "font-awesome/fonts";
 @import "../../../node_modules/font-awesome/scss/font-awesome";
@@ -37,6 +37,6 @@ $fa-font-path: "font-awesome/fonts";
             animation-direction: $direction;
 }
 
-@import "./container/Header/Header";
-@import "./container/SideBar/Sidebar";
-@import "./container/Container";
+@import "./Container/Header/Header";
+@import "./Container/SideBar/SideBar";
+@import "./Container/Container";

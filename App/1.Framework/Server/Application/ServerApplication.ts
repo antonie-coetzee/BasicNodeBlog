@@ -8,7 +8,7 @@ import {ILogger, ILoggerKey} from "../../Common/Services/Logging/ILogger"
 import * as express from "express";
 
 import {IMiddleware, IMiddlewareKey} from "./../Middleware/IMiddleware"
-import {IApiModule, IApiModuleKey} from "./../api/IApimodule"
+import {IApiModule, IApiModuleKey} from "./../Api/IApiModule"
 
 @injectable()
 export class ServerApplication implements IServerApplication {

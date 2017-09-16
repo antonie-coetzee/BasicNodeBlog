@@ -2,8 +2,8 @@ import layer from '../../0.Bootstrap/Server/Layer'
 import {Container, interfaces} from "inversify"
 import * as express from "express";
 
-import {IConfig, IConfigKey} from "./config/IConfig"
-import Config from "./config/Config"
+import {IConfig, IConfigKey} from "./Config/IConfig"
+import Config from "./Config/Config"
 
 import {loggingModule} from "../Common/Services/Logging/LoggingModule"
 
