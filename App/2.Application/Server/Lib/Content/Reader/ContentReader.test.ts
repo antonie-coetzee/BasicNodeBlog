@@ -1,5 +1,6 @@
 import * as fs from "fs"
 import {ContentReader} from "./ContentReader"
+import * as dirtree from "directory-tree"
 
 const contentPath:string = __dirname + "/test.files/";
 
@@ -12,10 +13,13 @@ describe('reading content from nested directories', () => {
   });
 
   it('trial', async () => {
-    let reader = new ContentReader();
-    for await (let res of reader.read(contentPath)){
-      console.log(res);
-    }
+
+    //console.log(dirtree("C:/Dev/dirtreetest"))
+
+    // let reader = new ContentReader();
+    // for await (let res of reader.read(contentPath)){
+    //   console.log(res);
+    // }
     expect(true).toBe(true)
   });     
 });
