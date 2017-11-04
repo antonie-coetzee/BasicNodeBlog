@@ -20,7 +20,7 @@ import style from "Style.sass"
 
 @observer
 @injectable()
-export class Container extends React.PureComponent<any, any> implements IContainer  {
+export class Container extends React.Component<any, any> implements IContainer  {
 
     @lazyInject(IResponsiveServiceKey)
     public ResponsiveService : IResponsiveService;

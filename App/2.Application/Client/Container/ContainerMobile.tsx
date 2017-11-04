@@ -9,12 +9,13 @@ import {IContainerProps} from "./ContainerProps"
 import {IHeader, IHeaderKey} from "../../../1.Framework/Client/Container/Header/IHeader"
 import {ISideBar, ISideBarKey} from "../../../1.Framework/Client/Container/SideBar/ISideBar"
 import {ISideBarService, ISideBarServiceKey} from "./SideBar/ISideBarService"
+import {IResponsiveService, IResponsiveServiceKey} from "../../../1.Framework/Client/Lib/Responsive/IResponsiveService"
 import {IContent, IContentKey} from "../../../1.Framework/Client/Container/Content/IContent"
 import {ILoggerKey, ILogger} from "../../../1.Framework/Common/Services/Logging/ILogger"
 
 import style from "Style.sass"
 
-export class ContainerMobile extends React.PureComponent<IContainerProps, any> {
+export class ContainerMobile extends React.Component<IContainerProps, any> {
 
     private menuRef : HTMLDivElement;
     private panelRef : HTMLDivElement;
@@ -29,6 +30,9 @@ export class ContainerMobile extends React.PureComponent<IContainerProps, any> {
     @lazyInject(ISideBarServiceKey)
     public SideBarService : ISideBarService;
 
+    @lazyInject(IResponsiveServiceKey)
+    public ResponsiveService : IResponsiveService;
+
     constructor(props:IContainerProps) {
         super(props);
         this.Header = props.Header;
@@ -38,16 +42,25 @@ export class ContainerMobile extends React.PureComponent<IContainerProps, any> {
     }
 
     public componentDidMount(){
-        // create and attach slideoutjs
-        this.slideOut = new slideOut(
-            {
-                panel:this.panelRef, 
-                menu: this.menuRef, 
-                padding: 256,
-            });
+        if(this.ResponsiveService.IsMobile){
+            this.slideOut = new slideOut(
+                {
+                    panel:this.panelRef, 
+                    menu: this.menuRef,
+                    padding: 256                       
+                });
+        }
+        if(this.ResponsiveService.IsTablet){
+            this.slideOut = new slideOut(
+                {
+                    panel:this.panelRef, 
+                    menu: this.menuRef,
+                    padding: 350
+                });
+        }
         // publish open/close events
-        this.slideOut.on("open", ()=>{this.SideBarService.visible = true;})
-        this.slideOut.on("close", ()=>{this.SideBarService.visible = false;})
+        this.slideOut.on("open", ()=>{this.SideBarService.currentVisible = true;})
+        this.slideOut.on("close", ()=>{this.SideBarService.currentVisible = false;})
         // subscribe to open/close events
         this.slideAutorunDisposer = autorun(()=>{
             if(this.SideBarService.visible){
@@ -55,7 +68,7 @@ export class ContainerMobile extends React.PureComponent<IContainerProps, any> {
             }else{
                 this.slideOut.close();
             }
-        });
+        });               
     }
 
     public componentWillUnmount(){

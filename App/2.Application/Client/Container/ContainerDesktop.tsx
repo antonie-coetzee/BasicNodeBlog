@@ -11,7 +11,7 @@ import {ILoggerKey, ILogger} from "../../../1.Framework/Common/Services/Logging/
 
 import style from "Style.sass"
 
-export class ContainerDesktop extends React.PureComponent<IContainerProps, any> {
+export class ContainerDesktop extends React.Component<IContainerProps, any> {
 
     public Header : interfaces.Newable<IHeader>;
     public SideBar : interfaces.Newable<ISideBar>;
@@ -31,7 +31,7 @@ export class ContainerDesktop extends React.PureComponent<IContainerProps, any> 
                     <this.Header MenubarVisible={true}/>
                     <div className={classNames(style.sectionAllEqual)}>          
                         <div className={classNames(style.columns)}>
-                            <div className={classNames(style.column, style.is2)}>
+                            <div className={classNames(style.column, style.is3)}>
                                 <this.SideBar/>
                             </div>
                             <div className={style.column}>

@@ -9,7 +9,7 @@ import style from "Style.sass"
 const profile = require('./profile.jpg')
 
 @injectable()
-export class SideBar extends React.PureComponent<any, any> implements ISideBar  {
+export class SideBar extends React.Component<any, any> implements ISideBar  {
     constructor() {
         super();
     }
