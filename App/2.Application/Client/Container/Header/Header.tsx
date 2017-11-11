@@ -24,10 +24,6 @@ export class Header extends React.Component<any, any> implements IHeader  {
     @lazyInject(ISideBarControlKey)
     public SideBarControl : interfaces.Newable<ISideBarControl>;
 
-    constructor() {
-        super();
-    }
-
     render() {
         return <div>    
                     <div className={classNames(style.hero, style.isPrimary)}>  

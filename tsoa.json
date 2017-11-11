@@ -1,0 +1,15 @@
+{
+    "swagger": {
+        "outputDirectory": "./App/2.Application/Server/Middleware/SwaggerUI",
+        "entryFile": "./App/server.ts",
+        "host": "localhost:8080",
+        "basePath": "/api/v1",
+        "yaml": false
+    },
+    "routes": {
+        "basePath": "/api/v1",
+        "entryFile": "./App/server.ts",
+        "routesDir": "./App/2.Application/Server/Api",
+        "middleware": "express"
+    }
+}

@@ -6,11 +6,13 @@
   "scripts": {
     "build-prod": "./node_modules/.bin/webpack --config ./webpack.client.config.prod.js --progress",
     "build-dev": "./node_modules/.bin/webpack --config ./webpack.client.config.js --progress",
-    "build-server": "node ./copy.config.js && tsc",
+    "build-server": "node ./Scripts/prebuild.js && tsc",
     "start": "./node_modules/.bin/webpack-dev-server --config ./webpack.client.config.dev.js --host 0.0.0.0 --public 192.168.1.74:8080 -d --content-base dist/public --progress --inline",
     "pretest": "npm run build-server",
     "test": "jest",
-    "update-snapshots": "jest --updateSnapshot"
+    "update-snapshots": "jest --updateSnapshot",
+    "preinstall": "node ./Scripts/preinstall.js",
+    "prebuild": "node ./Scripts/prebuild.js"
   },
   "repository": {
     "type": "git",
@@ -32,7 +34,7 @@
   },
   "dependencies": {
     "@types/loglevel": "^1.4.29",
-    "@types/winston": "^2.3.4",
+    "@types/winston": "^2.3.7",
     "autoprefixer": "^7.1.2",
     "body-parser": "^1.17.0",
     "bulma": "^0.5.1",
@@ -49,6 +51,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "reflect-metadata": "^0.1.9",
+    "swagger-ui-express": "^2.0.9",
     "winston": "^2.3.1"
   },
   "devDependencies": {
@@ -85,11 +88,13 @@
     "react-markdown": "^2.4.5",
     "relative": "^3.0.2",
     "sass-loader": "^6.0.6",
+    "shelljs": "^0.7.8",
     "slideout": "^1.0.1",
     "style-loader": "^0.13.2",
     "ts-jest": "^20.0.7",
     "ts-loader": "^2.3.2",
     "ts-mockito": "^2.2.5",
+    "tsoa": "^2.0.1",
     "typedoc": "^0.7.2",
     "typescript": "^2.4.2",
     "typings-for-css-modules-loader": "https://github.com/WireJunky/typings-for-css-modules-loader/tarball/master",

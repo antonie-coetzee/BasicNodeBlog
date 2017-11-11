@@ -10,10 +10,6 @@ import style from "Style.sass"
 @injectable()
 export class MenuBar extends React.Component<any, any> implements IMenuBar  {
 
-   constructor() {
-        super();
-    }
-
     render() {
         return <header className={classNames(style.nav, style.removeBoxShadow)}>
                     <div className={style.container}>

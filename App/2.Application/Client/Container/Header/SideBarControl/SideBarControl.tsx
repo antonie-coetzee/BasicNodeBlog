@@ -16,10 +16,6 @@ export class SideBarControl extends React.Component<any, any> implements ISideBa
     @lazyInject(ISideBarServiceKey)
     public SideBarService : ISideBarService;
 
-   constructor() {
-        super();
-    }
-
     render() {
         return  <div className={classNames(style.sideBarControl, style.isPaddingless,
                                 {[style.fadeRight]:!this.SideBarService.currentVisible},

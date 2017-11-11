@@ -30,11 +30,11 @@ export class ServerApplication implements IServerApplication {
         }
 
         // add API routers
-        this.logger.Debug("loading API modules");
+        this.logger.Debug("loading routes");
         let modules = this.apiModules;
         if(modules != null){
             modules.forEach(element => {
-                let apiPath = '/api/' + element.basePath;
+                let apiPath = element.basePath;
                 this.logger.Debug("adding module at: %s", apiPath);
                 let router = express.Router();
                 this.app.instance.use(apiPath, element.ConfigureRouter(router));

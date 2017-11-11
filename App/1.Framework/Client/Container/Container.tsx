@@ -11,7 +11,7 @@ import {ILoggerKey, ILogger} from "../../../1.Framework/Common/Services/Logging/
 import style from "Style.sass"
 
 @injectable()
-export class Container extends React.Component<any, any> implements IContainer  {
+export class Container extends React.PureComponent<any, any> implements IContainer  {
 
     @lazyInject(IHeaderKey)
     public Header : interfaces.Newable<IHeader>;
@@ -24,11 +24,6 @@ export class Container extends React.Component<any, any> implements IContainer  
 
     @lazyInject(ILoggerKey)
     public logger:ILogger
-
-    constructor() {
-        super();
-        this.logger.Info("some info from the container component")
-    }
 
     render() {
         return <div>

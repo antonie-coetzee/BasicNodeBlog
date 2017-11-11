@@ -37,11 +37,6 @@ export class Container extends React.Component<any, any> implements IContainer  
     @lazyInject(ILoggerKey)
     public logger:ILogger
 
-    constructor() {
-        super();
-        this.logger.Info("some info from the container component")
-    }
-
     render() {
         return <div>    
                     {(this.ResponsiveService.IsTablet || this.ResponsiveService.IsMobile) &&
