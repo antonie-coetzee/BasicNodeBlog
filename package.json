@@ -33,6 +33,8 @@
     "test": "test"
   },
   "dependencies": {
+    "@types/core-js": "^0.9.43",
+    "@types/isomorphic-fetch": "0.0.34",
     "@types/loglevel": "^1.4.29",
     "@types/winston": "^2.3.7",
     "autoprefixer": "^7.1.2",
@@ -40,7 +42,9 @@
     "bulma": "^0.5.1",
     "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
+    "core-js": "^2.5.1",
     "inversify": "^3.0.0",
+    "isomorphic-fetch": "^2.2.1",
     "loglevel": "^1.4.1",
     "mkdirp": "^0.5.1",
     "mobx": "^3.3.1",

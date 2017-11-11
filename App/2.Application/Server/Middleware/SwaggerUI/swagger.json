@@ -139,6 +139,32 @@
 					}
 				]
 			}
+		},
+		"/Users/other/{num}": {
+			"get": {
+				"operationId": "GetOtherUser",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "num",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
 		}
 	},
 	"produces": [

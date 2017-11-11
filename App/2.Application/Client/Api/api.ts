@@ -90,6 +90,29 @@ export const DefaultApiFetchParamCreator = {
     },
     /**
      * 
+     * @param num 
+     */
+    getOtherUser(params: {  "num": number; }, options?: any): FetchArgs {
+        // verify required parameter "num" is set
+        if (params["num"] == null) {
+            throw new Error("Missing required parameter num when calling getOtherUser");
+        }
+        const baseUrl = `/Users/other/{num}`
+            .replace(`{${"num"}}`, `${ params["num"] }`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
      * @param id 
      * @param authorization 
      */
@@ -140,6 +163,22 @@ export const DefaultApiFp = {
     },
     /**
      * 
+     * @param num 
+     */
+    getOtherUser(params: { "num": number;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<User> {
+        const fetchArgs = DefaultApiFetchParamCreator.getOtherUser(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
      * @param id 
      * @param authorization 
      */
@@ -170,6 +209,13 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
+     * @param num 
+     */
+    getOtherUser(params: {  "num": number; }, options?: any) {
+        return DefaultApiFp.getOtherUser(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
      * @param id 
      * @param authorization 
      */
@@ -189,6 +235,13 @@ export const DefaultApiFactory = function (fetch?: FetchAPI, basePath?: string) 
          */
         createUser(params: {  "requestBody": UserCreationRequest; }, options?: any) {
             return DefaultApiFp.createUser(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @param num 
+         */
+        getOtherUser(params: {  "num": number; }, options?: any) {
+            return DefaultApiFp.getOtherUser(params, options)(fetch, basePath);
         },
         /**
          * 

@@ -40,4 +40,9 @@ export class UsersController extends Controller {
     public async getPrivateUser(@Path('id') ID: number, @Header('Authorization') authorization: string): Promise<User> {
         return null;
     }
+
+    @Get('other/{num}')
+    public async getOtherUser(@Path('num') num: number): Promise<User> {
+        return null;
+    }
 }

@@ -1,5 +1,6 @@
 /* tslint:disable */
 import { Controller, ValidateParam, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
+import { iocContainer } from './../layer';
 import { UsersController } from './Controllers/AboutController';
 
 const models: TsoaRoute.Models = {
@@ -42,7 +43,7 @@ export function RegisterRoutes(app: any) {
                 return next(err);
             }
 
-            const controller = new UsersController();
+            const controller = iocContainer.get<UsersController>(UsersController);
 
 
             const promise = controller.getUser.apply(controller, validatedArgs);
@@ -61,7 +62,7 @@ export function RegisterRoutes(app: any) {
                 return next(err);
             }
 
-            const controller = new UsersController();
+            const controller = iocContainer.get<UsersController>(UsersController);
 
 
             const promise = controller.createUser.apply(controller, validatedArgs);
@@ -81,10 +82,29 @@ export function RegisterRoutes(app: any) {
                 return next(err);
             }
 
-            const controller = new UsersController();
+            const controller = iocContainer.get<UsersController>(UsersController);
 
 
             const promise = controller.getPrivateUser.apply(controller, validatedArgs);
+            promiseHandler(controller, promise, response, next);
+        });
+    app.get('/api/v1/Users/other/:num',
+        function(request: any, response: any, next: any) {
+            const args = {
+                num: { "in": "path", "name": "num", "required": true, "dataType": "double" },
+            };
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = iocContainer.get<UsersController>(UsersController);
+
+
+            const promise = controller.getOtherUser.apply(controller, validatedArgs);
             promiseHandler(controller, promise, response, next);
         });
 

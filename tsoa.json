@@ -10,6 +10,7 @@
         "basePath": "/api/v1",
         "entryFile": "./App/server.ts",
         "routesDir": "./App/2.Application/Server/Api",
-        "middleware": "express"
+        "middleware": "express",
+        "iocModule": "./App/2.Application/Server/layer"
     }
 }

@@ -9,4 +9,7 @@ layer.AddLayer((container)=>{
     container.load(apiContainerModule);    
 })
 
+const iocContainer = layer.container
+export {iocContainer}
+
 export default layer;
