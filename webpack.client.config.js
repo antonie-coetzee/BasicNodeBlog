@@ -48,7 +48,6 @@ module.exports = {
             test: /\.tsx?$/, 
             loader: 'ts-loader', 
             options: {
-            configFileName:  './tsconfig.json',
             logInfoToStdOut: true
             }, 
             exclude: [/node_modules/]

@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { Controller, ValidateParam, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
-import { iocContainer } from './../layer';
+import { iocContainer } from './../Ioc';
 import { UsersController } from './Controllers/AboutController';
 
 const models: TsoaRoute.Models = {

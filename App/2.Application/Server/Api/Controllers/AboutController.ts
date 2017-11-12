@@ -1,3 +1,4 @@
+import { injectable, inject, interfaces} from "inversify";
 import {Get, Post, Route, Body, Query, Header, Path, SuccessResponse, Controller } from 'tsoa';
 
 export interface User {
@@ -22,6 +23,7 @@ export interface UserCreationRequest {
 }
 
 @Route('Users')
+@injectable()
 export class UsersController extends Controller {
     
     @Get('{id}')

@@ -11,6 +11,6 @@
         "entryFile": "./App/server.ts",
         "routesDir": "./App/2.Application/Server/Api",
         "middleware": "express",
-        "iocModule": "./App/2.Application/Server/layer"
+        "iocModule": "./App/2.Application/Server/Ioc"
     }
 }
