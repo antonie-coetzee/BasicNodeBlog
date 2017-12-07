@@ -4,7 +4,7 @@ import {Container, interfaces} from "inversify"
 import {middlewareContainerModule} from "./Middleware/MiddlewareContainerModule"
 import {apiContainerModule} from "./Api/ApiContainerModule"
 
-import {UsersController} from "./Api/Controllers/AboutController"
+import {UsersController} from "./Api/Controllers/UsersController"
 
 layer.AddLayer((container)=>{
     container.load(middlewareContainerModule); 

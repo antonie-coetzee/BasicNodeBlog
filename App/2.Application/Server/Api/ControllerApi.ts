@@ -13,7 +13,7 @@ export class ControllerApi implements IApiModule {
     constructor() {}
   
     ConfigureRouter(router:Router) : Router{
-        RegisterRoutes(router);
+        RegisterRoutes(router, null);
         return router; 
     }
 }
