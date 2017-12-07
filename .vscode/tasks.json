@@ -11,7 +11,7 @@
             "isBuildCommand": true,
             "isShellCommand": true, 
             //"args": ["--config", "./webpack.config.js", "--progress", "--optimize-minimize", "--define", "process.env.NODE_ENV='production'"],
-            "args": ["--config", "./webpack.config.js", "--progress"], 
+            "args": ["--config", "./webpack.client.config.dev.js", "--progress"], 
             "suppressTaskName": true
         },{ 
             "taskName": "server build", 

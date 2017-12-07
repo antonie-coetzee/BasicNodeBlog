@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "commonjs",
+        "module": "esnext",
         "allowJs": true,       
         "sourceMap": true,
         "lib": ["es5", "es6","es2015.promise","esnext","dom"],
@@ -10,6 +10,7 @@
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "moduleResolution": "node",
         "baseUrl": "App/",
         "types": [
             "node",
