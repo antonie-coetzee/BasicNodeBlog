@@ -1,7 +1,7 @@
 /* tslint:disable */
+import { Container } from "inversify";
 import { Controller, ValidateParam, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
-import { iocContainer } from './../Ioc';
-import { UsersController } from './Controllers/AboutController';
+import { IUsersController, IUsersControllerKey } from './Controllers/IUsersController';
 
 const models: TsoaRoute.Models = {
     "Name": {
@@ -28,7 +28,7 @@ const models: TsoaRoute.Models = {
     },
 };
 
-export function RegisterRoutes(app: any) {
+export function RegisterRoutes(app: any, iocContainer: Container) {
     app.get('/api/v1/Users/:id',
         function(request: any, response: any, next: any) {
             const args = {
@@ -43,8 +43,7 @@ export function RegisterRoutes(app: any) {
                 return next(err);
             }
 
-            const controller = iocContainer.get<UsersController>(UsersController);
-
+            const controller = iocContainer.get<IUsersController>(IUsersControllerKey);
 
             const promise = controller.getUser.apply(controller, validatedArgs);
             promiseHandler(controller, promise, response, next);
@@ -62,8 +61,7 @@ export function RegisterRoutes(app: any) {
                 return next(err);
             }
 
-            const controller = iocContainer.get<UsersController>(UsersController);
-
+            const controller = iocContainer.get<IUsersController>(IUsersControllerKey);
 
             const promise = controller.createUser.apply(controller, validatedArgs);
             promiseHandler(controller, promise, response, next);
@@ -82,8 +80,7 @@ export function RegisterRoutes(app: any) {
                 return next(err);
             }
 
-            const controller = iocContainer.get<UsersController>(UsersController);
-
+            const controller = iocContainer.get<IUsersController>(IUsersControllerKey);
 
             const promise = controller.getPrivateUser.apply(controller, validatedArgs);
             promiseHandler(controller, promise, response, next);
@@ -101,8 +98,7 @@ export function RegisterRoutes(app: any) {
                 return next(err);
             }
 
-            const controller = iocContainer.get<UsersController>(UsersController);
-
+            const controller = iocContainer.get<IUsersController>(IUsersControllerKey);
 
             const promise = controller.getOtherUser.apply(controller, validatedArgs);
             promiseHandler(controller, promise, response, next);
