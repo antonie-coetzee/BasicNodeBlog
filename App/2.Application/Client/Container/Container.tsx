@@ -20,7 +20,7 @@ import style from "Style.sass"
 
 @observer
 @injectable()
-export class Container extends React.PureComponent<any, any> implements IContainer  {
+export class Container extends React.Component<any, any> implements IContainer  {
 
     @lazyInject(IResponsiveServiceKey)
     public ResponsiveService : IResponsiveService;
@@ -36,11 +36,6 @@ export class Container extends React.PureComponent<any, any> implements IContain
 
     @lazyInject(ILoggerKey)
     public logger:ILogger
-
-    constructor() {
-        super();
-        this.logger.Info("some info from the container component")
-    }
 
     render() {
         return <div>    

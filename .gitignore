@@ -47,3 +47,10 @@ Dist
 # Yarn Integrity file
 .yarn-integrity
 
+# Redundant API generated files
+App/2.Application/Client/Api/*
+!App/2.Application/Client/Api/api.ts
+
+# Tools directory
+Tools
+

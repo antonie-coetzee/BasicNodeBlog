@@ -1,4 +1,4 @@
-import {ExtractMetaHeader} from "./ExtractMetaHeader"
+import {ExtractMetaHeader} from "../ExtractMetaHeader"
 
 describe('extracting meta header', () => {
   it('extracts a header object from comment block', async () => {

@@ -19,10 +19,6 @@ export class ClientApplication extends React.Component<any, any> implements ICli
     @lazyInject(IContainerKey)
     public Container : interfaces.Newable<IContainer>;
 
-    constructor() {
-        super();
-    }
-
     DevTools(){
         if(process.env.NODE_ENV == 'production'){
             return (null);

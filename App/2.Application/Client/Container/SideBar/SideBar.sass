@@ -2,11 +2,15 @@
     position: fixed
     top: 0
     bottom: 0
-    width: 256px
+    width: 350px
     min-height: 100vh
     -webkit-overflow-scrolling: touch
     z-index: 0
     display: none
+
+@include mobile
+    .slideout-menu 
+        width: 256px
     
 .slideout-menu-left 
     left: 0
@@ -25,7 +29,6 @@
 .slideout-open body,
 .slideout-open .slideout-panel 
     overflow: hidden
-
 
 .slideout-open .slideout-menu 
     display: block

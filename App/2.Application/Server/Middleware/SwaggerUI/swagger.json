@@ -1,0 +1,176 @@
+{
+	"basePath": "/api/v1",
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"Name": {
+			"properties": {
+				"first": {
+					"type": "string"
+				},
+				"last": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"first"
+			],
+			"type": "object"
+		},
+		"User": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double"
+				},
+				"email": {
+					"type": "string"
+				},
+				"name": {
+					"$ref": "#/definitions/Name"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"Happy",
+						"Sad"
+					]
+				},
+				"phoneNumbers": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"id",
+				"email",
+				"name",
+				"phoneNumbers"
+			],
+			"type": "object"
+		},
+		"UserCreationRequest": {
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"name": {
+					"$ref": "#/definitions/Name"
+				},
+				"phoneNumbers": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"email",
+				"name",
+				"phoneNumbers"
+			],
+			"type": "object"
+		}
+	},
+	"info": {
+		"title": "basicnodeblog",
+		"version": "0.0.1",
+		"description": "Basic blog engine serving static content",
+		"license": {
+			"name": "MIT"
+		}
+	},
+	"paths": {
+		"/Users/{id}": {
+			"get": {
+				"operationId": "GetPrivateUser",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/Users": {
+			"post": {
+				"operationId": "CreateUser",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "requestBody",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/UserCreationRequest"
+						}
+					}
+				]
+			}
+		},
+		"/Users/other/{num}": {
+			"get": {
+				"operationId": "GetOtherUser",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "num",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"swagger": "2.0",
+	"securityDefinitions": {},
+	"host": "localhost:8080"
+}

@@ -25,11 +25,6 @@ export class Container extends React.PureComponent<any, any> implements IContain
     @lazyInject(ILoggerKey)
     public logger:ILogger
 
-    constructor() {
-        super();
-        this.logger.Info("some info from the container component")
-    }
-
     render() {
         return <div>
             <this.Header MenubarVisible={true}/>

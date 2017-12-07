@@ -16,22 +16,18 @@ export class SideBarControl extends React.Component<any, any> implements ISideBa
     @lazyInject(ISideBarServiceKey)
     public SideBarService : ISideBarService;
 
-   constructor() {
-        super();
-    }
-
     render() {
         return  <div className={classNames(style.sideBarControl, style.isPaddingless,
-                                {[style.fadeRight]:!this.SideBarService.visible},
-                                {[style.fadeLeft]:this.SideBarService.visible})}> 
+                                {[style.fadeRight]:!this.SideBarService.currentVisible},
+                                {[style.fadeLeft]:this.SideBarService.currentVisible})}> 
                     <a className={classNames(style.isPrimary, style.isPaddingless)}
                                 onClick={()=>{this.SideBarService.ToggleVisible()}}>
                         <span className={classNames(style.icon)}>
                             <i className={classNames(
                                 style.fa, 
                                 style.isSize1, 
-                                {[style.faAngleDoubleRight]:!this.SideBarService.visible},
-                                {[style.faAngleDoubleLeft]:this.SideBarService.visible})}></i>
+                                {[style.faAngleDoubleRight]:!this.SideBarService.currentVisible},
+                                {[style.faAngleDoubleLeft]:this.SideBarService.currentVisible})}></i>
                         </span>
                     </a>    
                 </div>

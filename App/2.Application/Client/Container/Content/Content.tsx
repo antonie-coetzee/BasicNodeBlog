@@ -7,9 +7,6 @@ import style from "Style.sass"
 
 @injectable()
 export class Content extends React.Component<any, any> implements IContent  {
-    constructor() {
-        super();
-    }
     render() {
         return <div className="content is-medium">
                     <h1>Page Title</h1>

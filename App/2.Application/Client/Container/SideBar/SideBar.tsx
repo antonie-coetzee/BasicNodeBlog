@@ -9,11 +9,7 @@ import style from "Style.sass"
 const profile = require('./profile.jpg')
 
 @injectable()
-export class SideBar extends React.PureComponent<any, any> implements ISideBar  {
-    constructor() {
-        super();
-    }
-
+export class SideBar extends React.Component<any, any> implements ISideBar  {
     render() {
         return <aside className={style.menu}>
           <div className={classNames(style.card, style.profileCard)}>
