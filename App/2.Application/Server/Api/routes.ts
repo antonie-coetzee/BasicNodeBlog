@@ -1,108 +1,11 @@
 /* tslint:disable */
 import { Container } from "inversify";
 import { Controller, ValidateParam, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
-import { IUsersController, IUsersControllerKey } from './Controllers/IUsersController';
 
 const models: TsoaRoute.Models = {
-    "Name": {
-        "properties": {
-            "first": { "dataType": "string", "required": true },
-            "last": { "dataType": "string" },
-        },
-    },
-    "User": {
-        "properties": {
-            "id": { "dataType": "double", "required": true },
-            "email": { "dataType": "string", "required": true },
-            "name": { "ref": "Name", "required": true },
-            "status": { "dataType": "enum", "enums": ["Happy", "Sad"] },
-            "phoneNumbers": { "dataType": "array", "array": { "dataType": "string" }, "required": true },
-        },
-    },
-    "UserCreationRequest": {
-        "properties": {
-            "email": { "dataType": "string", "required": true },
-            "name": { "ref": "Name", "required": true },
-            "phoneNumbers": { "dataType": "array", "array": { "dataType": "string" }, "required": true },
-        },
-    },
 };
 
 export function RegisterRoutes(app: any, iocContainer: Container) {
-    app.get('/api/v1/Users/:id',
-        function(request: any, response: any, next: any) {
-            const args = {
-                id: { "in": "path", "name": "id", "required": true, "dataType": "double" },
-                name: { "in": "query", "name": "name", "required": true, "dataType": "string" },
-            };
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = getValidatedArgs(args, request);
-            } catch (err) {
-                return next(err);
-            }
-
-            const controller = iocContainer.get<IUsersController>(IUsersControllerKey);
-
-            const promise = controller.getUser.apply(controller, validatedArgs);
-            promiseHandler(controller, promise, response, next);
-        });
-    app.post('/api/v1/Users',
-        function(request: any, response: any, next: any) {
-            const args = {
-                requestBody: { "in": "body", "name": "requestBody", "required": true, "ref": "UserCreationRequest" },
-            };
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = getValidatedArgs(args, request);
-            } catch (err) {
-                return next(err);
-            }
-
-            const controller = iocContainer.get<IUsersController>(IUsersControllerKey);
-
-            const promise = controller.createUser.apply(controller, validatedArgs);
-            promiseHandler(controller, promise, response, next);
-        });
-    app.get('/api/v1/Users/:id',
-        function(request: any, response: any, next: any) {
-            const args = {
-                ID: { "in": "path", "name": "id", "required": true, "dataType": "double" },
-                authorization: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
-            };
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = getValidatedArgs(args, request);
-            } catch (err) {
-                return next(err);
-            }
-
-            const controller = iocContainer.get<IUsersController>(IUsersControllerKey);
-
-            const promise = controller.getPrivateUser.apply(controller, validatedArgs);
-            promiseHandler(controller, promise, response, next);
-        });
-    app.get('/api/v1/Users/other/:num',
-        function(request: any, response: any, next: any) {
-            const args = {
-                num: { "in": "path", "name": "num", "required": true, "dataType": "double" },
-            };
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = getValidatedArgs(args, request);
-            } catch (err) {
-                return next(err);
-            }
-
-            const controller = iocContainer.get<IUsersController>(IUsersControllerKey);
-
-            const promise = controller.getOtherUser.apply(controller, validatedArgs);
-            promiseHandler(controller, promise, response, next);
-        });
 
 
     function promiseHandler(controllerObj: any, promise: any, response: any, next: any) {

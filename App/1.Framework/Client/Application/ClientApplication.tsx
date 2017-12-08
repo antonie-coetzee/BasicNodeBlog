@@ -9,6 +9,8 @@ import DevTools from 'mobx-react-devtools';
 import {injectable, interfaces} from "inversify";
 import {IClientApplication} from "0.Bootstrap/Common/Application/IClientApplication"
 
+import makeAsyncComponent from "../../Common/Lib/AsyncComponent"
+
 import {IContainer, IContainerKey} from "../Container/IContainer"
 
 @withRouter 
@@ -17,7 +19,12 @@ import {IContainer, IContainerKey} from "../Container/IContainer"
 export class ClientApplication extends React.Component<any, any> implements IClientApplication  {
 
     @lazyInject(IContainerKey)
-    public Container : interfaces.Newable<IContainer>;
+    public Container : Promise<interfaces.Newable<IContainer>>;
+    public ContainerAsync : React.ComponentClass
+
+    componentWillMount(){
+        this.ContainerAsync = makeAsyncComponent(()=>{return this.Container});
+    }
 
     DevTools(){
         if(process.env.NODE_ENV == 'production'){
@@ -28,7 +35,7 @@ export class ClientApplication extends React.Component<any, any> implements ICli
    
     render() {   
         return <div>              
-                    <this.Container/>
+                    <this.ContainerAsync/>
                     <this.DevTools/>
                 </div>         
     }

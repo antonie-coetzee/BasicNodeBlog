@@ -1,7 +1,9 @@
 import layer from '../../1.Framework/Client/Layer'
 
+import {injectable, interfaces} from "inversify";
+
 import {IContainer, IContainerKey} from "../../1.Framework/Client/Container/IContainer"
-import {Container} from "./Container/Container"
+//import {Container} from "./Container/Container"
 
 import {IHeader, IHeaderKey} from "../../1.Framework/Client/Container/Header/IHeader"
 import {Header} from "./Container/Header/Header"
@@ -26,9 +28,12 @@ layer.AddLayer((container)=>{
     container.bind<ISideBar>(ISideBarKey).toConstructor(SideBar);
     container.bind<ISideBarService>(ISideBarServiceKey).to(SideBarService).inSingletonScope();
     container.bind<IContent>(IContentKey).toConstructor(Content);
-    container.bind<IContainer>(IContainerKey).toConstructor(Container);
     container.bind<IMenuBar>(IMenuBarKey).toConstructor(MenuBar);
     container.bind<ISideBarControl>(ISideBarControlKey).toConstructor(SideBarControl);
+    container.bind<Promise<interfaces.Newable<IContainer>>>(IContainerKey)
+        .toDynamicValue((ctx)=>{
+                return <Promise<interfaces.Newable<IContainer>>> import(/* webpackChunkName: "container" */ "./Container/Container")
+            .then(mod=>mod.Container)});
 })
 
 export default layer;

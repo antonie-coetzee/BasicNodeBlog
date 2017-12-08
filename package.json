@@ -72,6 +72,7 @@
     "@types/react-responsive": "^1.1.8",
     "@types/react-router": "^4.0.16",
     "@types/slideout": "^0.1.19",
+    "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.27.1",
     "directory-tree": "^2.0.0",
     "enzyme": "^3.1.0",
@@ -103,7 +104,8 @@
     "typescript": "^2.4.2",
     "typings-for-css-modules-loader": "https://github.com/WireJunky/typings-for-css-modules-loader/tarball/master",
     "url-loader": "^0.5.9",
-    "webpack": "^2.7.0",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.1",
     "webpack-dev-server": "^2.6.1",
     "webpack-merge": "^4.1.0",
     "webpack-visualizer-plugin": "^0.1.11"

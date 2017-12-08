@@ -1,8 +1,11 @@
 const path = require('path');
 const webpack = require('webpack'); 
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const Visualizer = require('webpack-visualizer-plugin');
 
@@ -12,8 +15,8 @@ module.exports = {
         client: path.resolve(__dirname, './App/Client.tsx')
     },
     output: {
-        filename: 'bundle.js',
-        chunkFilename: '[name].bundle.js',
+        filename: '[name].chunk.[chunkhash].js',
+        chunkFilename: '[name].chunk.[chunkhash].js',
         path: path.resolve(__dirname, './Dist/Public/'),
         pathinfo: true
     },
@@ -84,12 +87,24 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin('styles.css'),
-            new Visualizer({
-                filename: './statistics.html'
-            }),
-        new HtmlWebpackPlugin({hash:true, template:'App/Index.ejs'}),
+        new Visualizer({
+            filename: './statistics.html'
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static'
+        }),        
+        new HtmlWebpackPlugin({hash:false, template:'App/Index.ejs'}),
         new webpack.WatchIgnorePlugin([
                 /sass\.ts$/
-            ])       
+            ]),
+        //new CommonsChunkPlugin({name: "commons", filename:"commons.js", children:true})      
+        new CommonsChunkPlugin({
+            name: 'common',
+            filename: 'common.chunk.[chunkhash].js',
+            minChunks(module, count) {
+                var context = module.context;
+                return context && context.indexOf('node_modules') >= 0;}
+        }),
+        new CleanWebpackPlugin(['Dist/Public'])                         
     ]
 };
