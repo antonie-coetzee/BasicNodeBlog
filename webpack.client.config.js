@@ -90,9 +90,9 @@ module.exports = {
         new Visualizer({
             filename: './statistics.html'
         }),
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'static'
-        }),        
+        // new BundleAnalyzerPlugin({
+        //     analyzerMode: 'static'
+        // }),        
         new HtmlWebpackPlugin({hash:false, template:'App/Index.ejs'}),
         new webpack.WatchIgnorePlugin([
                 /sass\.ts$/

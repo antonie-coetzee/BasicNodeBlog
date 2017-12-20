@@ -33,7 +33,7 @@ layer.AddLayer((container)=>{
     container.bind<Promise<interfaces.Newable<IContainer>>>(IContainerKey)
         .toDynamicValue((ctx)=>{
                 return <Promise<interfaces.Newable<IContainer>>> import(/* webpackChunkName: "container" */ "./Container/Container")
-            .then(mod=>mod.Container)});
+            .then(mod=>mod.default)});
 })
 
 export default layer;
