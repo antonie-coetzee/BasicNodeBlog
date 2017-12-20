@@ -44,14 +44,14 @@ interface IAsyncComponentState<TComponent> {
   pastSpinnerDelay: boolean;
   timedOut: boolean;
   loading: boolean;
-  component: interfaces.Newable<TComponent> | undefined;
+  Component: interfaces.Newable<TComponent> | undefined;
   promise: Promise<TComponent>;
 }
 
 function asyncLoadState<TComponent>(importFunction: ImportFunction<TComponent>): IAsyncComponentState<TComponent> {
   let state: IAsyncComponentState<TComponent> = {
     loading: true,
-    component: undefined,
+    Component: undefined,
     error: undefined,
     promise: undefined,
     pastSpinnerDelay:false,
@@ -60,7 +60,7 @@ function asyncLoadState<TComponent>(importFunction: ImportFunction<TComponent>):
   let promise = importFunction()
     .then(component => {
       state.loading = false;
-      state.component = component;
+      state.Component = component;
       return component;
     })
     .catch(err => {
@@ -71,9 +71,9 @@ function asyncLoadState<TComponent>(importFunction: ImportFunction<TComponent>):
   return state;
 }
 
-function ToAsyncComponent<TComponent extends React.Component<TProps>, TProps = any>(
-    options:IAsyncComponentOptions,
-    importer: ImportFunction<TComponent> ) 
+function ToAsyncComponent<TComponent extends React.Component<TProps>, TProps = any>(  
+    importer: ImportFunction<TComponent>,
+    options?:IAsyncComponentOptions) 
   : interfaces.Newable<React.Component<TProps>>{
   
   let state = asyncLoadState<TComponent>(importer);
@@ -119,7 +119,7 @@ function ToAsyncComponent<TComponent extends React.Component<TProps>, TProps = a
         }
         this.setState({
           error: state.error,
-          component: state.component,
+          Component: state.Component,
           loading: state.loading
         });
         this.clearTimeouts();
@@ -142,14 +142,13 @@ function ToAsyncComponent<TComponent extends React.Component<TProps>, TProps = a
     
     public render() {
       if (this.state.loading || this.state.error) {
-        return React.createElement(this.LoadingDisplay, {
-          isLoading: this.state.loading,
-          pastSpinnerDelay: this.state.pastSpinnerDelay,
-          timedOut: this.state.timedOut,
-          error: this.state.error
-        });
-      } else if (this.state.component) {
-        return React.createElement(this.state.component, this.props);
+        return <this.LoadingDisplay 
+          isLoading = {this.state.loading}
+          pastSpinnerDelay = {this.state.pastSpinnerDelay}
+          timedOut = {this.state.timedOut}
+          error = {this.state.error}/>;
+      } else if (this.state.Component) {
+        return <this.state.Component {...this.props} />      
       } else {
         return null;
       }
@@ -160,7 +159,7 @@ function ToAsyncComponent<TComponent extends React.Component<TProps>, TProps = a
       clearTimeout(this.timeout);
     } 
 
-    private LoadingDisplay = ({
+    public LoadingDisplay = ({
       isLoading,
       error,
       pastSpinnerDelay,
@@ -184,7 +183,7 @@ function ToAsyncComponent<TComponent extends React.Component<TProps>, TProps = a
     isLoading: boolean;
     timedOut: boolean;
     error: Error | null;
-    pastSpinnerDelay: null;
+    pastSpinnerDelay: boolean;
   };
 
   return AsyncComponent;
