@@ -32,7 +32,7 @@ defaultSpinnerComponent.defaultProps = {loading:true};
 
 let defaultErrorComponent : React.SFC<IErrorComponentProps> = function(props) {
   if(props.isTimeOut){
-    return <div>Error! Component failed to load (timeout)</div>;
+    return <div>Something is wrong, component taking too long to load...</div>;
   }
   if(props.error){
     return <div>Error! Component failed to load</div>;
@@ -45,7 +45,7 @@ interface IAsyncComponentState<TComponent> {
   timedOut: boolean;
   loading: boolean;
   Component: interfaces.Newable<TComponent> | undefined;
-  promise: Promise<TComponent>;
+  promise: Promise<interfaces.Newable<TComponent>>;
 }
 
 function asyncLoadState<TComponent>(importFunction: ImportFunction<TComponent>): IAsyncComponentState<TComponent> {
@@ -58,6 +58,7 @@ function asyncLoadState<TComponent>(importFunction: ImportFunction<TComponent>):
     timedOut:false
   };
   let promise = importFunction()
+    //.then(x => new Promise<interfaces.Newable<TComponent>>(resolve => setTimeout(() => resolve(x), 10000)))
     .then(component => {
       state.loading = false;
       state.Component = component;
@@ -68,22 +69,23 @@ function asyncLoadState<TComponent>(importFunction: ImportFunction<TComponent>):
       state.error = err;
       throw err;
     });
+  state.promise = promise;
   return state;
 }
 
-function ToAsyncComponent<TComponent extends React.Component<TProps>, TProps = any>(  
+export default function ToAsyncComponent<TComponent extends React.Component<TProps>, TProps = any>(  
     importer: ImportFunction<TComponent>,
     options?:IAsyncComponentOptions) 
   : interfaces.Newable<React.Component<TProps>>{
   
   let state = asyncLoadState<TComponent>(importer);
 
-  let opts:IAsyncComponentOptions = {...options, ...{
+  let opts:IAsyncComponentOptions = {...{
     spinnerDelay: 200, 
     timeout: undefined,
     ErrorComponent: defaultErrorComponent,
     SpinnerComponent: defaultSpinnerComponent
-  }};
+  }, ...options};
 
   class AsyncComponent extends React.Component<TProps, IAsyncComponentState<TComponent>>{
     private spinnerDelay:number = undefined;
@@ -92,10 +94,11 @@ function ToAsyncComponent<TComponent extends React.Component<TProps>, TProps = a
 
     constructor(props) {
       super(props);
+
       if(!state){
         state = asyncLoadState<TComponent>(importer);
       }
-      this.state = state
+      this.state = state    
     }
 
     public componentWillMount() {

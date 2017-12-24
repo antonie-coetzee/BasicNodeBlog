@@ -22,6 +22,7 @@ import {SideBarControl} from "./Container/Header/SideBarControl/SideBarControl"
 
 import {IContent, IContentKey} from "../../1.Framework/Client/Container/Content/IContent"
 import {Content} from "./Container/Content/Content"
+import BindAsync from '1.Framework/Client/Lib/Async/BindAsync';
 
 layer.AddLayer((container)=>{
     container.bind<IHeader>(IHeaderKey).toConstructor(Header);
@@ -30,10 +31,10 @@ layer.AddLayer((container)=>{
     container.bind<IContent>(IContentKey).toConstructor(Content);
     container.bind<IMenuBar>(IMenuBarKey).toConstructor(MenuBar);
     container.bind<ISideBarControl>(ISideBarControlKey).toConstructor(SideBarControl);
-    container.bind<Promise<interfaces.Newable<IContainer>>>(IContainerKey)
-        .toDynamicValue((ctx)=>{
-                return <Promise<interfaces.Newable<IContainer>>> import(/* webpackChunkName: "container" */ "./Container/Container")
-            .then(mod=>mod.default)});
+
+    BindAsync<IContainer>(container, IContainerKey, {timeout:10000}, 
+        ()=>import(/* webpackChunkName: "container" */ "./Container/Container")
+            .then(mod=>mod.default))
 })
 
 export default layer;
