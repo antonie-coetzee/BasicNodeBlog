@@ -9,7 +9,7 @@ import { Controller, ValidateParam, FieldErrors, ValidateError, TsoaRoute } from
 import { iocContainer } from '{{iocModule}}';
 {{/if}}
 {{#each controllers}}
-import { I{{name}},I{{name}}Key } from './Controllers/I{{name}}';
+import { I{{name}},I{{name}}Key } from '{{moduleDirectory}}/I{{name}}';
 {{/each}}
 {{#if authenticationModule}}
 import { expressAuthentication } from '{{authenticationModule}}';
