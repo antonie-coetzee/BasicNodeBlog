@@ -1,7 +1,5 @@
 const enum StyleSass {
    "image" = "image",
-   "appLoader" = "app-loader",
-   "spinAround" = "spinAround",
    "fa" = "fa",
    "faLg" = "fa-lg",
    "fa2x" = "fa-2x",
@@ -1038,6 +1036,7 @@ const enum StyleSass {
    "isWarning" = "is-warning",
    "isDanger" = "is-danger",
    "isFullwidth" = "is-fullwidth",
+   "spinAround" = "spinAround",
    "isStatic" = "is-static",
    "container" = "container",
    "isFluid" = "is-fluid",

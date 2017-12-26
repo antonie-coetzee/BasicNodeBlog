@@ -3021,9 +3021,9 @@
       }
     },
     "es6-promise": {
-      "version": "3.3.1",
-      "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
-      "integrity": "sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM=",
+      "version": "4.2.2",
+      "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-4.2.2.tgz",
+      "integrity": "sha512-LSas5vsuA6Q4nEdf9wokY5/AJYXry98i0IzXsv49rYsgDGDNDPbqAYR1Pe23iFxygfbGZNR/5VrHXBCh2BhvUQ==",
       "dev": true
     },
     "es6-set": {
@@ -6740,6 +6740,12 @@
           "requires": {
             "is-obj": "1.0.1"
           }
+        },
+        "es6-promise": {
+          "version": "3.3.1",
+          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
+          "integrity": "sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM=",
+          "dev": true
         },
         "got": {
           "version": "6.7.1",

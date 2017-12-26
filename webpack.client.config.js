@@ -46,6 +46,9 @@ module.exports = {
             loader: "file-loader",
             options: {
                 name: 'font/[name].[ext]',
+                compilerOptions:{
+                    module:"esnext"
+                }
             }
         },    
         { 
@@ -86,7 +89,7 @@ module.exports = {
       ]
     },
     plugins: [
-        new ExtractTextPlugin('styles.css'),
+        new ExtractTextPlugin('styles.[contenthash].css'),
         new Visualizer({
             filename: './statistics.html'
         }),
@@ -96,8 +99,7 @@ module.exports = {
         new HtmlWebpackPlugin({hash:false, template:'App/Index.ejs'}),
         new webpack.WatchIgnorePlugin([
                 /sass\.ts$/
-            ]),
-        //new CommonsChunkPlugin({name: "commons", filename:"commons.js", children:true})      
+            ]),  
         new CommonsChunkPlugin({
             name: 'common',
             filename: 'common.chunk.[chunkhash].js',
