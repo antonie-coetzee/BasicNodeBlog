@@ -19,6 +19,8 @@ import  {IServerApplication,IServerApplicationKey} from "../../0.Bootstrap/Commo
 import  {ServerApplication} from "./Application/ServerApplication"
 
 layer.AddLayer((container)=>{
+    container.bind<interfaces.Container>(Container).toConstantValue(layer.container);
+
     container.bind<IConfig>(IConfigKey).to(Config).inSingletonScope();
 
     container.load(loggingModule);

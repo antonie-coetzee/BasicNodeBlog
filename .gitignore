@@ -48,8 +48,8 @@ Dist
 .yarn-integrity
 
 # Redundant API generated files
-App/2.Application/Client/Api/*
-!App/2.Application/Client/Api/api.ts
+App/2.Application/Client/Lib/Api/Generated*
+!App/2.Application/Client/Lib/Api/Generated/api.ts
 
 # Tools directory
 Tools

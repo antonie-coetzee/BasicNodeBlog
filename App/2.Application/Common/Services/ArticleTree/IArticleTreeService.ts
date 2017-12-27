@@ -6,6 +6,8 @@ export interface IArticleTree {
     children:IArticleTree[];
 }
 
+export let IArticleTreeServiceKey = "IArticleTreeServiceKey";
+
 export interface IArticleTreeService {
     GetArticleTree():Promise<IArticleTree>
 }

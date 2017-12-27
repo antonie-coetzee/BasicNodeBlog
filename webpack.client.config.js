@@ -106,7 +106,7 @@ module.exports = {
             minChunks(module, count) {
                 var context = module.context;
                 return context && context.indexOf('node_modules') >= 0;}
-        }),
-        new CleanWebpackPlugin(['Dist/Public'])                         
+        })
+        //new CleanWebpackPlugin(['Dist/Public'])                         
     ]
 };

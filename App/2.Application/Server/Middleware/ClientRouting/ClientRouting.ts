@@ -14,8 +14,13 @@ class ClientRoutingMiddleware implements IMiddleware {
     constructor(@inject(ILoggerKey) private logger:ILogger) {     
         // TODO: abstract dir
         let dir = path.resolve(__dirname + "/../../../../public");
-        this.handlers = [ function(req, res){
-            res.sendFile(dir + '/index.html');
+        this.handlers = [ function(req, res, next){
+            var pathname = req.baseUrl;
+            if (pathname.indexOf('/api/') >= 0){
+                next();
+            }else{
+                res.sendFile(dir + '/index.html');
+            }          
         }];
     }
 }

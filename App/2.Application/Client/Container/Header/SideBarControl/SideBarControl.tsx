@@ -9,6 +9,8 @@ import {ISideBarControl} from "./ISideBarControl"
 
 import style from "Style.sass"
 
+import { IArticleTreeService, IArticleTreeServiceKey } from "../../../../Common/Services/ArticleTree/IArticleTreeService";
+
 @observer
 @injectable()
 export class SideBarControl extends React.Component<any, any> implements ISideBarControl  {
@@ -16,12 +18,28 @@ export class SideBarControl extends React.Component<any, any> implements ISideBa
     @lazyInject(ISideBarServiceKey)
     public SideBarService : ISideBarService;
 
+    @lazyInject(IArticleTreeServiceKey)
+    public articleTreeService : IArticleTreeService;
+
+    constructor(props) {
+        super(props);
+    }
+
+    public articleTree(){
+        console.log("hallo");
+        let tree = this.articleTreeService.GetArticleTree();
+        console.log(tree);
+    }
+
     render() {
         return  <div className={classNames(style.sideBarControl, style.isPaddingless,
                                 {[style.fadeRight]:!this.SideBarService.currentVisible},
                                 {[style.fadeLeft]:this.SideBarService.currentVisible})}> 
                     <a className={classNames(style.isPrimary, style.isPaddingless)}
-                                onClick={()=>{this.SideBarService.ToggleVisible()}}>
+                                onClick={()=>{
+                                    //this.SideBarService.ToggleVisible();
+                                    this.articleTree();
+                                    }}>
                         <span className={classNames(style.icon)}>
                             <i className={classNames(
                                 style.fa, 

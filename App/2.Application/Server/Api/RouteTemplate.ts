@@ -1,5 +1,5 @@
 /* tslint:disable */
-import {Container} from "inversify";
+import {interfaces} from "inversify";
 {{#if canImportByAlias}}
 import { Controller, ValidateParam, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
 {{else}}
@@ -35,7 +35,7 @@ const models: TsoaRoute.Models = {
   {{/each}}
 };
 
-export function RegisterRoutes(app: any, iocContainer: Container) {
+export function RegisterRoutes(app: any, iocContainer: interfaces.Container) {
   {{#each controllers}}
   {{#each actions}}
       app.{{method}}('{{../../basePath}}{{../path}}{{path}}',

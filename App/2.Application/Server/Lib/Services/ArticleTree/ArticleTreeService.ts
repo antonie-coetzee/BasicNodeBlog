@@ -7,12 +7,12 @@ import { IArticle } from "../../../../Common/Domain/IArticle"
 import { IConfig, IConfigKey } from "../../../../../1.Framework/Server/Config/IConfig"
 import { ILogger, ILoggerKey } from "../../../../../1.Framework/Common/Services/Logging/ILogger"
 import { Article } from "./Article"
-import * as dirtree from "directory-tree"
 
+import * as dirtree from "directory-tree"
+import * as md5File from "md5-file/promise"
 import { Stats } from "fs"
 import * as FS from "fs"
 import * as PATH from "path"
-import * as relative from "relative";
 
 class ArticleTree implements IArticleTree {
     name: string;
@@ -65,6 +65,7 @@ export class ArticleTreeService implements IArticleTreeService {
 
     private async getArticleTreeRecursive(basePath: string, path: string, parent: ArticleTree): Promise<ArticleTree> {
         let stats: Stats;
+
         try {
             stats = FS.statSync(path);
         }
@@ -80,9 +81,9 @@ export class ArticleTreeService implements IArticleTreeService {
                 return;
             }
             let article = new Article();
-            article.path = relative.toBase(basePath, path);
             article.metaHeader = await this.readMetaHeader(path);
-            article.title = parent.name; // parent directory name is article title
+            article.hash = await md5File(path);
+            article.title = article.metaHeader.title ? article.metaHeader.title : parent.name; 
             parent.article = article;
             parent.name = null; // redundant, container for the article with title
             parent.children = null;

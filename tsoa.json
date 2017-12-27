@@ -4,7 +4,7 @@
         "entryFile": "./App/server.ts",
         "host": "localhost:8080",
         "basePath": "/api/v1",
-        "yaml": false
+        "yaml": false            
     },
     "routes": {
         "basePath": "/api/v1",
@@ -12,5 +12,7 @@
         "routesDir": "./App/2.Application/Server/Api",
         "middleware": "express",
         "middlewareTemplate": "./App/2.Application/Server/Api/RouteTemplate.ts"
-    }
+    },
+    "compilerOptions":{"baseUrl": "./App/"},
+    "ignore":["node_modules"]
 }

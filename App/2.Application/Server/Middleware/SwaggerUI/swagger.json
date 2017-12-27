@@ -4,40 +4,21 @@
 		"application/json"
 	],
 	"definitions": {
-		"Name": {
+		"IMetaHeader": {
 			"properties": {
-				"first": {
+				"title": {
 					"type": "string"
 				},
-				"last": {
-					"type": "string"
-				}
-			},
-			"required": [
-				"first"
-			],
-			"type": "object"
-		},
-		"User": {
-			"properties": {
-				"id": {
-					"type": "number",
-					"format": "double"
-				},
-				"email": {
+				"date": {
 					"type": "string"
 				},
-				"name": {
-					"$ref": "#/definitions/Name"
+				"synopsis": {
+					"type": "string"
 				},
-				"status": {
-					"type": "string",
-					"enum": [
-						"Happy",
-						"Sad"
-					]
+				"readingTime": {
+					"type": "string"
 				},
-				"phoneNumbers": {
+				"tags": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -45,32 +26,53 @@
 				}
 			},
 			"required": [
-				"id",
-				"email",
-				"name",
-				"phoneNumbers"
+				"date",
+				"synopsis"
 			],
 			"type": "object"
 		},
-		"UserCreationRequest": {
+		"IArticle": {
 			"properties": {
-				"email": {
+				"title": {
 					"type": "string"
 				},
-				"name": {
-					"$ref": "#/definitions/Name"
+				"path": {
+					"type": "string"
 				},
-				"phoneNumbers": {
+				"metaHeader": {
+					"$ref": "#/definitions/IMetaHeader"
+				},
+				"hash": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"title",
+				"path",
+				"metaHeader",
+				"hash"
+			],
+			"type": "object"
+		},
+		"IArticleTree": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"article": {
+					"$ref": "#/definitions/IArticle"
+				},
+				"children": {
 					"type": "array",
 					"items": {
-						"type": "string"
+						"$ref": "#/definitions/IArticleTree"
 					}
 				}
 			},
 			"required": [
-				"email",
 				"name",
-				"phoneNumbers"
+				"article",
+				"children"
 			],
 			"type": "object"
 		}
@@ -84,9 +86,9 @@
 		}
 	},
 	"paths": {
-		"/Users/{id}": {
+		"/article/tree": {
 			"get": {
-				"operationId": "GetPrivateUser",
+				"operationId": "GetTree",
 				"produces": [
 					"application/json"
 				],
@@ -94,76 +96,12 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/User"
+							"$ref": "#/definitions/IArticleTree"
 						}
 					}
 				},
 				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"format": "double",
-						"type": "number"
-					},
-					{
-						"in": "header",
-						"name": "Authorization",
-						"required": true,
-						"type": "string"
-					}
-				]
-			}
-		},
-		"/Users": {
-			"post": {
-				"operationId": "CreateUser",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"201": {
-						"description": "Created"
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "requestBody",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/UserCreationRequest"
-						}
-					}
-				]
-			}
-		},
-		"/Users/other/{num}": {
-			"get": {
-				"operationId": "GetOtherUser",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/User"
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "num",
-						"required": true,
-						"format": "double",
-						"type": "number"
-					}
-				]
+				"parameters": []
 			}
 		}
 	},
