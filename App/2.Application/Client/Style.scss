@@ -1,4 +1,4 @@
-@import "../../1.Framework/Client/Style";
+@import "1.Framework/Client/Style";
 
 $fa-font-path: "font-awesome/fonts";
 @import "../../../node_modules/font-awesome/scss/font-awesome";
@@ -37,6 +37,40 @@ $fa-font-path: "font-awesome/fonts";
             animation-direction: $direction;
 }
 
-@import "./Container/Header/Header";
-@import "./Container/SideBar/SideBar";
+.is-primary{
+  /*! keep */
+}
+.is-link{
+  /*! keep */
+}
+.is-info{
+  /*! keep */
+}
+.is-success{
+  /*! keep */
+}
+.is-warning{
+  /*! keep */
+}
+.is-danger{
+  /*! keep */
+}
+
+.is-small{
+  /*! keep */
+}
+.is-medium{
+  /*! keep */
+}
+.is-large{
+  /*! keep */
+}
+
+.is-outlined{
+  /*! keep */
+}
+.is-loading{
+  /*! keep */
+}
+
 @import "./Container/Container";

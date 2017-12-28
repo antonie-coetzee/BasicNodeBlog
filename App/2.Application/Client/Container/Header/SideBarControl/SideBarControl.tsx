@@ -3,13 +3,11 @@ import {observer} from "mobx-react"
 import {injectable, interfaces} from "inversify";
 import * as classNames from "classnames"
 
-import {ISideBarService,ISideBarServiceKey} from "../../SideBar/ISideBarService"
+import { ISideBarService, ISideBarServiceKey } from "2.Application/Client/Container/SideBar/Service/ISideBarService";
 
 import {ISideBarControl} from "./ISideBarControl"
 
 import style from "Style.sass"
-
-import { IArticleTreeService, IArticleTreeServiceKey } from "../../../../Common/Services/ArticleTree/IArticleTreeService";
 
 @observer
 @injectable()
@@ -18,17 +16,8 @@ export class SideBarControl extends React.Component<any, any> implements ISideBa
     @lazyInject(ISideBarServiceKey)
     public SideBarService : ISideBarService;
 
-    @lazyInject(IArticleTreeServiceKey)
-    public articleTreeService : IArticleTreeService;
-
     constructor(props) {
         super(props);
-    }
-
-    public articleTree(){
-        console.log("hallo");
-        let tree = this.articleTreeService.GetArticleTree();
-        console.log(tree);
     }
 
     render() {
@@ -37,8 +26,7 @@ export class SideBarControl extends React.Component<any, any> implements ISideBa
                                 {[style.fadeLeft]:this.SideBarService.currentVisible})}> 
                     <a className={classNames(style.isPrimary, style.isPaddingless)}
                                 onClick={()=>{
-                                    //this.SideBarService.ToggleVisible();
-                                    this.articleTree();
+                                    this.SideBarService.ToggleVisible();
                                     }}>
                         <span className={classNames(style.icon)}>
                             <i className={classNames(

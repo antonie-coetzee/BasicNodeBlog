@@ -11,29 +11,29 @@ import style from "Style.sass"
 export class MenuBar extends React.Component<any, any> implements IMenuBar  {
 
     render() {
-        return <header className={classNames(style.nav, style.removeBoxShadow)}>
+        return <header className={classNames(style.navbar, style.removeBoxShadow)}>
                     <div className={style.container}>
-                        <div className={style.navLeft}>
-                            <a className={classNames(style.isPrimary, style.navItem)}>
-                                <span className={classNames(style.icon)}>
-                                    <i className={classNames(style.fa, style.faGithubSquare, style.isSize3)}></i>
+                        <div className={style.navbarStart}>
+                            <a className={classNames(style.isPrimary, style.navbarItem)}>
+                                <span className={classNames(style.icon, style.hvrSink, style.isSize2)}>
+                                    <i className={classNames(style.fa, style.faGithubSquare)}></i>
                                 </span>
                             </a>
-                            <a className={classNames(style.isPrimary, style.navItem, style.isPaddingless)}>
-                                <span className={classNames(style.icon)}>
-                                    <i className={classNames(style.fa, style.faLinkedinSquare, style.isSize3)}></i>
+                            <a className={classNames(style.isPrimary, style.navbarItem)}>
+                                <span className={classNames(style.icon, style.hvrSink)}>
+                                    <i className={classNames(style.fa, style.faLinkedinSquare, style.isSize2)}></i>
                                 </span>
                             </a> 
-                            <a className={classNames(style.isPrimary, style.navItem)}>
-                                <span className={classNames(style.icon)}>
-                                    <i className={classNames(style.fa, style.faTwitterSquare, style.isSize3)}></i>
+                            <a className={classNames(style.isPrimary, style.navbarItem)}>
+                                <span className={classNames(style.icon, style.hvrSink)}>
+                                    <i className={classNames(style.fa, style.faTwitterSquare, style.isSize2)}></i>
                                 </span>
                             </a>                                                                                        
                         </div>
-                        <div className="nav-right nav-menu">                   
-                            <span className="nav-item">
+                        <div className={classNames(style.navbarEnd)}>                   
+                            <span className={classNames(style.navbarItem)}>
                                 <p className={classNames(style.control, style.hasIconsLeft)}>
-                                    <input className={style.input} type="text" placeholder="search"></input>
+                                    <input className={classNames(style.input,style.isPrimary, style.isRounded)} type="text" placeholder="search"></input>
                                     <span className={classNames(style.icon, style.isSmall, style.isLeft)}>
                                         <i className={classNames(style.fa, style.faSearch)}></i>
                                     </span>

@@ -17,7 +17,7 @@ class ClientRoutingMiddleware implements IMiddleware {
         this.handlers = [ function(req, res, next){
             var pathname = req.baseUrl;
             if (pathname.indexOf('/api/') >= 0){
-                next();
+                next(); //ignore api endpoint
             }else{
                 res.sendFile(dir + '/index.html');
             }          

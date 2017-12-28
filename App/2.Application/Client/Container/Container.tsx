@@ -5,18 +5,19 @@ import * as classNames from "classnames";
 import * as slideOut from "slideout"
 import * as MediaQuery from "react-responsive"
 
-import {IContainer} from "../../../1.Framework/Client/Container/IContainer"
-import {IResponsiveService, IResponsiveServiceKey} from "../../../1.Framework/Client/Lib/Responsive/IResponsiveService"
-import {IHeader, IHeaderKey} from "../../../1.Framework/Client/Container/Header/IHeader"
-import {ISideBar, ISideBarKey} from "../../../1.Framework/Client/Container/SideBar/ISideBar"
-import {IContent, IContentKey} from "../../../1.Framework/Client/Container/Content/IContent"
+import {IContainer} from "1.Framework/Client/Container/IContainer"
+import {IResponsiveService, IResponsiveServiceKey} from "1.Framework/Client/Lib/Responsive/IResponsiveService"
+import {IHeader, IHeaderKey} from "1.Framework/Client/Container/Header/IHeader"
+import {ISideBar, ISideBarKey} from "1.Framework/Client/Container/SideBar/ISideBar"
+import {IContent, IContentKey} from "1.Framework/Client/Container/Content/IContent"
 
-import {ILoggerKey, ILogger} from "../../../1.Framework/Common/Services/Logging/ILogger"
+import {ILoggerKey, ILogger} from "1.Framework/Common/Services/Logging/ILogger"
 
-import {ContainerDesktop} from "./ContainerDesktop"
-import {ContainerMobile} from "./ContainerMobile"
 
 import style from "Style.sass"
+
+import { IDesktopContainerKey, IDesktopContainer } from "2.Application/Client/Container/Device/IDesktopContainer";
+import { IMobileContainerKey, IMobileContainer } from "2.Application/Client/Container/Device/IMobileContainer";
 
 @observer
 @injectable()
@@ -25,35 +26,19 @@ export default class Container extends React.Component<any, any> implements ICon
     @lazyInject(IResponsiveServiceKey)
     public ResponsiveService : IResponsiveService;
 
-    @lazyInject(IHeaderKey)
-    public Header : interfaces.Newable<IHeader>;
+    @lazyInject(IDesktopContainerKey)
+    public DesktopContainer : interfaces.Newable<IDesktopContainer>;
 
-    @lazyInject(ISideBarKey)
-    public SideBar : interfaces.Newable<ISideBar>;
-
-    @lazyInject(IContentKey)
-    public Content : interfaces.Newable<IContent>;
-
-    @lazyInject(ILoggerKey)
-    public logger:ILogger
+    @lazyInject(IMobileContainerKey)
+    public MobileContainer : interfaces.Newable<IMobileContainer>;    
 
     render() {
         return <div>    
                     {(this.ResponsiveService.IsTablet || this.ResponsiveService.IsMobile) &&
-                        <ContainerMobile 
-                            Content={this.Content} 
-                            Header={this.Header}
-                            Logger={this.logger}
-                            SideBar={this.SideBar}>
-                        </ContainerMobile>
+                        <this.MobileContainer />
                     }
                     {this.ResponsiveService.IsDesktop &&
-                        <ContainerDesktop
-                            Content={this.Content} 
-                            Header={this.Header}
-                            Logger={this.logger}
-                            SideBar={this.SideBar}>
-                        </ContainerDesktop>
+                        <this.DesktopContainer />
                     }                
                 </div> 
     } 

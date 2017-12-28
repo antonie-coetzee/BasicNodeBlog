@@ -1,5 +1,3 @@
-import "./Controllers/AboutController"
-
 import { decorate, injectable, inject, Container, interfaces} from "inversify";
 import {Router} from "express";
 import {IApiModule} from "../../../1.Framework/Server/Api/IApiModule"

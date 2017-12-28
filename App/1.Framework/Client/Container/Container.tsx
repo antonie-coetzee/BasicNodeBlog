@@ -5,6 +5,7 @@ import {IContainer} from "./IContainer"
 import {IHeader, IHeaderKey} from "./Header/IHeader"
 import {ISideBar, ISideBarKey} from "./SideBar/ISideBar"
 import {IContent, IContentKey} from "./Content/IContent"
+import {IFooter, IFooterKey} from "./Footer/IFooter"
 
 import {ILoggerKey, ILogger} from "../../../1.Framework/Common/Services/Logging/ILogger"
 
@@ -22,6 +23,9 @@ export class Container extends React.PureComponent<any, any> implements IContain
     @lazyInject(IContentKey)
     public Content : interfaces.Newable<IContent>;
 
+    @lazyInject(IFooterKey)
+    public Footer : interfaces.Newable<IFooter>;
+
     @lazyInject(ILoggerKey)
     public logger:ILogger
 
@@ -38,6 +42,7 @@ export class Container extends React.PureComponent<any, any> implements IContain
                     </div>
                 </div>
             </div>
+            <this.Footer />
         </div>
     }
 }

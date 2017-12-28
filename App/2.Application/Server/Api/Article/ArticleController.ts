@@ -19,6 +19,7 @@ export class ArticleController extends Controller implements IArticleController 
     @Get('tree')
     public async getTree(): Promise<IArticleTree> {
         this.logger.Debug("returning article tree")
+        console.log("hallo");
         return this.articleTreeService.GetArticleTree();
     }
 }

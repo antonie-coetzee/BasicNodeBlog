@@ -31,7 +31,7 @@ if (shell.exec('tsoa swagger').code !== 0) {
 
 let tsoaConf = require('../tsoa.json')
 let sourceSpecPath = tsoaConf.swagger.outputDirectory + '/swagger.json'
-let distSpecDir = destDir + '/2.Application/Server/Middleware/SwaggerUI/'
+let distSpecDir = destDir + '/App/2.Application/Server/Middleware/SwaggerUI/'
 console.log('source swagger spec path: ' + sourceSpecPath);
 console.log('copying to Dist directory: ' + distSpecDir);
 mkdirp.sync(distSpecDir);
@@ -58,5 +58,18 @@ if (shell.exec(cmd).code !== 0) {
     shell.echo('Error: expressjs route generation failed');
     shell.exit(1);
 }
+console.log('updating basepath of generated API clinet');
+let apiFile = outputPath + "/api.ts";
+fs.readFile(apiFile, 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("updating...");
+    var result = data.replace('https://localhost:8080/api/v1', 'http://localhost:8080/api/v1');
+  
+    fs.writeFile(apiFile, result, 'utf8', function (err) {
+       if (err) return console.log(err);
+    });
+  });
 
 console.log('prebuild complete');

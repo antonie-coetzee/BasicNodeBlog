@@ -9,20 +9,25 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const Visualizer = require('webpack-visualizer-plugin');
 
+let workingDir = __dirname.includes("Dist") ? path.resolve(__dirname,'../')  : __dirname;
+
 module.exports = {
     devtool: 'source-map',
-    entry: {
-        client: path.resolve(__dirname, './App/Client.tsx')
-    },
+    entry: [
+        path.resolve(workingDir, './App/Client.tsx'),  'webpack-hot-middleware/client?reload=true'
+    ],
     output: {
         filename: '[name].chunk.[chunkhash].js',
         chunkFilename: '[name].chunk.[chunkhash].js',
-        path: path.resolve(__dirname, './Dist/Public/'),
+        path: path.resolve(workingDir, './Dist/Public/'),
         pathinfo: true
     },
     resolve: {
         extensions: ['.ts', '.js', '.tsx', 'd.ts'],
-        modules: [path.resolve(__dirname,'./App'), path.resolve(__dirname,'./node_modules')]
+        modules: [path.resolve(workingDir,'./App'), path.resolve(workingDir,'./node_modules')],
+        alias: {
+            bulma: path.resolve(workingDir, './node_modules/bulma')
+        },
     },   
     devServer: {
         historyApiFallback: true
@@ -55,23 +60,23 @@ module.exports = {
             test: /\.tsx?$/, 
             loader: 'ts-loader', 
             options: {
-            logInfoToStdOut: true
+                logInfoToStdOut: true
             }, 
             exclude: [/node_modules/]
         },
         {
             test: /\.css$/,
-            use: ExtractTextPlugin.extract({
+            use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
                         use: [
                             { 
                                 loader: 'css-loader'
                             }
                         ]
-                    })
+                    }))
         },        
         {
             test: /\.(sass|scss)$/,
-            use: ExtractTextPlugin.extract({
+            use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
                         use: [
                             { 
                                 loader: 'typings-for-css-modules-loader', 
@@ -84,15 +89,16 @@ module.exports = {
                                 loader: 'sass-loader' 
                             }
                         ]
-                    })
+                    }))
         }       
       ]
     },
     plugins: [
-        new ExtractTextPlugin('styles.[contenthash].css'),
+        new ExtractTextPlugin('styles.css'),
         new Visualizer({
-            filename: './statistics.html'
+            filename: 'statistics.html'
         }),
+        new webpack.HotModuleReplacementPlugin(),
         // new BundleAnalyzerPlugin({
         //     analyzerMode: 'static'
         // }),        
@@ -102,7 +108,7 @@ module.exports = {
             ]),  
         new CommonsChunkPlugin({
             name: 'common',
-            filename: 'common.chunk.[chunkhash].js',
+            filename: 'common.chunk.[hash].js',
             minChunks(module, count) {
                 var context = module.context;
                 return context && context.indexOf('node_modules') >= 0;}
