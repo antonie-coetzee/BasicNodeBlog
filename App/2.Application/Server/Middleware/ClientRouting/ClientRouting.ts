@@ -1,8 +1,8 @@
 import { injectable, inject} from "inversify";
-import {ILogger, ILoggerKey} from "../../../../1.Framework/Common/Services/Logging/ILogger"
+import {ILogger, ILoggerKey} from "1.Framework/Common/Services/Logging/ILogger"
 import {RequestHandler}  from "express";
 import * as path from "path";
-import {IMiddleware} from "../../../../1.Framework/Server/Middleware/IMiddleware"
+import {IMiddleware} from "1.Framework/Server/Middleware/IMiddleware"
 
 @injectable()
 class ClientRoutingMiddleware implements IMiddleware {

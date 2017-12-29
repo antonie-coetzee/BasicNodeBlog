@@ -7,23 +7,26 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug Server",
-            "program": "${workspaceRoot}/App/Server.ts",
+            "name": "Debug Application",
+            "program": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
             "cwd": "${workspaceRoot}",
             "outFiles": ["${workspaceRoot}/Dist/**"],
             "skipFiles": [ "${workspaceRoot}/node_modules/**/*.js"],
             "sourceMaps": true,
             "stopOnEntry": false,
             "smartStep": true,
+            "restart": true,
             "console": "integratedTerminal",
+            "protocol": "inspector",
+            "port": 5858,
             "args": [],
-            "preLaunchTask": "server build",
             "runtimeExecutable": null,
             "env": {
+                "NODE_PATH":"./Dist/App",
                 "NODE_ENV": "development",
                 "DEBUG": "express:*"
             }
-        },  
+        },         
         {
         "name": "Debug Jest",
         "type": "node",
@@ -41,12 +44,6 @@
         "protocol": "inspector",
         "smartStep": true,
         "console": "integratedTerminal"
-        },      
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach to Process",
-            "port": 5858
-        }
+        }     
     ]
 }

@@ -2,6 +2,7 @@
 import { interfaces } from "inversify";
 import { Controller, ValidateParam, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
 import { IArticleController, IArticleControllerKey } from './Article/IArticleController';
+import { IContentController, IContentControllerKey } from './Content/IContentController';
 
 const models: TsoaRoute.Models = {
     "IMetaHeader": {
@@ -46,6 +47,23 @@ export function RegisterRoutes(app: any, iocContainer: interfaces.Container) {
             const controller = iocContainer.get<IArticleController>(IArticleControllerKey);
 
             const promise = controller.getTree.apply(controller, validatedArgs);
+            promiseHandler(controller, promise, response, next);
+        });
+    app.get('/api/v1/content/update',
+        function(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = iocContainer.get<IContentController>(IContentControllerKey);
+
+            const promise = controller.doUpdate.apply(controller, validatedArgs);
             promiseHandler(controller, promise, response, next);
         });
 

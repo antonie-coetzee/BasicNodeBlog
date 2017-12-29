@@ -1,7 +1,7 @@
 {
-    "ignore": ["**/*.test.ts", "**/*.spec.ts", ".git", "node_modules"],
+    "ignore": ["**/*.test.ts", "**/*.spec.ts", ".git", "node_modules", "**/swagger.json"],
     "watch": ["App/1.Framework/Server/*","App/2.Application/Server/*"],
-    "exec": "npm run dev-start",
+    "exec": "npm run start-dev",
     "ext": "ts",
     "verbose": true,
     "env": {

@@ -1,6 +1,6 @@
 import "reflect-metadata";
 
-import {IServerApplication, IServerApplicationKey} from "../../../0.Bootstrap/Common/Application/IServerApplication"
+import {IServerApplication, IServerApplicationKey} from "0.Bootstrap/Common/Application/IServerApplication"
 import {IExpressApplication, IExpressApplicationKey} from "./IExpressApplication"
 import {injectable, inject, Container, interfaces,multiInject} from "inversify";
 import {ILogger, ILoggerKey} from "../../Common/Services/Logging/ILogger"

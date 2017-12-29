@@ -7,11 +7,13 @@
     "build-prod": "./node_modules/.bin/webpack --config ./webpack.client.config.prod.js --progress",
     "build-dev": "./node_modules/.bin/webpack --config ./webpack.client.config.js --progress",
     "build-server": "node ./Scripts/prebuild.js && tsc",
-    "start": "./node_modules/.bin/webpack-dev-server --config ./webpack.client.config.dev.js --host 0.0.0.0 --public 192.168.1.74:8080 -d --content-base dist/public --progress --inline",
-    "dev": "node ./node_modules/nodemon/bin/nodemon.js --delay 3",
-    "dev-start": "./node_modules/.bin/ts-node App/Server.ts",
+    
+    "start": "node ./node_modules/nodemon/bin/nodemon.js --delay 3",
+    "start-dev": "./node_modules/.bin/ts-node --inspect=5858 --debug App/Server.ts",
+    
     "pretest": "npm run build-server",
     "test": "jest",
+    
     "update-snapshots": "jest --updateSnapshot",
     "preinstall": "node ./Scripts/preinstall.js",
     "prebuild": "node ./Scripts/prebuild.js"
@@ -70,6 +72,7 @@
     "@types/jest": "^19.2.4",
     "@types/morgan": "^1.7.32",
     "@types/node": "^7.0.39",
+    "@types/nodegit": "^0.18.5",
     "@types/react": "^16.0.20",
     "@types/react-dom": "^16.0.2",
     "@types/react-responsive": "^1.1.8",
@@ -96,6 +99,7 @@
     "md5-file": "^3.2.3",
     "mobx-react-devtools": "^4.2.15",
     "node-sass": "^4.5.3",
+    "nodegit": "^0.20.3",
     "nodemon": "^1.14.3",
     "react-markdown": "^2.4.5",
     "sass-loader": "^6.0.6",

@@ -5,7 +5,7 @@ import { IMetaHeader } from "../../../../Common/Domain/IMetaHeader"
 import { ExtractMetaHeader } from "./ExtractMetaHeader"
 import { IArticle } from "../../../../Common/Domain/IArticle"
 import { IConfig, IConfigKey } from "../../../../../1.Framework/Server/Config/IConfig"
-import { ILogger, ILoggerKey } from "../../../../../1.Framework/Common/Services/Logging/ILogger"
+import { ILogger, ILoggerKey } from "1.Framework/Common/Services/Logging/ILogger"
 import { Article } from "./Article"
 
 import * as dirtree from "directory-tree"
@@ -77,17 +77,23 @@ export class ArticleTreeService implements IArticleTreeService {
                 throw "article doesn't have a parent directory"
             }
             const ext = PATH.extname(path).toLowerCase();
-            if (ext != ".md") {
+            let rootDirName = PATH.basename(basePath);
+            let pathParent = PATH.basename(PATH.dirname(path));        
+            if (ext != ".md" || pathParent == rootDirName || path.includes(".git")) {
                 return;
             }
             let article = new Article();
             article.metaHeader = await this.readMetaHeader(path);
+            article.path = path;
             article.hash = await md5File(path);
             article.title = article.metaHeader.title ? article.metaHeader.title : parent.name; 
             parent.article = article;
             parent.name = null; // redundant, container for the article with title
             parent.children = null;
         } else if (stats.isDirectory()) {
+            if (path.includes(".git")) {
+                return;
+            }            
             const item = new ArticleTree();
             item.name = PATH.basename(path);
             item.article = null;

@@ -103,6 +103,24 @@
 				"security": [],
 				"parameters": []
 			}
+		},
+		"/content/update": {
+			"get": {
+				"operationId": "DoUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
 		}
 	},
 	"produces": [

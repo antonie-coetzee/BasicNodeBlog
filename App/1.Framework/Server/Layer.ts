@@ -1,4 +1,4 @@
-import layer from '../../0.Bootstrap/Server/Layer'
+import layer from '0.Bootstrap/Server/Layer'
 import {Container, interfaces} from "inversify"
 import * as express from "express";
 
@@ -15,7 +15,7 @@ import {LoggerFactory} from "../Server/Lib/Logging/LoggerFactory"
 import {IExpressApplication,IExpressApplicationKey} from "./Application/IExpressApplication"
 import {ExpressApplication} from "./Application/ExpressApplication"
 
-import  {IServerApplication,IServerApplicationKey} from "../../0.Bootstrap/Common/Application/IServerApplication"
+import  {IServerApplication,IServerApplicationKey} from "0.Bootstrap/Common/Application/IServerApplication"
 import  {ServerApplication} from "./Application/ServerApplication"
 
 layer.AddLayer((container)=>{

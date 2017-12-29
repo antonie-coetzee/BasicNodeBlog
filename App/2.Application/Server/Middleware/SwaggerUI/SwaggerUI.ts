@@ -1,8 +1,8 @@
 import { injectable, inject, interfaces} from "inversify";
-import {ILogger, ILoggerKey} from "../../../../1.Framework/Common/Services/Logging/ILogger"
+import {ILogger, ILoggerKey} from "1.Framework/Common/Services/Logging/ILogger"
 import {RequestHandler}  from "express";
 import * as express from "express";
-import {IMiddleware} from "../../../../1.Framework/Server/Middleware/IMiddleware"
+import {IMiddleware} from "1.Framework/Server/Middleware/IMiddleware"
 
 import * as ui from "swagger-ui-express"
 import * as swaggerDocument from "./swagger.json"

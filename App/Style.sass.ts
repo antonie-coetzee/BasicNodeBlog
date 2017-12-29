@@ -1549,7 +1549,8 @@ const enum StyleSass {
    "slideoutMenuRight" = "slideout-menu-right",
    "slideoutPanel" = "slideout-panel",
    "slideoutOpen" = "slideout-open",
-   "profileCard" = "profile-card",
+   "avatarContainer" = "avatar-container",
+   "avatar" = "avatar",
    "sectionAllEqual" = "section-all-equal",
 }
 export default StyleSass;

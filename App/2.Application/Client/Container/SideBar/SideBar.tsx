@@ -11,17 +11,18 @@ const profile = require('./profile.jpg')
 @injectable()
 export class SideBar extends React.Component<any, any> implements ISideBar  {
     render() {
-        return <aside className={style.menu}>
-          <div className={classNames(style.card, style.profileCard)}>
+        return <aside className={style.menu}>         
+        <div className={classNames(style.card, style.removeBoxShadow)}>
             <div className={style.cardImage}>
-              <figure className={classNames(style.image, style.is1by1)}>
-                <img src={profile} alt="Image"></img>
-              </figure>
+            <div className={classNames(style.avatarContainer)}>
+              <img src={profile} alt="Image" className={classNames(style.avatar, style.hasShadow)}></img>       
+            </div>  
             </div>
             <div className={style.cardContent}>
                 <p className={classNames(style.title, style.is6, style.hasTextCentered)}>Antonie Coetzee</p>             
             </div>
-          </div>          
+        </div>          
+         
         <p className="menu-label">
           Administration
         </p>
