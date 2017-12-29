@@ -54,3 +54,6 @@ App/2.Application/Client/Lib/Api/Generated*
 # Tools directory
 Tools
 
+#cache-loader
+.cache-loader
+

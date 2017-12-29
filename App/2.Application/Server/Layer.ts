@@ -17,4 +17,4 @@ layer.AddLayer((container)=>{
     container.bind<IContentService>(IContentServiceKey).to(ContentService)
 })
 
-export default layer;
+export default layer; 

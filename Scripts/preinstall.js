@@ -1,3 +1,4 @@
+var ProgressBar = require('progress');
 var fs = require("fs");
 var http = require("http");
 
@@ -13,8 +14,31 @@ if (!fs.existsSync(directory)){
 console.log("checking if swagger-codegen is present at: " + codegenFile);
 if (!fs.existsSync(codegenFile)) {
     console.log("not found, downloading");
-    var file = fs.createWriteStream("./Tools/swagger-codegen-cli.jar");
-    var request = http.get("http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.3/swagger-codegen-cli-2.2.3.jar", function(response) {
-      response.pipe(file);
-    }); 
+    let file = fs.createWriteStream("./Tools/swagger-codegen-cli.jar");
+    let request = http.get("http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.3/swagger-codegen-cli-2.2.3.jar", function(response) {
+      response.pipe(file);   
+    });
+    request.on('response', function(res){
+        var len = parseInt(res.headers['content-length'], 10);
+       
+        console.log();
+        var bar = new ProgressBar('  downloading [:bar] :rate/bps :percent :etas', {
+          complete: '=',
+          incomplete: ' ',
+          width: 20,
+          total: len
+        });
+       
+        res.on('data', function (chunk) {
+          bar.tick(chunk.length);
+        });
+       
+        res.on('end', function () {
+          console.log('\n');
+          console.log("swagger-codegen downloaded successfully, continuing");
+        });
+      });     
+      request.end();
+}else{
+    console.log("swagger-codegen present");
 }

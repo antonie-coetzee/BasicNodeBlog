@@ -1,5 +1,5 @@
 import AppContainer from '../Common/AppContainer/AppContainer'
 
-let appContainer = new AppContainer();
+let appContainer = new AppContainer(); 
 
-export default appContainer;
+export default appContainer; 

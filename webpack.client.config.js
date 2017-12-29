@@ -6,8 +6,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-
 const Visualizer = require('webpack-visualizer-plugin');
+
+var HappyPack = require('happypack');
+var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+var HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 let workingDir = __dirname.includes("Dist") ? path.resolve(__dirname,'../')  : __dirname;
 
@@ -58,10 +61,9 @@ module.exports = {
         },    
         { 
             test: /\.tsx?$/, 
-            loader: 'ts-loader', 
-            options: {
-                logInfoToStdOut: true
-            }, 
+            use:[
+                'happypack/loader?id=ts'
+            ],
             exclude: [/node_modules/]
         },
         {
@@ -94,6 +96,18 @@ module.exports = {
       ]
     },
     plugins: [
+        new HardSourceWebpackPlugin(),
+        new HappyPack({
+            id: 'ts',
+            threads: 2,
+            loaders: [
+                {
+                    path: 'ts-loader',
+                    query: { happyPackMode: true }
+                }
+            ]
+        }),       
+        new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true,tsconfig: workingDir +  "/tsconfig.json", workers : ForkTsCheckerWebpackPlugin.ONE_CPU}), 
         new ExtractTextPlugin('styles.css'),
         new Visualizer({
             filename: 'statistics.html'
@@ -102,7 +116,7 @@ module.exports = {
         // new BundleAnalyzerPlugin({
         //     analyzerMode: 'static'
         // }),        
-        new HtmlWebpackPlugin({hash:false, template:'App/Index.ejs'}),
+        new HtmlWebpackPlugin({hash:false, template: workingDir +'/App/Index.ejs'}),
         new webpack.WatchIgnorePlugin([
                 /sass\.ts$/
             ]),  

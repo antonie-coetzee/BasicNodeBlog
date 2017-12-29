@@ -10,9 +10,11 @@ import { Article } from "./Article"
 
 import * as dirtree from "directory-tree"
 import * as md5File from "md5-file/promise"
+import * as rel from "relative"
 import { Stats } from "fs"
 import * as FS from "fs"
 import * as PATH from "path"
+import * as UPATH from "upath"
 
 class ArticleTree implements IArticleTree {
     name: string;
@@ -84,7 +86,7 @@ export class ArticleTreeService implements IArticleTreeService {
             }
             let article = new Article();
             article.metaHeader = await this.readMetaHeader(path);
-            article.path = path;
+            article.path = rel.toBase(UPATH.normalize(basePath), UPATH.normalize(path));
             article.hash = await md5File(path);
             article.title = article.metaHeader.title ? article.metaHeader.title : parent.name; 
             parent.article = article;
