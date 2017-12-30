@@ -1,45 +1,45 @@
 import * as React from "react";
-import {injectable} from "inversify";
+import { observer } from "mobx-react";
+import { injectable, interfaces } from "inversify";
 import * as classNames from "classnames";
 
-import {ISideBar} from "../../../../1.Framework/Client/Container/SideBar/ISideBar"
+import { ISideBar } from "1.Framework/Client/Container/SideBar/ISideBar"
+import { ITagCloudKey, ITagCloud } from "2.Application/Client/Container/SideBar/TagCloud/ITagCloud";
+import { IArticleTreeServiceKey, IArticleTreeService } from "2.Application/Common/Services/ArticleTree/IArticleTreeService";
+import { IAvatar, IAvatarKey } from "2.Application/Client/Container/SideBar/Avatar/IAvatar";
+import { IMenuKey, IMenu } from "2.Application/Client/Container/SideBar/Menu/IMenu";
 
 import style from "Style.sass"
 
 const profile = require('./profile.jpg')
 
+@observer
 @injectable()
-export class SideBar extends React.Component<any, any> implements ISideBar  {
+export class SideBar extends React.Component implements ISideBar  {
+
+    @lazyInject(IArticleTreeServiceKey)
+    public articleTreeService : IArticleTreeService;
+
+    @lazyInject(IAvatarKey)
+    public Avatar : interfaces.Newable<IAvatar>;
+
+    @lazyInject(IMenuKey)
+    public Menu : interfaces.Newable<IMenu>;
+
+    @lazyInject(ITagCloudKey)
+    public TagCloud : interfaces.Newable<ITagCloud>;    
+
+    componentWillMount(){
+      this.articleTreeService.GetArticleTree();
+    }
+
     render() {
-        return <aside className={style.menu}>         
-        <div className={classNames(style.card, style.removeBoxShadow)}>
-            <div className={style.cardImage}>
-            <div className={classNames(style.avatarContainer)}>
-              <img src={profile} alt="Image" className={classNames(style.avatar, style.hasShadow)}></img>       
-            </div>  
-            </div>
-            <div className={style.cardContent}>
-                <p className={classNames(style.title, style.is6, style.hasTextCentered)}>Antonie Coetzee</p>             
-            </div>
-        </div>          
-         
-        <p className="menu-label">
-          Administration
-        </p>
-        <ul className="menu-list">
-          <li><a>Team Settings</a></li>
-          <li>
-            <a className="is-active">Manage Your Team</a>
-            <ul>
-              <li><a>Members</a></li>
-              <li><a>Plugins</a></li>
-              <li><a>Add a member</a></li>
-            </ul>
-          </li>
-          <li><a>Invitations</a></li>
-          <li><a>Cloud Storage Environment Settings</a></li>
-          <li><a>Authentication</a></li>
-        </ul>
-      </aside>
+      return <aside className={style.menu}>         
+                <this.Avatar imageSrc={profile} />    
+                <hr/>
+                <this.Menu />
+                <hr/>
+                <this.TagCloud maxTags={10} tagCloud={this.articleTreeService.tagCloud} />
+              </aside>
     }
 }

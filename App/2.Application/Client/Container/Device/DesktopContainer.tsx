@@ -33,8 +33,8 @@ export class DesktopContainer extends React.Component implements IDesktopContain
     public logger:ILogger
 
     render() {
-        return <div className={classNames(style.container)}>    
-                    <this.Header MenubarVisible={true}/>
+        return <div className={classNames(style.container)}>  
+                    <this.Header MenubarVisible={true}/> 
                     <div className={classNames(style.sectionAllEqual)}>          
                         <div className={classNames(style.columns)}>
                             <div className={classNames(style.column, style.isOneQuarter)}>

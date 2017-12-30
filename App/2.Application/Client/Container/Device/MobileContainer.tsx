@@ -7,7 +7,7 @@ import * as classNames from "classnames";
 import {IContainer} from "1.Framework/Client/Container/IContainer"
 import {IHeader, IHeaderKey} from "1.Framework/Client/Container/Header/IHeader"
 import {ISideBar, ISideBarKey} from "1.Framework/Client/Container/SideBar/ISideBar"
-import { ISideBarServiceKey, ISideBarService } from "2.Application/Client/Container/SideBar/Service/ISideBarService";
+import { ISideBarServiceKey, ISideBarService } from "2.Application/Client/Lib/Services/SideBar/ISideBarService";
 import {IResponsiveService, IResponsiveServiceKey} from "1.Framework/Client/Lib/Responsive/IResponsiveService"
 import {IContent, IContentKey} from "1.Framework/Client/Container/Content/IContent"
 import {ILoggerKey, ILogger} from "1.Framework/Common/Services/Logging/ILogger"

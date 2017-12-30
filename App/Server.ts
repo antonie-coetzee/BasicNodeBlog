@@ -1,3 +1,4 @@
+import 'es6-map/implement'
 import layer from "./2.Application/Server/Layer"
 
 import {interfaces} from "inversify"

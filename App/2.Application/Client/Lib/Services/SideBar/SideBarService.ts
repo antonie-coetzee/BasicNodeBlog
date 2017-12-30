@@ -6,8 +6,6 @@ import { IArticleTree } from "2.Application/Common/Services/ArticleTree/IArticle
 
 @injectable()
 export class SideBarService implements ISideBarService  {
-    @observable
-    public articleTree:IArticleTree
     
     @observable
     public visible:boolean = false;

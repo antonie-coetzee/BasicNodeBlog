@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom'
 import {injectable, interfaces} from "inversify";
 import * as classNames from "classnames"
 
-import {IResponsiveService, IResponsiveServiceKey} from "../../../../1.Framework/Client/Lib/Responsive/IResponsiveService"
-import {IHeader} from "../../../../1.Framework/Client/Container/Header/IHeader"
+import {IResponsiveService, IResponsiveServiceKey} from "1.Framework/Client/Lib/Responsive/IResponsiveService"
+import {IHeader} from "1.Framework/Client/Container/Header/IHeader"
 import {IMenuBar,IMenuBarKey} from "./MenuBar/IMenuBar" 
 import {ISideBarControl, ISideBarControlKey} from "./SideBarControl/ISideBarControl"
 

@@ -23,13 +23,19 @@ class ArticleTree implements IArticleTree {
 }
 
 @injectable()
-export class ArticleTreeService implements IArticleTreeService {
+export class ArticleTreeService implements IArticleTreeService { 
+    articleTree: IArticleTree;
+    tagCloud: Map<string, number>;
 
     constructor(
         @inject(IConfigKey) private config: IConfig,
         @inject(ILoggerKey) private logger: ILogger) { }
 
     public async GetArticleTree(): Promise<IArticleTree> {
+        if(!FS.existsSync(this.config.contentLocalPath)){
+            throw "content directory does not exists";
+        }
+
         const cachedTreePath = PATH.join(this.config.contentLocalPath, "cached.json");
         // use precached tree if exist
         if (FS.existsSync(cachedTreePath)) {

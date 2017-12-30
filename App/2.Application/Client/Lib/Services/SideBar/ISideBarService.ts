@@ -4,7 +4,6 @@ export interface ISideBarService{
     visible:boolean;
     currentVisible:boolean;
     ToggleVisible() : void;
-    articleTree:IArticleTree;
 }
 
 export let ISideBarServiceKey = "ISideBarService";

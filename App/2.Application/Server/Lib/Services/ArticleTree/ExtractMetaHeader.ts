@@ -10,6 +10,7 @@ export class ExtractMetaHeader{
             throw new Error("meta header not present");
         }
         let metaHeaderJson = JSON.parse(matchResult[1]);
+        metaHeaderJson.tags = metaHeaderJson.tags.split(" ");
         return metaHeaderJson as IMetaHeader;
     }
 }

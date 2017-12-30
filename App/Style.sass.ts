@@ -1551,6 +1551,7 @@ const enum StyleSass {
    "slideoutOpen" = "slideout-open",
    "avatarContainer" = "avatar-container",
    "avatar" = "avatar",
+   "tagCloud" = "tag-cloud",
    "sectionAllEqual" = "section-all-equal",
 }
 export default StyleSass;

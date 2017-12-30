@@ -3,7 +3,7 @@ import {observer} from "mobx-react"
 import {injectable, interfaces} from "inversify";
 import * as classNames from "classnames"
 
-import { ISideBarService, ISideBarServiceKey } from "2.Application/Client/Container/SideBar/Service/ISideBarService";
+import { ISideBarService, ISideBarServiceKey } from "2.Application/Client/Lib/Services/SideBar/ISideBarService";
 
 import {ISideBarControl} from "./ISideBarControl"
 
