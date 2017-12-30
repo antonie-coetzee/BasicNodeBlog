@@ -8,17 +8,8 @@ import Container from '2.Application/Client/Container/Container';
 import { SidebarModule } from '2.Application/Client/Container/SideBar/SideBarModule';
 import { ServicesModule } from '2.Application/Client/Lib/Services/ServicesModule';
 
-import {IHeader, IHeaderKey} from "1.Framework/Client/Container/Header/IHeader"
-import {Header} from "./Container/Header/Header"
-
 import { IFooter, IFooterKey } from '1.Framework/Client/Container/Footer/IFooter';
 import { Footer } from '2.Application/Client/Container/Footer/Footer';
-
-import {IMenuBar,IMenuBarKey} from "./Container/Header/MenuBar/IMenuBar"
-import {MenuBar} from "./Container/Header/MenuBar/MenuBar"
-
-import {ISideBarControl, ISideBarControlKey} from "./Container/Header/SideBarControl/ISideBarControl"
-import {SideBarControl} from "./Container/Header/SideBarControl/SideBarControl"
 
 import {IContent, IContentKey} from "1.Framework/Client/Container/Content/IContent"
 import {Content} from "./Container/Content/Content"
@@ -28,15 +19,11 @@ import { IDesktopContainer, IDesktopContainerKey } from '2.Application/Client/Co
 import { DesktopContainer } from '2.Application/Client/Container/Device/DesktopContainer';
 import { IMobileContainer, IMobileContainerKey } from '2.Application/Client/Container/Device/IMobileContainer';
 import { MobileContainer } from '2.Application/Client/Container/Device/MobileContainer';
+import { HeaderModule } from '2.Application/Client/Container/Header/HeaderModule';
 
 layer.AddLayer((container)=>{
     container.load(ServicesModule);
-
-    container.bind<IMenuBar>(IMenuBarKey).toConstructor(MenuBar);
-
-    container.bind<IHeader>(IHeaderKey).toConstructor(Header);
-    container.bind<ISideBarControl>(ISideBarControlKey).toConstructor(SideBarControl);
-
+    container.load(HeaderModule);
     container.bind<IFooter>(IFooterKey).toConstructor(Footer);
 
     container.bind<IContent>(IContentKey).toConstructor(Content);
