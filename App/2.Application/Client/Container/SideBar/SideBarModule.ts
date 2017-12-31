@@ -15,11 +15,15 @@ import { Menu } from '2.Application/Client/Container/SideBar/Menu/Menu';
 import { IBlogMenu, IBlogMenuKey } from '2.Application/Client/Container/SideBar/Menu/BlogMenu/IBlogMenu';
 import { BlogMenu } from '2.Application/Client/Container/SideBar/Menu/BlogMenu/BlogMenu';
 
+import { IArticleNode, IArticleNodeKey } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/ArticleNode/IArticleNode";
+import { ArticleNode } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/ArticleNode/ArticleNode";
+
 export let SidebarModule = new ContainerModule(
     (bind: interfaces.Bind)=>{       
         bind<ISideBar>(ISideBarKey).toConstructor(SideBar);
         bind<ITagCloud>(ITagCloudKey).toConstructor(TagCloud);
         bind<IAvatar>(IAvatarKey).toConstructor(Avatar);
         bind<IMenu>(IMenuKey).toConstructor(Menu);
-        bind<IBlogMenu>(IBlogMenuKey).toConstructor(BlogMenu);        
+        bind<IBlogMenu>(IBlogMenuKey).toConstructor(BlogMenu);
+        bind<IArticleNode>(IArticleNodeKey).toConstructor(ArticleNode);          
     });

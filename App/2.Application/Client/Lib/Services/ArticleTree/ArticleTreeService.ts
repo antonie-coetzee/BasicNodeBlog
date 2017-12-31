@@ -6,6 +6,7 @@ import { IMetaHeader } from "../../../../Common/Domain/IMetaHeader"
 import { IArticle } from "../../../../Common/Domain/IArticle"
 import { ILogger, ILoggerKey } from "../../../../../1.Framework/Common/Services/Logging/ILogger"
 import { ApiWrapperKey, ApiWrapper } from "../../Api/ApiWrapper";
+import { observer } from "mobx-react";
 
 @injectable()
 export class ArticleTreeService implements IArticleTreeService {
@@ -14,6 +15,7 @@ export class ArticleTreeService implements IArticleTreeService {
 
     constructor(@inject(ILoggerKey) private logger: ILogger,
                 @inject(ApiWrapperKey) private apiWrapper: ApiWrapper) {
+                    this.articleTree = {name:"loading", article:null, children:null};
     }
 
     @action

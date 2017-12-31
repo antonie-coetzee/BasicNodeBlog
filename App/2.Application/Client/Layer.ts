@@ -25,13 +25,10 @@ layer.AddLayer((container)=>{
     container.load(ServicesModule);
     container.load(HeaderModule);
     container.bind<IFooter>(IFooterKey).toConstructor(Footer);
-
     container.bind<IContent>(IContentKey).toConstructor(Content);
-
     container.bind<IContainer>(IContainerKey).toConstructor(Container);
     container.bind<IDesktopContainer>(IDesktopContainerKey).toConstructor(DesktopContainer);
     container.bind<IMobileContainer>(IMobileContainerKey).toConstructor(MobileContainer);
-
     container.load(SidebarModule);
 /*
     // async binding and import example

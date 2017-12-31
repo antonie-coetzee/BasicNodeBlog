@@ -14,7 +14,7 @@ export class ResponsiveService implements IResponsiveService {
     public IsDesktop:boolean;
 
     constructor() {
-        const desktopQuery = window.matchMedia("(min-width: 1025px)");
+        const desktopQuery = window.matchMedia("(min-width: 1026px)");
         desktopQuery.addListener(this.DesktopListener.bind(this));
         this.DesktopListener(desktopQuery);
 

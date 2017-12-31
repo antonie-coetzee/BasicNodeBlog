@@ -1,4 +1,5 @@
 import * as React from "react";
+import { observer } from "mobx-react";
 import { injectable, interfaces } from "inversify";
 import * as classNames from "classnames";
 
@@ -7,8 +8,8 @@ import { IBlogMenuKey, IBlogMenu } from "2.Application/Client/Container/SideBar/
 
 import style from "Style.sass";
 
-
 @injectable()
+@observer
 export class Menu extends React.Component<IMenuProps> implements IMenu  {
 
     @lazyInject(IBlogMenuKey)
