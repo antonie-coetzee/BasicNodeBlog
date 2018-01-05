@@ -1,6 +1,7 @@
 const webpack = require('webpack'); 
 const devConfig = require('./webpack.client.config');
 const merge = require('webpack-merge');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = merge(devConfig, { 
     plugins: [
@@ -23,6 +24,13 @@ module.exports = merge(devConfig, {
             screw_ie8: true
           },
           comments: false
-        })
+        }),
+        new CompressionPlugin({   
+          asset: "[path].gz[query]",
+          algorithm: "gzip",
+          test: /\.js$|\.css$|\.html$/,
+          threshold: 10240,
+          minRatio: 0.8
+        })   
       ]
 });

@@ -4,6 +4,8 @@
         "module": "commonjs",
         "allowJs": true,       
         "sourceMap": true,
+        //"inlineSourceMap": true,
+        //"inlineSources": true,
         "lib": ["es5", "es6","es2015.promise","esnext","dom"],
         "outDir" : "./Dist",
         "watch": false,

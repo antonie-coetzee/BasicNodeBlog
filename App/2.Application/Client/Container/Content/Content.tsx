@@ -1,11 +1,14 @@
 import * as React from "react";
+import { observer } from "mobx-react";
 import {injectable} from "inversify";
 
 import {IContent} from "../../../../1.Framework/Client/Container/Content/IContent"
 
 import style from "Style.sass"
 
+
 @injectable()
+@observer
 export class Content extends React.Component<any, any> implements IContent  {
     render() {
         return <div className="content is-medium">

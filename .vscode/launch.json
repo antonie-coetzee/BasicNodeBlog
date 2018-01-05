@@ -8,7 +8,6 @@
             "type": "node",
             "request": "launch",
             "name": "Debug Application",
-            "program": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
             "cwd": "${workspaceRoot}",
             "outFiles": ["${workspaceRoot}/Dist/**"],
             "skipFiles": [ "${workspaceRoot}/node_modules/**/*.js"],
@@ -19,8 +18,10 @@
             "console": "integratedTerminal",
             "protocol": "inspector",
             "port": 5858,
-            "args": [],
-            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "run-script", "debug"
+            ],            
+            "runtimeExecutable": "npm",
             "env": {
                 "NODE_PATH":"./Dist/App",
                 "NODE_ENV": "development",

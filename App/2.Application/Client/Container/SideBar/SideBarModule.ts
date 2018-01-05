@@ -17,6 +17,7 @@ import { BlogMenu } from '2.Application/Client/Container/SideBar/Menu/BlogMenu/B
 
 import { IArticleNode, IArticleNodeKey } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/ArticleNode/IArticleNode";
 import { ArticleNode } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/ArticleNode/ArticleNode";
+import { TreebeardBlogMenu } from "2.Application/Client/Container/SideBar/Menu/TreebeardBlogMenu/TreebeardBlogMenu";
 
 export let SidebarModule = new ContainerModule(
     (bind: interfaces.Bind)=>{       
@@ -24,6 +25,7 @@ export let SidebarModule = new ContainerModule(
         bind<ITagCloud>(ITagCloudKey).toConstructor(TagCloud);
         bind<IAvatar>(IAvatarKey).toConstructor(Avatar);
         bind<IMenu>(IMenuKey).toConstructor(Menu);
-        bind<IBlogMenu>(IBlogMenuKey).toConstructor(BlogMenu);
+        //bind<IBlogMenu>(IBlogMenuKey).toConstructor(BlogMenu);
+        bind<IBlogMenu>(IBlogMenuKey).toConstructor(TreebeardBlogMenu);
         bind<IArticleNode>(IArticleNodeKey).toConstructor(ArticleNode);          
     });

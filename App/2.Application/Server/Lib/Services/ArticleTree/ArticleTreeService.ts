@@ -22,6 +22,7 @@ class ArticleTree implements IArticleTree {
     children: IArticleTree[];
 }
 
+
 @injectable()
 export class ArticleTreeService implements IArticleTreeService { 
     articleTree: IArticleTree;

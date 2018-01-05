@@ -7,10 +7,13 @@ import { SideBarService } from '2.Application/Client/Lib/Services/SideBar/SideBa
 
 import { IArticleTreeService, IArticleTreeServiceKey } from "2.Application/Common/Services/ArticleTree/IArticleTreeService";
 import { ArticleTreeService } from "2.Application/Client/Lib/Services/ArticleTree/ArticleTreeService";
+import { IBlogService, IBlogServiceKey } from "2.Application/Client/Lib/Services/Blog/IBlogService";
+import { BlogService } from "2.Application/Client/Lib/Services/Blog/BlogService";
 
 export let ServicesModule = new ContainerModule(
     (bind: interfaces.Bind)=>{      
         bind<ApiWrapper>(ApiWrapperKey).to(ApiWrapper).inSingletonScope(); 
         bind<ISideBarService>(ISideBarServiceKey).to(SideBarService).inSingletonScope();  
-        bind<IArticleTreeService>(IArticleTreeServiceKey).to(ArticleTreeService).inSingletonScope();    
+        bind<IArticleTreeService>(IArticleTreeServiceKey).to(ArticleTreeService).inSingletonScope();
+        bind<IBlogService>(IBlogServiceKey).to(BlogService).inSingletonScope();      
     });

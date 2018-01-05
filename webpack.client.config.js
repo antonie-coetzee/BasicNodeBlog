@@ -25,7 +25,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.js', '.tsx', 'd.ts'],
-        modules: [path.resolve(workingDir,'./App'), path.resolve(workingDir,'./node_modules')],
+        modules: [path.resolve(workingDir,'./App'), path.resolve(workingDir,'./node_modules'), 'node_modules'],
         alias: {
             bulma: path.resolve(workingDir, './node_modules/bulma')
         },

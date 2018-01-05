@@ -4,7 +4,7 @@ import { action, observable, computed, runInAction} from "mobx";
 import { IArticleTreeService, IArticleTree } from "../../../../Common/Services/ArticleTree/IArticleTreeService"
 import { IMetaHeader } from "../../../../Common/Domain/IMetaHeader"
 import { IArticle } from "../../../../Common/Domain/IArticle"
-import { ILogger, ILoggerKey } from "../../../../../1.Framework/Common/Services/Logging/ILogger"
+import { ILogger, ILoggerKey } from "1.Framework/Common/Services/Logging/ILogger"
 import { ApiWrapperKey, ApiWrapper } from "../../Api/ApiWrapper";
 import { observer } from "mobx-react";
 

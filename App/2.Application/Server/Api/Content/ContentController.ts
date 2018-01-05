@@ -22,5 +22,4 @@ export class ContentController extends Controller implements IContentController 
         await this.contentService.Update();
         return false;
     }
-
 }
