@@ -3,7 +3,7 @@ import { IContentService } from "./IContent";
 import { IConfigKey, IConfig } from "1.Framework/Server/Config/IConfig";
 import { ILoggerKey, ILogger } from "1.Framework/Common/Services/Logging/ILogger";
 
-import {Clone} from "nodegit"
+import * as Git from "nodegit";
 
 @injectable()
 export class ContentService implements IContentService {
@@ -18,7 +18,7 @@ export class ContentService implements IContentService {
     }    
 
     private async Clone(url:string, contentPath:string):Promise<boolean>{
-        let repo = await Clone.clone(url, contentPath)
+        let repo = await Git.Clone(url, contentPath)
         return true;
     }
 }
