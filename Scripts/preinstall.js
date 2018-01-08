@@ -1,4 +1,3 @@
-var ProgressBar = require('progress');
 var fs = require("fs");
 var http = require("http");
 
@@ -19,20 +18,6 @@ if (!fs.existsSync(codegenFile)) {
       response.pipe(file);   
     });
     request.on('response', function(res){
-        var len = parseInt(res.headers['content-length'], 10);
-       
-        console.log();
-        var bar = new ProgressBar('  downloading [:bar] :rate/bps :percent :etas', {
-          complete: '=',
-          incomplete: ' ',
-          width: 20,
-          total: len
-        });
-       
-        res.on('data', function (chunk) {
-          bar.tick(chunk.length);
-        });
-       
         res.on('end', function () {
           console.log('\n');
           console.log("swagger-codegen downloaded successfully, continuing");
