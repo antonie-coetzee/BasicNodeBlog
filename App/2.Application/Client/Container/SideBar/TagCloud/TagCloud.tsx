@@ -59,15 +59,15 @@ export class TagCloud extends React.Component<ITagCloudProps> implements ITagClo
       };
     
     render() {
-        return <ReactTagCloud 
-                    className={classNames(this.componentClass, style.buttons)}
-                    tags={this.tagData} 
-                    minSize={1} 
-                    maxSize={3} 
-                    disableRandomColor={true}
-                    shuffle={false}
-                    renderer={this.customRenderer}/>
-                
-
-    }
+            return [<p className={classNames(style.menuLabel)} key='1'>Tags</p>,                  
+                    <ReactTagCloud 
+                        className={classNames(this.componentClass, style.buttons)}
+                        tags={this.tagData} 
+                        minSize={1} 
+                        maxSize={3} 
+                        disableRandomColor={true}
+                        shuffle={false}
+                        renderer={this.customRenderer}
+                        key='2'/>                        
+                    ]}
 }

@@ -11,8 +11,13 @@ export class LoggerFactory implements ILoggerFactory {
     }
 
     Create(preFix:string):ILogger{
+        let logLevel = loglevel.getLevel();
+        //loglevel.enableAll();
         let logger = loglevel.getLogger(preFix);
         let log = (level:string, message:string, meta?:any)=>{
+            if(!meta){
+                meta = "";
+            }
             switch(level){
                 case "error":{
                     logger.error(message, meta);

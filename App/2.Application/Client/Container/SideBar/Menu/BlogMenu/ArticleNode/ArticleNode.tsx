@@ -6,15 +6,19 @@ import * as classNames from "classnames";
 
 import style from "Style.sass";
 import { IArticleNode, IArticleNodeProps, IArticleNodeState } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/ArticleNode/IArticleNode";
+import { IArticle } from "2.Application/Common/Domain/IArticle";
 
 @injectable()
 @observer
 export class ArticleNode extends React.Component<IArticleNodeProps, IArticleNodeState> implements IArticleNode  {
+    private article:IArticle;
+    
     constructor(props:IArticleNodeProps) {
         super(props);
         this.state = {isExpanded:false};
         this.expand = this.expand.bind(this);
-        this.handleDblClick = this.handleDblClick.bind(this);
+        this.handleMenuDblClick = this.handleMenuDblClick.bind(this);
+        this.handleArticleDblClick = this.handleArticleDblClick.bind(this);
     }
 
     expand(){
@@ -24,18 +28,25 @@ export class ArticleNode extends React.Component<IArticleNodeProps, IArticleNode
         this.setState({isExpanded:false});
     }
 
-    handleDblClick(){
+    handleMenuDblClick(){
         let expanded = this.state.isExpanded;
         this.setState({isExpanded:!expanded})
+    }
+
+    handleArticleDblClick(){
+        if(this.props.selectArticle){
+            this.props.selectArticle(this.article);
+        }
     }
     
     render() {
         const articleTree = this.props.articleTree;
         if(articleTree.children == null){
             if(articleTree.article != null){ //leaf node
-                if(this.props.expandParent) this.props.expandParent();
+                if(this.props.expandParent) ()=>{this.props.expandParent()}
+                this.article = this.props.articleTree.article;
                 let isActive = this.props.selectedArticleHash == this.props.articleTree.article.hash;
-                return <li><a className={classNames({[style.isActive]: isActive})}>
+                return <li><a className={classNames({[style.isActive]: isActive})} onDoubleClick={this.handleArticleDblClick} onMouseDown={(e)=>e.preventDefault()} >
                             {this.props.articleTree.article.title}
                         </a></li>
             }
@@ -46,7 +57,8 @@ export class ArticleNode extends React.Component<IArticleNodeProps, IArticleNode
                         key={idx} 
                         articleTree={child} 
                         selectedArticleHash={this.props.selectedArticleHash} 
-                        expandParent={this.expand}/>;
+                        expandParent={this.expand}
+                        selectArticle={this.props.selectArticle}/>;
         });
 
         let listState = classNames({[style.isExpanded]: this.state.isExpanded}, {[style.isCollapsed]: !this.state.isExpanded});
@@ -58,7 +70,7 @@ export class ArticleNode extends React.Component<IArticleNodeProps, IArticleNode
         }
 
         return  <li> 
-                    <a onDoubleClick={this.handleDblClick}>{articleTree.name}</a>
+                    <a onDoubleClick={this.handleMenuDblClick} onMouseDown={(e)=>e.preventDefault()}>{articleTree.name}</a>
                     <ul className={listState}>
                         {subtree}
                     </ul>

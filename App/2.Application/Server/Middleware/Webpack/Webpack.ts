@@ -15,7 +15,7 @@ import * as config from "../../../../../webpack.client.config.dev.js";
 class WebpackDevMiddleware implements IMiddleware {
     name:string = "webpack-dev-middleware";
     path:string = "/";
-    priority:number = 10;
+    priority:number = 40;
     handlers:RequestHandler[];
 
     constructor(@inject(ILoggerKey) private logger:ILogger) {   

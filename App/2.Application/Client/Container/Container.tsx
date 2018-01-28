@@ -3,7 +3,6 @@ import {observer} from "mobx-react"
 import {injectable, interfaces} from "inversify";
 import * as classNames from "classnames";
 import * as slideOut from "slideout"
-import * as MediaQuery from "react-responsive"
 
 import {IContainer} from "1.Framework/Client/Container/IContainer"
 import {IResponsiveService, IResponsiveServiceKey} from "1.Framework/Client/Lib/Responsive/IResponsiveService"
@@ -18,7 +17,9 @@ import style from "Style.sass"
 
 import { IDesktopContainerKey, IDesktopContainer } from "2.Application/Client/Container/Device/IDesktopContainer";
 import { IMobileContainerKey, IMobileContainer } from "2.Application/Client/Container/Device/IMobileContainer";
+import { withRouter } from "react-router";
 
+@withRouter
 @observer
 @injectable()
 export default class Container extends React.Component<any, any> implements IContainer  {

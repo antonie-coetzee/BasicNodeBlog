@@ -20,10 +20,12 @@ import { DesktopContainer } from '2.Application/Client/Container/Device/DesktopC
 import { IMobileContainer, IMobileContainerKey } from '2.Application/Client/Container/Device/IMobileContainer';
 import { MobileContainer } from '2.Application/Client/Container/Device/MobileContainer';
 import { HeaderModule } from '2.Application/Client/Container/Header/HeaderModule';
+import { ContentModule } from '2.Application/Client/Container/Content/ContentModule';
 
 layer.AddLayer((container)=>{
     container.load(ServicesModule);
     container.load(HeaderModule);
+    container.load(ContentModule);
     container.bind<IFooter>(IFooterKey).toConstructor(Footer);
     container.bind<IContent>(IContentKey).toConstructor(Content);
     container.bind<IContainer>(IContainerKey).toConstructor(Container);

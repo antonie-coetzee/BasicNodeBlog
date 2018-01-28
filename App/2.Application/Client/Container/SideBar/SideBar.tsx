@@ -12,7 +12,6 @@ import { IMenuKey, IMenu } from "2.Application/Client/Container/SideBar/Menu/IMe
 
 import style from "Style.sass"
 
-
 const profile = require('./profile.jpg')
 
 @observer
@@ -34,7 +33,7 @@ export class SideBar extends React.Component implements ISideBar  {
     @lazyInject(ITagCloudKey)
     public TagCloud : interfaces.Newable<ITagCloud>;    
 
-    componentWillMount(){
+    componentDidMount(){
       this.articleTreeService.GetArticleTree();
     }
 
@@ -45,7 +44,7 @@ export class SideBar extends React.Component implements ISideBar  {
                 <this.Menu />
                 <hr/>
                 {(this.ResponsiveService.IsTablet || this.ResponsiveService.IsDesktop) &&
-                  <this.TagCloud maxTags={10} tagCloud={this.articleTreeService.tagCloud} />
+                   <this.TagCloud maxTags={10} tagCloud={this.articleTreeService.tagCloud} />
                 }             
               </aside>
     }

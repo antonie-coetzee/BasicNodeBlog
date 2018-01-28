@@ -15,10 +15,10 @@ export class ArticleTreeService implements IArticleTreeService {
 
     constructor(@inject(ILoggerKey) private logger: ILogger,
                 @inject(ApiWrapperKey) private apiWrapper: ApiWrapper) {
-                    this.articleTree = {name:"loading", article:null, children:null};
+        this.articleTree = {name:"loading", article:null, children:null};
     }
 
-    @action
+    @action("fetching article tree")
     public async GetArticleTree(): Promise<IArticleTree> {
         this.logger.Debug("fetching article tree");
         let tree = await this.apiWrapper.Api.getTree();

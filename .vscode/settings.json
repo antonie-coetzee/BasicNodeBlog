@@ -6,5 +6,11 @@
     }   
 ,
 "typescript.tsdk": "./node_modules/typescript/lib",
-"explorer.autoReveal": false
+"explorer.autoReveal": false,
+"emmet.syntaxProfiles": {
+        "javascript": "jsx",
+        "xml": {
+            "attr_quotes": "single"
+        }
+    }
 }

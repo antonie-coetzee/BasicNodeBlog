@@ -20,6 +20,9 @@ layer.container.bind<RouterStore>(RouterStore).toConstantValue(routingStore);
 
 layer.Initialize();
 
+import { useStrict } from 'mobx';
+useStrict(true);
+
 const Application = layer.container.get<interfaces.Newable<IClientApplication>>(IClientApplicationKey);
 
 ReactDOM.render(

@@ -1,5 +1,6 @@
 import * as React from "react";
-import {autorun, IReactionDisposer} from "mobx";
+import { withRouter } from "react-router";
+import {autorun, IReactionDisposer, action} from "mobx";
 import {interfaces, injectable} from "inversify";
 import * as slideOut from "slideout"
 import * as classNames from "classnames";
@@ -16,6 +17,7 @@ import { IMobileContainer } from "2.Application/Client/Container/Device/IMobileC
 
 import style from "Style.sass"
 
+@withRouter
 @injectable()
 export class MobileContainer extends React.Component implements IMobileContainer {
 
@@ -43,26 +45,38 @@ export class MobileContainer extends React.Component implements IMobileContainer
     public ResponsiveService : IResponsiveService;
 
     public componentDidMount(){
-        if(this.ResponsiveService.IsMobile){
-            this.slideOut = new slideOut(
-                {
-                    panel:this.panelRef, 
-                    menu: this.menuRef,
-                    padding: 256                       
-                });
-        }
-        if(this.ResponsiveService.IsTablet){
-            this.slideOut = new slideOut(
-                {
-                    panel:this.panelRef, 
-                    menu: this.menuRef,
-                    padding: 350
-                });
-        }
+
         // publish open/close events
-        this.slideOut.on("open", ()=>{this.SideBarService.currentVisible = true;})
-        this.slideOut.on("close", ()=>{this.SideBarService.currentVisible = false;})
+
         // subscribe to open/close events
+        
+        autorun(()=>{
+            if(this.ResponsiveService.IsMobile && this.panelRef && this.menuRef){
+                if(this.slideOut){
+                    this.slideOut.destroy();
+                }
+                this.slideOut = new slideOut(
+                    {
+                        panel:this.panelRef, 
+                        menu: this.menuRef,
+                        padding: 256                       
+                    });           
+            }
+            if(this.ResponsiveService.IsTablet && this.panelRef && this.menuRef){
+                if(this.slideOut){
+                    this.slideOut.destroy();
+                }
+                this.slideOut = new slideOut(
+                    {
+                        panel:this.panelRef, 
+                        menu: this.menuRef,
+                        padding: 350
+                    });            
+            }
+            this.slideOut.on("open", action(()=>{this.SideBarService.currentVisible = true;}))
+            this.slideOut.on("close", action(()=>{this.SideBarService.currentVisible = false;}))        
+        });
+               
         this.slideAutorunDisposer = autorun(()=>{
             if(this.SideBarService.visible){
                 this.slideOut.open();

@@ -9,7 +9,7 @@ import {IMiddleware} from "1.Framework/Server/Middleware/IMiddleware"
 class StaticFilesMiddleware implements IMiddleware {
     name:string = "express.static";
     path:string = "/";
-    priority:number = 10;
+    priority:number = 30;
     handlers:RequestHandler[];
 
     constructor(@inject(ILoggerKey) private logger:ILogger) {     

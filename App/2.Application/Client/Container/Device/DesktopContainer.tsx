@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withRouter } from "react-router";
 import {interfaces, injectable} from "inversify";
 import * as classNames from "classnames";
 
@@ -13,7 +14,7 @@ import { IDesktopContainer } from "2.Application/Client/Container/Device/IDeskto
 
 import style from "Style.sass"
 
-
+@withRouter
 @injectable()
 export class DesktopContainer extends React.Component implements IDesktopContainer {
 

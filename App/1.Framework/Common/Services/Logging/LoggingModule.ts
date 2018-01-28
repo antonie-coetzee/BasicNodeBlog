@@ -10,5 +10,5 @@ export const loggingModule = new ContainerModule(
                 let factory = context.container.get<ILoggerFactory>(ILoggerFactoryKey);
                 let binding = context.plan.rootRequest.serviceIdentifier;
                 return factory.Create(binding.toString());
-            }).inSingletonScope();
+            }).inTransientScope();
     });
