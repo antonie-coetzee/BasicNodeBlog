@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client-prod": "./node_modules/.bin/webpack --config ./webpack.client.config.prod.js --progress",
-    "client-dev": "./node_modules/.bin/webpack --config ./webpack.client.config.js --progress --profile",
+    "client-dev": "./node_modules/.bin/webpack --config ./webpack.client.config.js --progress --profile --display-error-details",
     "server-build": "node ./Scripts/prebuild.js && tsc",
     "server-rebuild": "node ./Scripts/prebuild.js && node ./Scripts/updateApi.js && tsc",
     "debug": "./node_modules/.bin/concurrently --kill-others \"tsc -w\" \"node ./node_modules/nodemon/bin/nodemon.js\"",
@@ -45,6 +45,7 @@
     "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
     "core-js": "^2.5.1",
+    "emitter": "0.0.5",
     "inversify": "^3.0.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",

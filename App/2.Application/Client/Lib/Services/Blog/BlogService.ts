@@ -1,8 +1,11 @@
 import {injectable, inject} from "inversify";
 import {observable, action, computed} from "mobx";
+import { RouterStore } from "mobx-react-router";
+import { Location } from "history";
+import * as qs from "querystring";
+
 import { IBlogService } from "2.Application/Client/Lib/Services/Blog/IBlogService";
 import { IArticle } from "2.Application/Common/Domain/IArticle";
-import { RouterStore } from "mobx-react-router";
 
 @injectable()
 export class BlogService implements IBlogService  {  
@@ -15,7 +18,13 @@ export class BlogService implements IBlogService  {
     @action   
     updateSelectedArticle(article: IArticle) {
         this.selectedArticle = article;
-        this.routerStore.push(`/blog/${this.slugify(this.removeLastSegment(article.path))}`, article);
+        let newLocation:Location = {
+                hash:'',
+                pathname:`/blog/${this.slugify(this.removeLastSegment(article.path))}`,
+                search: qs.stringify({id:article.shortId}),
+                state:article
+            };
+        this.routerStore.push(newLocation);
     }
 
     removeLastSegment(text:string){

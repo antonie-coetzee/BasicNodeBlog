@@ -40,6 +40,12 @@ export class ServerApplication implements IServerApplication {
                 this.app.instance.use(apiPath, element.ConfigureRouter(router));
             });
         }
+
+        let errlogger = this.logger;
+        // error logger
+        this.app.instance.use(function(err,req,res,next){
+            errlogger.Error(err, err.stack);
+        });
         
         // TODO: sort out with config
         this.app.instance.listen(8080, ()=> {

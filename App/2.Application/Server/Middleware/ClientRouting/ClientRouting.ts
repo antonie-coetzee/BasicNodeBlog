@@ -25,14 +25,20 @@ class ClientRoutingMiddleware implements IMiddleware {
             } else if (parsedUrl.path.indexOf('.') < 0 && req.method == 'GET') {
                 req.url = '/index.html';
                 next();
-            } else if(parsedUrl.path.indexOf('assets') < 0 && req.method == 'GET') {
-                let fileSegment = parsedUrl.path.substring(parsedUrl.path.lastIndexOf('/'));
-                req.url = fileSegment;
-                next();
-            } else if(parsedUrl.path.indexOf('assets') > 0 && req.method == 'GET') {
+            } else if(parsedUrl.path.indexOf('assets') >= 0 && req.method == 'GET') {
                 let fileSegment = parsedUrl.path.substring(parsedUrl.path.lastIndexOf('/'));
                 req.url = '/assets' + fileSegment;
-                next();                
+                next();    
+            }
+            else if(parsedUrl.path.indexOf('font') >= 0 && req.method == 'GET') {
+                let fileSegment = parsedUrl.path.substring(parsedUrl.path.lastIndexOf('/'));
+                req.url = '/font' + fileSegment;
+                next();   
+            }
+            else if(req.method == 'GET') {
+                let fileSegment = parsedUrl.path.substring(parsedUrl.path.lastIndexOf('/'));
+                req.url = fileSegment;
+                next();                           
             } else {
                 next();
             }

@@ -44,13 +44,17 @@
 				},
 				"hash": {
 					"type": "string"
+				},
+				"shortId": {
+					"type": "string"
 				}
 			},
 			"required": [
 				"title",
 				"path",
 				"metaHeader",
-				"hash"
+				"hash",
+				"shortId"
 			],
 			"type": "object"
 		},

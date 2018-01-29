@@ -20,6 +20,7 @@ const models: TsoaRoute.Models = {
             "path": { "dataType": "string", "required": true },
             "metaHeader": { "ref": "IMetaHeader", "required": true },
             "hash": { "dataType": "string", "required": true },
+            "shortId": { "dataType": "string", "required": true },
         },
     },
     "IArticleTree": {

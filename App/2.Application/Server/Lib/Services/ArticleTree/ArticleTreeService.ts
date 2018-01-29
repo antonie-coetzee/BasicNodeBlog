@@ -6,6 +6,7 @@ import { ExtractMetaHeader } from "./ExtractMetaHeader"
 import { IArticle } from "../../../../Common/Domain/IArticle"
 import { IConfig, IConfigKey } from "../../../../../1.Framework/Server/Config/IConfig"
 import { ILogger, ILoggerKey } from "1.Framework/Common/Services/Logging/ILogger"
+import {unique} from "./ShortHash"
 import { Article } from "./Article"
 
 import * as dirtree from "directory-tree"
@@ -94,6 +95,7 @@ export class ArticleTreeService implements IArticleTreeService {
             let article = new Article();
             article.metaHeader = await this.readMetaHeader(path);
             article.path = rel.toBase(UPATH.normalize(basePath), UPATH.normalize(path));
+            article.shortId = unique(article.path);
             article.hash = await md5File(path);
             article.title = article.metaHeader.title ? article.metaHeader.title : parent.name; 
             parent.article = article;
