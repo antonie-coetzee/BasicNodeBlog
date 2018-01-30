@@ -9,7 +9,7 @@ declare var lazyMultiInject: any;
 
 let appContainer = new AppContainer();
 lazyInject = getDecorators(appContainer.container).lazyInject;
-//lazyInjectNamed = getDecorators(appContainer.container).lazyInjectNamed;
-//lazyMultiInject = getDecorators(appContainer.container).lazyMultiInject;
+lazyInjectNamed = getDecorators(appContainer.container).lazyInjectNamed;
+lazyMultiInject = getDecorators(appContainer.container).lazyMultiInject;
 
 export default appContainer;
