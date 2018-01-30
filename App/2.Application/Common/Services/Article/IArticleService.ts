@@ -6,11 +6,13 @@ export interface IArticleTree {
     children:IArticleTree[];
 }
 
-export let IArticleTreeServiceKey = "IArticleTreeServiceKey";
+export let IArticleServiceKey = "IArticleServiceKey";
 
-export interface IArticleTreeService {
+export interface IArticleService {
     GetArticleTree():Promise<IArticleTree>;
-    articleTree:IArticleTree;
+    readonly articleTree:IArticleTree;
+    getArticleWithSource(shortId:string):Promise<IArticle>;
+    readonly articleWithSource:IArticle;
     readonly tagCloud: Map<string,number>;
 }
 

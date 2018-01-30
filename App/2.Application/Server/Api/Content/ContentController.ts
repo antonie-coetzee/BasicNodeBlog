@@ -3,7 +3,7 @@ import {Get, Post, Route, Body, Query, Header, Path, SuccessResponse, Controller
 
 import {IContentController} from './IContentController'
 import { IArticle } from "2.Application/Common/Domain/IArticle";
-import { IArticleTreeServiceKey, IArticleTreeService, IArticleTree } from "2.Application/Common/Services/ArticleTree/IArticleTreeService";
+import { IArticleServiceKey, IArticleService, IArticleTree } from "2.Application/Common/Services/Article/IArticleService";
 import { ILoggerKey, ILogger } from "1.Framework/Common/Services/Logging/ILogger";
 import { IContentServiceKey, IContentService } from "2.Application/Server/Lib/Services/Content/IContent";
 

@@ -21,6 +21,7 @@ const models: TsoaRoute.Models = {
             "metaHeader": { "ref": "IMetaHeader", "required": true },
             "hash": { "dataType": "string", "required": true },
             "shortId": { "dataType": "string", "required": true },
+            "source": { "dataType": "string" },
         },
     },
     "IArticleTree": {
@@ -48,6 +49,24 @@ export function RegisterRoutes(app: any, iocContainer: interfaces.Container) {
             const controller = iocContainer.get<IArticleController>(IArticleControllerKey);
 
             const promise = controller.getTree.apply(controller, validatedArgs);
+            promiseHandler(controller, promise, response, next);
+        });
+    app.get('/api/v1/article/full/:shortid',
+        function(request: any, response: any, next: any) {
+            const args = {
+                shortId: { "in": "path", "name": "shortid", "required": true, "dataType": "string" },
+            };
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = iocContainer.get<IArticleController>(IArticleControllerKey);
+
+            const promise = controller.getArticleWithSource.apply(controller, validatedArgs);
             promiseHandler(controller, promise, response, next);
         });
     app.get('/api/v1/content/update',

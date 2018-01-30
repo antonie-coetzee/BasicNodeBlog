@@ -3,9 +3,6 @@ import {injectable, ContainerModule, interfaces, multiInject} from "inversify"
 import {ISideBar, ISideBarKey} from "1.Framework/Client/Container/SideBar/ISideBar"
 import { SideBar } from "2.Application/Client/Container/SideBar/SideBar";
 
-import { ITagCloud, ITagCloudKey } from '2.Application/Client/Container/SideBar/TagCloud/ITagCloud';
-import { TagCloud } from '2.Application/Client/Container/SideBar/TagCloud/TagCloud';
-
 import { IAvatarKey, IAvatar } from '2.Application/Client/Container/SideBar/Avatar/IAvatar';
 import { Avatar } from '2.Application/Client/Container/SideBar/Avatar/Avatar';
 
@@ -17,6 +14,9 @@ import { BlogMenu } from '2.Application/Client/Container/SideBar/Menu/BlogMenu/B
 
 import { IArticleNode, IArticleNodeKey } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/ArticleNode/IArticleNode";
 import { ArticleNode } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/ArticleNode/ArticleNode";
+
+import { ITagCloud, ITagCloudKey } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/TagCloud/ITagCloud";
+import { TagCloud } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/TagCloud/TagCloud";
 
 export let SidebarModule = new ContainerModule(
     (bind: interfaces.Bind)=>{       

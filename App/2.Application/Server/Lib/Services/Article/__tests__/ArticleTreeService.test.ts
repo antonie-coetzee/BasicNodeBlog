@@ -1,4 +1,4 @@
-import {ArticleTreeService} from "../ArticleTreeService"
+import {ArticleService} from "../ArticleService"
 const testContentPath:string = __dirname + "/blogcontent/";
 
 describe('Article tree service', () => {

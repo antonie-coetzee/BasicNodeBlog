@@ -20,9 +20,9 @@ export class BlogService implements IBlogService  {
         this.selectedArticle = article;
         let newLocation:Location = {
                 hash:'',
-                pathname:`/blog/${this.slugify(this.removeLastSegment(article.path))}`,
-                search: qs.stringify({id:article.shortId}),
-                state:article
+                pathname:`/blog/${article.shortId}/${this.slugify(this.removeLastSegment(article.path))}`,
+                state:article,
+                search:''
             };
         this.routerStore.push(newLocation);
     }

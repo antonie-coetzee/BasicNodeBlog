@@ -3,7 +3,7 @@ import {Get, Post, Route, Body, Query, Header, Path, SuccessResponse, Controller
 
 import {IArticleController} from './IArticleController'
 import { IArticle } from "2.Application/Common/Domain/IArticle";
-import { IArticleTreeServiceKey, IArticleTreeService, IArticleTree } from "2.Application/Common/Services/ArticleTree/IArticleTreeService";
+import { IArticleServiceKey, IArticleService, IArticleTree } from "2.Application/Common/Services/Article/IArticleService";
 import { ILoggerKey, ILogger } from "1.Framework/Common/Services/Logging/ILogger";
 
 @injectable()
@@ -12,13 +12,33 @@ export class ArticleController extends Controller implements IArticleController 
     
     constructor(
         @inject(ILoggerKey) private logger:ILogger,
-        @inject(IArticleTreeServiceKey) private articleTreeService: IArticleTreeService) {
+        @inject(IArticleServiceKey) private articleService: IArticleService) {
         super();
     }
 
     @Get('tree')
     public async getTree(): Promise<IArticleTree> {
         this.logger.Debug("returning article tree");
-        return this.articleTreeService.GetArticleTree();    
+        return this.articleService.GetArticleTree();    
     }
+
+    @Get('full/{shortid}')
+    public async getArticleWithSource(@Path('shortid') shortId:string): Promise<IArticle> {
+        this.logger.Debug("returning full article");
+        //return this.articleService.getArticleWithSource(shortId);
+        return Promise.resolve<IArticle>({
+            hash:'',
+            metaHeader:{
+                date:'',
+                readingTime:'',
+                synopsis:'',
+                tags:[],
+                title:''
+            },
+            path:'',
+            shortId:'',
+            source:'',
+            title:shortId
+        })
+    }    
 }

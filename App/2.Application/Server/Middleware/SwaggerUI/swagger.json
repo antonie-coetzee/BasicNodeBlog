@@ -47,6 +47,9 @@
 				},
 				"shortId": {
 					"type": "string"
+				},
+				"source": {
+					"type": "string"
 				}
 			},
 			"required": [
@@ -106,6 +109,31 @@
 				},
 				"security": [],
 				"parameters": []
+			}
+		},
+		"/article/full/{shortid}": {
+			"get": {
+				"operationId": "GetArticleWithSource",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/IArticle"
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "shortid",
+						"required": true,
+						"type": "string"
+					}
+				]
 			}
 		},
 		"/content/update": {

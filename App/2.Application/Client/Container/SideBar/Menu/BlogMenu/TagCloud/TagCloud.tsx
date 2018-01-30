@@ -5,8 +5,8 @@ import { computed } from "mobx";
 import { observer } from "mobx-react";
 import { TagCloud as ReactTagCloud} from "react-tagcloud";
 
-import { ITagCloudProps } from "2.Application/Client/Container/SideBar/TagCloud/ITagCloudProps";
-import { ITagCloud } from "2.Application/Client/Container/SideBar/TagCloud/ITagCloud";
+import { ITagCloudProps } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/TagCloud/ITagCloudProps";
+import { ITagCloud } from "2.Application/Client/Container/SideBar/Menu/BlogMenu/TagCloud/ITagCloud";
 
 import style from "Style.sass";
 

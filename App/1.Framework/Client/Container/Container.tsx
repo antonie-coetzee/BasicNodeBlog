@@ -7,7 +7,8 @@ import {ISideBar, ISideBarKey} from "./SideBar/ISideBar"
 import {IContent, IContentKey} from "./Content/IContent"
 import {IFooter, IFooterKey} from "./Footer/IFooter"
 
-import {ILoggerKey, ILogger} from "../../../1.Framework/Common/Services/Logging/ILogger"
+import { lazyInject } from "0.Bootstrap/Common/AppContainer/LazyInject";
+import {ILoggerKey, ILogger} from "1.Framework/Common/Services/Logging/ILogger"
 
 import style from "Style.sass"
 

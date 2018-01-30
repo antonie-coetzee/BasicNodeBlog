@@ -1,6 +1,6 @@
 import { injectable, inject } from "inversify";
 
-import { IArticleTreeService, IArticleTree } from "../../../../Common/Services/ArticleTree/IArticleTreeService"
+import { IArticleService, IArticleTree } from "2.Application/Common/Services/Article/IArticleService"
 import { IMetaHeader } from "../../../../Common/Domain/IMetaHeader"
 import { ExtractMetaHeader } from "./ExtractMetaHeader"
 import { IArticle } from "../../../../Common/Domain/IArticle"
@@ -25,7 +25,8 @@ class ArticleTree implements IArticleTree {
 
 
 @injectable()
-export class ArticleTreeService implements IArticleTreeService { 
+export class ArticleService implements IArticleService { 
+    articleWithSource: IArticle;  
     articleTree: IArticleTree;
     tagCloud: Map<string, number>;
 
@@ -33,9 +34,13 @@ export class ArticleTreeService implements IArticleTreeService {
         @inject(IConfigKey) private config: IConfig,
         @inject(ILoggerKey) private logger: ILogger) { }
 
+    public getArticleWithSource(shortId: string): Promise<IArticle> {
+        throw new Error("Method not implemented.");
+    }
+
     public async GetArticleTree(): Promise<IArticleTree> {
         if(!FS.existsSync(this.config.contentLocalPath)){
-            throw "content directory does not exists";
+            throw new Error("content directory does not exists");
         }
 
         const cachedTreePath = PATH.join(this.config.contentLocalPath, "cached.json");
@@ -84,7 +89,7 @@ export class ArticleTreeService implements IArticleTreeService {
         if (stats.isFile()) {
             if (parent == null) {
                 // shouldn't get here
-                throw "article doesn't have a parent directory"
+                throw new Error("article doesn't have a parent directory");
             }
             const ext = PATH.extname(path).toLowerCase();
             let rootDirName = PATH.basename(basePath);

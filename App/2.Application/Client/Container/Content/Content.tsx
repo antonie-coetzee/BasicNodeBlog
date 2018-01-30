@@ -3,6 +3,7 @@ import { withRouter, Switch, Route } from "react-router";
 import { observer } from "mobx-react";
 import {injectable, interfaces} from "inversify";
 
+import { lazyInject } from "0.Bootstrap/Common/AppContainer/LazyInject";
 import {IContent} from "1.Framework/Client/Container/Content/IContent"
 
 import { IBlogWrapperKey, IBlogWrapper } from "2.Application/Client/Container/Content/Blog/IBlogWrapper";

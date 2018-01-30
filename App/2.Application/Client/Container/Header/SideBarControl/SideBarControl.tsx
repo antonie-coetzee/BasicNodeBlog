@@ -2,12 +2,14 @@ import * as React from "react";
 import {observer} from "mobx-react"
 import {injectable, interfaces} from "inversify";
 import * as classNames from "classnames"
+import { lazyInject } from "0.Bootstrap/Common/AppContainer/LazyInject";
 
 import { ISideBarService, ISideBarServiceKey } from "2.Application/Client/Lib/Services/SideBar/ISideBarService";
 
 import {ISideBarControl} from "./ISideBarControl"
 
 import style from "Style.sass"
+
 
 @observer
 @injectable()

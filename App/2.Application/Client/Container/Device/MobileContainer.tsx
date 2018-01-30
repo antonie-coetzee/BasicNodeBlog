@@ -4,6 +4,7 @@ import {autorun, IReactionDisposer, action} from "mobx";
 import {interfaces, injectable} from "inversify";
 import * as slideOut from "slideout"
 import * as classNames from "classnames";
+import { lazyInject } from "0.Bootstrap/Common/AppContainer/LazyInject";
 
 import {IContainer} from "1.Framework/Client/Container/IContainer"
 import {IHeader, IHeaderKey} from "1.Framework/Client/Container/Header/IHeader"
@@ -16,6 +17,7 @@ import {ILoggerKey, ILogger} from "1.Framework/Common/Services/Logging/ILogger"
 import { IMobileContainer } from "2.Application/Client/Container/Device/IMobileContainer";
 
 import style from "Style.sass"
+
 
 @withRouter
 @injectable()

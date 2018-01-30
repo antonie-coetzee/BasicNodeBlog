@@ -41,10 +41,15 @@ export class ServerApplication implements IServerApplication {
             });
         }
 
-        let errlogger = this.logger;
+        let errorlogger = this.logger;
         // error logger
         this.app.instance.use(function(err,req,res,next){
-            errlogger.Error(err, err.stack);
+            if(err.stack){
+                errorlogger.Error(err.stack);
+            }else{
+                errorlogger.Error(err);
+            }   
+            next(err);
         });
         
         // TODO: sort out with config
