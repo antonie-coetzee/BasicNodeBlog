@@ -24,6 +24,5 @@ export let SidebarModule = new ContainerModule(
         bind<ITagCloud>(ITagCloudKey).toConstructor(TagCloud);
         bind<IAvatar>(IAvatarKey).toConstructor(Avatar);
         bind<IMenu>(IMenuKey).toConstructor(Menu);
-        bind<IBlogMenu>(IBlogMenuKey).toConstructor(BlogMenu);
         bind<IArticleNode>(IArticleNodeKey).toConstructor(ArticleNode);          
     });

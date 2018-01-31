@@ -9,7 +9,6 @@ import { IBlogArticleKey, IBlogArticle } from "2.Application/Client/Container/Co
 
 import style from "Style.sass"
 
-
 @withRouter
 @injectable()
 export class BlogWrapper extends React.Component<IBlogWrapperProps & RouteComponentProps<IBlogWrapperProps>> implements IBlogWrapper {

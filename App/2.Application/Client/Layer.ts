@@ -21,6 +21,7 @@ import { IMobileContainer, IMobileContainerKey } from '2.Application/Client/Cont
 import { MobileContainer } from '2.Application/Client/Container/Device/MobileContainer';
 import { HeaderModule } from '2.Application/Client/Container/Header/HeaderModule';
 import { ContentModule } from '2.Application/Client/Container/Content/ContentModule';
+import { MenuModule } from '2.Application/Client/Container/SideBar/Menu/MenuModule';
 
 layer.AddLayer((container)=>{
     container.load(ServicesModule);
@@ -32,6 +33,7 @@ layer.AddLayer((container)=>{
     container.bind<IDesktopContainer>(IDesktopContainerKey).toConstructor(DesktopContainer);
     container.bind<IMobileContainer>(IMobileContainerKey).toConstructor(MobileContainer);
     container.load(SidebarModule);
+    container.load(MenuModule);
 /*
     // async binding and import example
     BindAsync<IContainer>(container, IContainerKey, {timeout:10000}, 

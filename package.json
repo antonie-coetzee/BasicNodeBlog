@@ -37,6 +37,7 @@
     "@types/core-js": "^0.9.43",
     "@types/isomorphic-fetch": "0.0.34",
     "@types/loglevel": "^1.4.29",
+    "@types/react-transition-group": "^2.0.6",
     "@types/winston": "^2.3.7",
     "autoprefixer": "^7.1.2",
     "body-parser": "^1.17.0",
@@ -59,6 +60,7 @@
     "react-dom": "^16.0.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-transition-group": "^2.2.1",
     "reflect-metadata": "^0.1.9",
     "swagger-ui-express": "^2.0.9",
     "winston": "^2.3.1"
