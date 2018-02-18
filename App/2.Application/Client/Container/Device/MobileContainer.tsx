@@ -48,10 +48,6 @@ export class MobileContainer extends React.Component implements IMobileContainer
 
     public componentDidMount(){
 
-        // publish open/close events
-
-        // subscribe to open/close events
-        
         autorun(()=>{
             if(this.ResponsiveService.IsMobile && this.panelRef && this.menuRef){
                 if(this.slideOut){

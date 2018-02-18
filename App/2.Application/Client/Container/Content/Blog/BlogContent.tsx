@@ -4,19 +4,19 @@ import { observer } from "mobx-react";
 import { injectable, interfaces } from "inversify";
 import { lazyInject } from "0.Bootstrap/Common/AppContainer/LazyInject";
 
-import { IBlogWrapperProps, IBlogWrapper } from "2.Application/Client/Container/Content/Blog/IBlogWrapper";
+import { IBlogContentProps, IBlogContent } from "2.Application/Client/Container/Content/Blog/IBlogContent";
 import { IBlogArticleKey, IBlogArticle } from "2.Application/Client/Container/Content/Blog/Article/IBlogArticle";
 
 import style from "Style.sass"
 
 @withRouter
 @injectable()
-export class BlogWrapper extends React.Component<IBlogWrapperProps & RouteComponentProps<IBlogWrapperProps>> implements IBlogWrapper {
+export class BlogContent extends React.Component<IBlogContentProps & RouteComponentProps<IBlogContentProps>> implements IBlogContent {
 
     @lazyInject(IBlogArticleKey)
     public BlogArticle: interfaces.Newable<IBlogArticle>;
 
-    constructor(props: IBlogWrapperProps & RouteComponentProps<IBlogWrapperProps>) {
+    constructor(props: IBlogContentProps & RouteComponentProps<IBlogContentProps>) {
         super(props);
     }
 

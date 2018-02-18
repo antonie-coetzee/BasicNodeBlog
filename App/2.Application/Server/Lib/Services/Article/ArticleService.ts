@@ -6,7 +6,6 @@ import { ExtractMetaHeader } from "./ExtractMetaHeader"
 import { IArticle } from "../../../../Common/Domain/IArticle"
 import { IConfig, IConfigKey } from "../../../../../1.Framework/Server/Config/IConfig"
 import { ILogger, ILoggerKey } from "1.Framework/Common/Services/Logging/ILogger"
-import {unique} from "./ShortHash"
 import { Article } from "./Article"
 
 import * as dirtree from "directory-tree"
@@ -23,19 +22,44 @@ class ArticleTree implements IArticleTree {
     children: IArticleTree[];
 }
 
-
 @injectable()
 export class ArticleService implements IArticleService { 
     articleWithSource: IArticle;  
     articleTree: IArticleTree;
     tagCloud: Map<string, number>;
+    articleIndex: Map<string, IArticle> = new Map<string,IArticle>();
 
     constructor(
         @inject(IConfigKey) private config: IConfig,
         @inject(ILoggerKey) private logger: ILogger) { }
 
-    public getArticleWithSource(shortId: string): Promise<IArticle> {
-        throw new Error("Method not implemented.");
+    public async getArticleWithSource(id: string): Promise<IArticle> {
+        let articleIndex = await this.getArticleIndex()
+        let article = articleIndex.get(id);
+        let articleLocalPath = PATH.join(this.config.contentLocalPath, article.path);
+        let content = FS.readFileSync(articleLocalPath, "utf8").toString();
+        article.source = content;
+        return article;
+    }
+
+    private async getArticleIndex(): Promise<Map<string, IArticle>> {
+        this.articleIndex.clear();
+        let articleTree = await this.GetArticleTree();
+        let articleCallback = (article:IArticle)=>{
+            this.articleIndex.set(article.metaHeader.id, article);
+        }
+        this.walkArticleTreeRecursive(articleTree, articleCallback);
+        return Promise.resolve(this.articleIndex);
+    }
+
+    private walkArticleTreeRecursive(articleTree:IArticleTree, articleCallback:(IArticle)=>void){
+        if(articleTree.article != null){
+            articleCallback(articleTree.article);
+        }else if(articleTree.children != null){
+            articleTree.children.forEach((tree)=>{this.walkArticleTreeRecursive(tree, articleCallback)});
+        }else{
+            throw new Error("article and children null");
+        }
     }
 
     public async GetArticleTree(): Promise<IArticleTree> {
@@ -100,7 +124,6 @@ export class ArticleService implements IArticleService {
             let article = new Article();
             article.metaHeader = await this.readMetaHeader(path);
             article.path = rel.toBase(UPATH.normalize(basePath), UPATH.normalize(path));
-            article.shortId = unique(article.path);
             article.hash = await md5File(path);
             article.title = article.metaHeader.title ? article.metaHeader.title : parent.name; 
             parent.article = article;

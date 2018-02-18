@@ -6,6 +6,9 @@
 	"definitions": {
 		"IMetaHeader": {
 			"properties": {
+				"id": {
+					"type": "string"
+				},
 				"title": {
 					"type": "string"
 				},
@@ -26,6 +29,7 @@
 				}
 			},
 			"required": [
+				"id",
 				"date",
 				"synopsis"
 			],
@@ -45,9 +49,6 @@
 				"hash": {
 					"type": "string"
 				},
-				"shortId": {
-					"type": "string"
-				},
 				"source": {
 					"type": "string"
 				}
@@ -56,8 +57,7 @@
 				"title",
 				"path",
 				"metaHeader",
-				"hash",
-				"shortId"
+				"hash"
 			],
 			"type": "object"
 		},
@@ -111,7 +111,7 @@
 				"parameters": []
 			}
 		},
-		"/article/full/{shortid}": {
+		"/article/full/{id}": {
 			"get": {
 				"operationId": "GetArticleWithSource",
 				"produces": [
@@ -129,7 +129,7 @@
 				"parameters": [
 					{
 						"in": "path",
-						"name": "shortid",
+						"name": "id",
 						"required": true,
 						"type": "string"
 					}

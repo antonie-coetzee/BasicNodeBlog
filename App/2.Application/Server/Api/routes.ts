@@ -7,6 +7,7 @@ import { IContentController, IContentControllerKey } from './Content/IContentCon
 const models: TsoaRoute.Models = {
     "IMetaHeader": {
         "properties": {
+            "id": { "dataType": "string", "required": true },
             "title": { "dataType": "string" },
             "date": { "dataType": "string", "required": true },
             "synopsis": { "dataType": "string", "required": true },
@@ -20,7 +21,6 @@ const models: TsoaRoute.Models = {
             "path": { "dataType": "string", "required": true },
             "metaHeader": { "ref": "IMetaHeader", "required": true },
             "hash": { "dataType": "string", "required": true },
-            "shortId": { "dataType": "string", "required": true },
             "source": { "dataType": "string" },
         },
     },
@@ -51,10 +51,10 @@ export function RegisterRoutes(app: any, iocContainer: interfaces.Container) {
             const promise = controller.getTree.apply(controller, validatedArgs);
             promiseHandler(controller, promise, response, next);
         });
-    app.get('/api/v1/article/full/:shortid',
+    app.get('/api/v1/article/full/:id',
         function(request: any, response: any, next: any) {
             const args = {
-                shortId: { "in": "path", "name": "shortid", "required": true, "dataType": "string" },
+                id: { "in": "path", "name": "id", "required": true, "dataType": "string" },
             };
 
             let validatedArgs: any[] = [];

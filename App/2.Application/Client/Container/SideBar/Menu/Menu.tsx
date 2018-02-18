@@ -27,10 +27,10 @@ export class Menu extends React.Component<IMenuProps> implements IMenu  {
         return <div>
                     <Switch>
                         {this.menuRouteProps
-                                .sort((r1,r2) => r2.priority - r1.priority)
-                                .map((el, index)=>{
-                                    return <Route key={index} {...el}/>
-                                    })
+                            .sort((r1,r2) => r2.priority - r1.priority)
+                            .map((el, index)=>{
+                                return <Route key={index} {...el}/>
+                            })
                         }
                         <Route path="/*" render={()=><p>menu not found</p>}/> 
                     </Switch>

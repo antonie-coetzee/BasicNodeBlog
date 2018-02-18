@@ -109,7 +109,7 @@
     "nodegit": "^0.20.3",
     "nodemon": "^1.14.3",
     "progress": "^2.0.0",
-    "react-markdown": "^2.4.5",
+    "react-markdown": "^3.2.0",
     "react-tagcloud": "^1.2.0",
     "sass-loader": "^6.0.6",
     "shelljs": "^0.7.8",

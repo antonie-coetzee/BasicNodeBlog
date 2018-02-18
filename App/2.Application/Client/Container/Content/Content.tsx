@@ -3,10 +3,10 @@ import { withRouter, Switch, Route } from "react-router";
 import { observer } from "mobx-react";
 import {injectable, interfaces} from "inversify";
 
-import { lazyInject } from "0.Bootstrap/Common/AppContainer/LazyInject";
-import {IContent} from "1.Framework/Client/Container/Content/IContent"
+import { lazyInject, lazyMultiInject } from "0.Bootstrap/Common/AppContainer/LazyInject";
+import {IContent, IContentRoutePropsKey, IContentRouteProps} from "1.Framework/Client/Container/Content/IContent";
 
-import { IBlogWrapperKey, IBlogWrapper } from "2.Application/Client/Container/Content/Blog/IBlogWrapper";
+import { IBlogContentKey, IBlogContent } from "2.Application/Client/Container/Content/Blog/IBlogContent";
 
 import style from "Style.sass"
 
@@ -15,16 +15,26 @@ import style from "Style.sass"
 @observer
 export class Content extends React.Component<any, any> implements IContent  {
 
-    @lazyInject(IBlogWrapperKey)
-    public BlogWrapper : interfaces.Newable<IBlogWrapper>;
+    @lazyMultiInject(IContentRoutePropsKey)
+    public contentRouteProps : IContentRouteProps[];
+
+    @lazyInject(IBlogContentKey)
+    public BlogWrapper : interfaces.Newable<IBlogContent>;
 
     render(){
-        return  <Switch>
-                    <Route path="/blog" component={this.BlogWrapper}/>
-                    <Route render={()=><p>content type not matched</p>}/>
-                </Switch>
+        return  <div>
+                    <Switch>
+                        {this.contentRouteProps
+                            .sort((r1,r2) => r2.priority - r1.priority)
+                            .map((el, index)=>{
+                                return <Route key={index} {...el}/>
+                            })
+                        }
+                        <Route path="/*" render={()=><p>content not found</p>}/> 
+                    </Switch>
+                </div>
     }
-
+}
 
     // render() {
     //     return <div className="content is-medium">
@@ -46,4 +56,3 @@ export class Content extends React.Component<any, any> implements IContent  {
     //                 </p>                         
     //             </div>
     // }
-}

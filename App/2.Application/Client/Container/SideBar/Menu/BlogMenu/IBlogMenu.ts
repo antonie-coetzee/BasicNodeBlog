@@ -1,5 +1,4 @@
 import * as React from "react";
-import { IArticleTree } from "2.Application/Common/Services/Article/IArticleService";
 
 export interface IBlogMenuProps {
 }

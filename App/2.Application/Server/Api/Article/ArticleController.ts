@@ -22,23 +22,9 @@ export class ArticleController extends Controller implements IArticleController 
         return this.articleService.GetArticleTree();    
     }
 
-    @Get('full/{shortid}')
-    public async getArticleWithSource(@Path('shortid') shortId:string): Promise<IArticle> {
-        this.logger.Debug("returning full article");
-        //return this.articleService.getArticleWithSource(shortId);
-        return Promise.resolve<IArticle>({
-            hash:'',
-            metaHeader:{
-                date:'',
-                readingTime:'',
-                synopsis:'',
-                tags:[],
-                title:''
-            },
-            path:'',
-            shortId:'',
-            source:'',
-            title:shortId
-        })
+    @Get('full/{id}')
+    public async getArticleWithSource(@Path('id') id:string): Promise<IArticle> {
+        this.logger.Debug(`returning full article for id: ${id}`);
+        return this.articleService.getArticleWithSource(id);       
     }    
 }

@@ -58,7 +58,6 @@ function asyncLoadState<TComponent>(importFunction: ImportFunction<TComponent>):
     timedOut:false
   };
   let promise = importFunction()
-    //.then(x => new Promise<interfaces.Newable<TComponent>>(resolve => setTimeout(() => resolve(x), 10000)))
     .then(component => {
       state.loading = false;
       state.Component = component;

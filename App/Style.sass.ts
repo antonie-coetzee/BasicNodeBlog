@@ -1553,6 +1553,7 @@ const enum StyleSass {
    "avatar" = "avatar",
    "isCollapsed" = "is-collapsed",
    "tagCloud" = "tag-cloud",
+   "codeBlock" = "code-block",
    "sectionAllEqual" = "section-all-equal",
 }
 export default StyleSass;

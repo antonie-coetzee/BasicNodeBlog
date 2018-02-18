@@ -3,12 +3,14 @@ import { withRouter, Switch, Route , RouteComponentProps} from "react-router";
 import { observer } from "mobx-react";
 import { injectable } from "inversify";
 import { lazyInject } from "0.Bootstrap/Common/AppContainer/LazyInject";
+import * as classNames from "classnames";
+import * as ReactMarkdown from "react-markdown";
 
 import { IBlogArticleProps, IBlogArticle } from "2.Application/Client/Container/Content/Blog/Article/IBlogArticle";
 import { IArticleServiceKey, IArticleService } from "2.Application/Common/Services/Article/IArticleService";
 
 import style from "Style.sass"
-
+import { CodeBlock } from "./Renders/CodeBlock";
 
 @observer
 @injectable()
@@ -31,7 +33,27 @@ export class BlogArticle extends React.Component<IBlogArticleProps> implements I
         }
     }
   
-    render() {      
-        return <p>{this.articleService.articleWithSource.title}</p>;
+    render() { 
+        let article = this.articleService.articleWithSource;
+        return <div>
+                    <h1 className={classNames(style.title)}>{article.title}</h1> 
+                    <h5 className={classNames(style.subtitle, style.is6)}>{article.metaHeader && article.metaHeader.date} </h5>
+                    {article.metaHeader && article.metaHeader.tags && 
+                        <div className={classNames(style.tags)}>
+                            {article.metaHeader.tags.map((tag, idx)=>{                           
+                                return <span className={classNames(style.tag, style.isRounded)} key={idx}>
+                                            {tag}
+                                        </span>
+                            })}
+                        </div>
+                    }
+                    <hr/>
+                    <ReactMarkdown 
+                        source={article.source} 
+                        skipHtml={true}
+                        className={classNames(style.content)}
+                        renderers = {Object.assign({}, ReactMarkdown.renderers, { CodeBlock: CodeBlock, code: CodeBlock})} 
+                    />
+                </div>                                                        
     }
 }

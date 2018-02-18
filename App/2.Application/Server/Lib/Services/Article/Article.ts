@@ -6,5 +6,4 @@ export class Article implements IArticle {
     public path:string;
     public metaHeader:IMetaHeader;
     public hash:string;
-    public shortId:string;
 }

@@ -1,4 +1,5 @@
 export interface IMetaHeader {
+    id:string;
     title?:string;
     date:string;
     synopsis:string;

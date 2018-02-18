@@ -5,6 +5,5 @@ export interface IArticle {
     path:string;
     metaHeader:IMetaHeader;
     hash:string;
-    shortId:string;
     source?:string;
 }
