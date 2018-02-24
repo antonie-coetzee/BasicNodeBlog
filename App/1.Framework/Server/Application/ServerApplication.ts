@@ -2,20 +2,22 @@ import "reflect-metadata";
 
 import {IServerApplication, IServerApplicationKey} from "0.Bootstrap/Common/Application/IServerApplication"
 import {IExpressApplication, IExpressApplicationKey} from "./IExpressApplication"
-import {injectable, inject, Container, interfaces,multiInject} from "inversify";
+import {injectable, inject, Container, interfaces,multiInject, optional} from "inversify";
 import {ILogger, ILoggerKey} from "../../Common/Services/Logging/ILogger"
 
 import * as express from "express";
 
 import {IMiddleware, IMiddlewareKey} from "./../Middleware/IMiddleware"
 import {IApiModule, IApiModuleKey} from "./../Api/IApiModule"
+import { IServerListenKey, IServerListen } from "../../Common/Server/IServerListen";
 
 @injectable()
 export class ServerApplication implements IServerApplication {
 
     constructor(@inject(IExpressApplicationKey) private app:IExpressApplication,  
-                @multiInject(IMiddlewareKey) private middleware: IMiddleware[], 
-                @multiInject(IApiModuleKey) private apiModules: IApiModule[], 
+                @multiInject(IMiddlewareKey) @optional() private middleware: IMiddleware[] = [], 
+                @multiInject(IApiModuleKey) @optional() private apiModules: IApiModule[] = [], 
+                @inject(IServerListenKey) private serverListen:IServerListen,
                 @inject(ILoggerKey) private logger:ILogger) {}
     
     Bootstrap(){
@@ -51,11 +53,9 @@ export class ServerApplication implements IServerApplication {
             }   
             next(err);
         });
+
+        this.serverListen.Listen(this.app);
         
-        // TODO: sort out with config
-        this.app.instance.listen(8080, ()=> {
-            this.logger.Info("listening on port: %s", "8080");
-        })
         return this;
     }
 }

@@ -4,13 +4,13 @@ import { observer } from "mobx-react";
 import { injectable } from "inversify";
 import { lazyInject } from "0.Bootstrap/Common/AppContainer/LazyInject";
 import * as classNames from "classnames";
-import * as ReactMarkdown from "react-markdown";
+import Markdown from "markdown-to-jsx";
 
 import { IBlogArticleProps, IBlogArticle } from "2.Application/Client/Container/Content/Blog/Article/IBlogArticle";
 import { IArticleServiceKey, IArticleService } from "2.Application/Common/Services/Article/IArticleService";
 
 import style from "Style.sass"
-import { CodeBlock } from "./Renders/CodeBlock";
+//import { CodeBlock } from "./Renders/CodeBlock";
 
 @observer
 @injectable()
@@ -35,6 +35,9 @@ export class BlogArticle extends React.Component<IBlogArticleProps> implements I
   
     render() { 
         let article = this.articleService.articleWithSource;
+        if(article.source == null){
+            article.source = ""; 
+        }
         return <div>
                     <h1 className={classNames(style.title)}>{article.title}</h1> 
                     <h5 className={classNames(style.subtitle, style.is6)}>{article.metaHeader && article.metaHeader.date} </h5>
@@ -48,12 +51,11 @@ export class BlogArticle extends React.Component<IBlogArticleProps> implements I
                         </div>
                     }
                     <hr/>
-                    <ReactMarkdown 
-                        source={article.source} 
-                        skipHtml={true}
-                        className={classNames(style.content)}
-                        renderers = {Object.assign({}, ReactMarkdown.renderers, { CodeBlock: CodeBlock, code: CodeBlock})} 
-                    />
+                    <div className={classNames(style.content)}>
+                        <Markdown >
+                            {article.source}
+                        </Markdown>  
+                    </div >
                 </div>                                                        
     }
 }

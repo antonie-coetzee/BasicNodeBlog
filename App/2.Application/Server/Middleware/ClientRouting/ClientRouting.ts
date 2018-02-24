@@ -1,7 +1,6 @@
 import { injectable, inject } from "inversify";
 import { ILogger, ILoggerKey } from "1.Framework/Common/Services/Logging/ILogger"
 import { RequestHandler } from "express";
-import * as fs from "fs";
 import * as url from "url"
 import * as path from "path";
 import { IMiddleware } from "1.Framework/Server/Middleware/IMiddleware"

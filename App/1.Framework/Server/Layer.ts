@@ -2,6 +2,7 @@ import layer from '0.Bootstrap/Server/Layer'
 import {Container, interfaces} from "inversify"
 import * as express from "express";
 
+/// #if !ServiceWorker
 import {IConfig, IConfigKey} from "./Config/IConfig"
 import Config from "./Config/Config"
 
@@ -11,6 +12,10 @@ import {ILoggerConfig, ILoggerConfigKey} from "../Server/Lib/Logging/ILoggerConf
 import {LoggerConfig} from "./Config/LoggerConfig"
 import {ILoggerFactory,ILoggerFactoryKey} from "../Common/Services/Logging/ILoggerFactory"
 import {LoggerFactory} from "../Server/Lib/Logging/LoggerFactory"
+/// #endif
+
+import { IServerListen, IServerListenKey } from '../Common/Server/IServerListen';
+import { ServerListen } from '1.Framework/Server/Application/ServerListen';
 
 import {IExpressApplication,IExpressApplicationKey} from "./Application/IExpressApplication"
 import {ExpressApplication} from "./Application/ExpressApplication"
@@ -21,11 +26,14 @@ import  {ServerApplication} from "./Application/ServerApplication"
 layer.AddLayer((container)=>{
     container.bind<interfaces.Container>(Container).toConstantValue(layer.container);
 
+/// #if !ServiceWorker
     container.bind<IConfig>(IConfigKey).to(Config).inSingletonScope();
-
     container.load(loggingModule);
     container.bind<ILoggerConfig>(ILoggerConfigKey).to(LoggerConfig);
     container.bind<ILoggerFactory>(ILoggerFactoryKey).to(LoggerFactory);
+
+    container.bind<IServerListen>(IServerListenKey).to(ServerListen);
+/// #endif
 
     container.bind<IExpressApplication>(IExpressApplicationKey).to(ExpressApplication).inSingletonScope();
     container.bind<IServerApplication>(IServerApplicationKey).to(ServerApplication);   
