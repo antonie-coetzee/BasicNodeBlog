@@ -1,0 +1,35 @@
+var serviceScriptUrl = '/serviceWorker.entry.js'
+var scope = '/'
+
+
+const assets = [{{#each assets}}"{{this}}",{{/each}}];
+
+function registeredWorker (registration) {
+  console.log('express-service registered...')
+}
+
+function onError (err) {
+  if (err.message.indexOf('missing active') !== -1) {
+    // the service worker is installed
+    console.log('the service worker is installed')
+  } else {
+    console.error('express service worker error', err)
+  }
+}
+
+const cacheName = 'client-cache'
+const myName = 'express-service'
+
+self.addEventListener('install', function (event) {
+    console.log(myName, 'installed')
+})
+
+self.addEventListener('activate', function (event:any) {
+    console.log(myName, 'activated')
+    event.waitUntil(caches.delete(cacheName));
+})
+
+window.navigator.serviceWorker
+  .register(serviceScriptUrl, { scope: scope })
+  .then(registeredWorker)
+  .catch(onError)

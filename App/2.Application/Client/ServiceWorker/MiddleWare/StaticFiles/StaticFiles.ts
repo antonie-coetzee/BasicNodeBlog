@@ -1,9 +1,15 @@
 import { injectable, inject, interfaces} from "inversify";
 import * as parseUrl from "parseurl";
 import {ILogger, ILoggerKey} from "1.Framework/Common/Services/Logging/ILogger";
-import {RequestHandler, Request, Response, NextFunction}  from "express";
+import {RequestHandler, Response as expressResponse, Request, NextFunction}  from "express";
 import * as express from "express";
 import {IMiddleware} from "1.Framework/Server/Middleware/IMiddleware";
+import { IClientCacheKey, IClientCache } from "../../ClientCache/IClientCache";
+
+interface RequestWithInfo extends Request {
+    requestInfo:RequestInfo;
+}
+
 
 @injectable()
 class ServiceWorkerStaticFiles implements IMiddleware {
@@ -12,15 +18,17 @@ class ServiceWorkerStaticFiles implements IMiddleware {
     priority:number = 30;
     handlers:RequestHandler[];
 
-    constructor(@inject(ILoggerKey) private logger:ILogger) {     
+    constructor(@inject(ILoggerKey) private logger:ILogger, @inject(IClientCacheKey) private clientCache:IClientCache) {     
+        this.handleRequest = this.handleRequest.bind(this);
+        
         this.handlers = [this.handleRequest];
     }
 
-    async handleRequest(req:Request, resp:Response, next:NextFunction){
+    async handleRequest(req:RequestWithInfo, resp:expressResponse, next:NextFunction){
         if (req.method !== 'GET' && req.method !== 'HEAD') {
             return next();
         }
-      
+   
         var originalUrl = parseUrl.original(req);
         var path = parseUrl(req).pathname;
     
@@ -28,11 +36,26 @@ class ServiceWorkerStaticFiles implements IMiddleware {
         if (path === '/' && originalUrl.pathname.substr(-1) !== '/') {
             path = '';
         }   
-        let response = await fetch(path);
+
+        let response:Response = null;
+
+        let cache = await this.clientCache.Instance;
+        let cachedResponse = await cache.match(req.requestInfo);
+        if(cachedResponse){
+            response = cachedResponse.clone();
+        }else{
+            response = await fetch(req.requestInfo);
+            if(response.ok){
+                await cache.put(req.requestInfo, response.clone());
+            }      
+        }
+        
         let contentType = response.headers.get("content-type");
         resp.contentType(contentType);
+        resp.statusCode = response.status;
+        resp.statusMessage = response.statusText;
         if(contentType.includes("text")){
-            let text = await response.text();          
+            let text = await response.text();   
             return resp.send(text);  
         }
         if(contentType.includes("image")){

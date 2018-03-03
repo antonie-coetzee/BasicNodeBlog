@@ -7,7 +7,7 @@ if (typeof global.XMLHttpRequest === 'undefined') {
 process.hrtime = performance.now.bind(performance)
 
 process.stdout = {
-    write: function fakeWrite (str) {
+    write: function (str) {
       console.log(str)
     }
 }
@@ -22,7 +22,6 @@ if (!http.ServerResponse) {
   http.ServerResponseProto = {
     _headers: {},
     setHeader: function setHeader (name, value) {
-      console.log('set header %s to %s', name, value)
       this._headers[name] = value
     },
     getHeader: function getHeader (name) {
@@ -33,7 +32,7 @@ if (!http.ServerResponse) {
     }
   }
   http.ServerResponse = Object.create({}, http.ServerResponseProto)
-  http.ServerResponse .prototype = {};
+  http.ServerResponse.prototype = {};
 }
 
 if (typeof setImmediate === 'undefined') {

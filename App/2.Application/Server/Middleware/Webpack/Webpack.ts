@@ -6,8 +6,11 @@ import * as path from "path";
 import {IMiddleware} from "1.Framework/Server/Middleware/IMiddleware"
 
 import * as webpack from "webpack"
-import * as webpackDevMiddleware from "webpack-dev-middleware"
+
+
 import * as webpackHotMiddleware  from "webpack-hot-middleware"
+import * as webpackDevMiddleware from "webpack-dev-middleware"
+
 
 import * as config from "../../../../../webpack.client.config.dev.js";
 

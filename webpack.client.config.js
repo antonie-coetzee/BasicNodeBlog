@@ -1,12 +1,13 @@
 const path = require('path');
 const webpack = require('webpack'); 
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const fs = require('fs');
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const Visualizer = require('webpack-visualizer-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 
 var HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
@@ -14,14 +15,15 @@ let workingDir = __dirname.includes("Dist") ? path.resolve(__dirname,'../')  : _
 
 module.exports = {
     devtool: 'source-map',
-    entry: [
-        path.resolve(workingDir, './App/Client.tsx'),  'webpack-hot-middleware/client?reload=true'
-    ],
+    entry: {
+        serviceworker: path.resolve(workingDir, './App/ServiceWorker.hbs'),
+        client: [path.resolve(workingDir, './App/Client.tsx')]        
+    },
     output: {
-        filename: '[name].chunk.[chunkhash].js',
-        chunkFilename: '[name].chunk.[chunkhash].js',
+        filename: '[name].[chunkhash].js',
         path: path.resolve(workingDir, './Dist/Public/'),
-        pathinfo: true
+        pathinfo: true,
+        hashDigestLength: 8
     },
     resolve: {
         extensions: ['.ts', '.tsx', 'd.ts', '.js'],
@@ -30,6 +32,11 @@ module.exports = {
             bulma: path.resolve(workingDir, './node_modules/bulma')
         },
     },   
+    resolveLoader: {
+        alias: {
+          "handlebars-loader": path.join(workingDir, "./Scripts/handlebarsLoader")
+        }
+    },    
     devServer: {
         historyApiFallback: true
     },
@@ -64,19 +71,40 @@ module.exports = {
             ],
             exclude: [/node_modules/]
         },
+        { 
+            test: /\.hbs$/, 
+            use:[                          
+                { 
+                    loader: 'ts-loader',
+                    options: { appendTsSuffixTo: [/\.hbs$/] }
+                },
+                {loader: 'handlebars-loader'}
+            ],
+            exclude: [/node_modules/]
+        },        
         {
             test: /\.css$/,
-            use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+            use: process.env.HOT_RELOAD ? 
+                    ['css-hot-loader'].concat(ExtractTextPlugin.extract({
                         use: [
                             { 
                                 loader: 'css-loader'
                             }
                         ]
                     }))
+                    :
+                    ExtractTextPlugin.extract({
+                        use: [
+                            { 
+                                loader: 'css-loader'
+                            }
+                        ]
+                    })
         },        
         {
             test: /\.(sass|scss)$/,
-            use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+            use: process.env.HOT_RELOAD ? 
+                    ['css-hot-loader'].concat(ExtractTextPlugin.extract({
                         use: [
                             { 
                                 loader: 'typings-for-css-modules-loader', 
@@ -90,26 +118,39 @@ module.exports = {
                             }
                         ]
                     }))
+                    :
+                    ExtractTextPlugin.extract({
+                        use: [
+                            { 
+                                loader: 'typings-for-css-modules-loader', 
+                                    query: {
+                                        modules:true, 
+                                        url:true, 
+                                        localIdentName: '[local]' } 
+                            },
+                            {
+                                loader: 'sass-loader' 
+                            }
+                        ]
+                    })                    
         }       
       ]
     },
     plugins: [
         new HardSourceWebpackPlugin(),
-        new ExtractTextPlugin('styles.css'),
-        new Visualizer({
-            filename: 'statistics.html'
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-        // new BundleAnalyzerPlugin({
-        //     analyzerMode: 'static'
-        // }),        
+        new CleanWebpackPlugin(path.resolve(workingDir, './Dist/Public/')),
+        new ExtractTextPlugin('styles.css'),      
         new HtmlWebpackPlugin({hash:false, template: workingDir +'/App/Index.ejs'}),
+        new ScriptExtHtmlWebpackPlugin({
+            async: 'serviceworker',
+            defaultAttribute: 'sync'
+        }),
         new webpack.WatchIgnorePlugin([
                 /sass\.ts$/
             ]),  
         new CommonsChunkPlugin({
             name: 'common',
-            filename: 'common.chunk.[hash].js',
+            filename: 'common.[hash].js',
             minChunks(module, count) {
                 var context = module.context;
                 return context && context.indexOf('node_modules') >= 0;}

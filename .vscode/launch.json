@@ -24,6 +24,7 @@
             "runtimeExecutable": "npm",
             "env": {
                 "NODE_PATH":"./Dist/App",
+                "HOT_RELOAD":"true",
                 "NODE_ENV": "development",
                 "DEBUG": "express:*"
             }
@@ -45,6 +46,22 @@
         "protocol": "inspector",
         "smartStep": true,
         "console": "integratedTerminal"
-        }     
+        },         
+        {
+        "name": "Debug Webpack",
+        "type": "node",
+        "request": "launch",
+        "runtimeArgs": [
+            "--inspect-brk",
+            "${workspaceRoot}/node_modules/webpack/bin/webpack.js",
+            "--config",
+            "${workspaceRoot}/webpack.client.config.dev.js"
+        ],
+        "cwd": "${workspaceRoot}",
+        "port": 9229,
+        "protocol": "inspector",
+        "smartStep": true,
+        "console": "integratedTerminal"
+        }             
     ]
 }
