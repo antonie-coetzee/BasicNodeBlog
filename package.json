@@ -6,15 +6,15 @@
   "scripts": {
     "client-prod": "./node_modules/.bin/webpack --config ./webpack.client.config.prod.js --progress",
     "client-dev": "./node_modules/.bin/webpack --config ./webpack.client.config.dev.js --progress --profile --display-error-details",
-    "client-sw": "./node_modules/.bin/webpack --config ./webpack.client.serviceworker.config.js --progress --profile --display-error-details",
-    "server-build": "node ./Scripts/prebuild.js && tsc",
-    "server-rebuild": "node ./Scripts/prebuild.js && node ./Scripts/updateApi.js && tsc",
+    "client-sw": "./node_modules/.bin/webpack --config ./webpack.client.serviceworker.config.js --progress --profile --display-error-details --json > c:/dev/stats.json",
+    "server-build": "node ./Build/prebuild.js && tsc",
+    "server-rebuild": "node ./Build/prebuild.js && node ./Build/updateApi.js && tsc",
     "debug": "./node_modules/.bin/concurrently --kill-others \"tsc -w\" \"node ./node_modules/nodemon/bin/nodemon.js\"",
     "start-dev": "node --inspect-brk=5858 ./Dist/App/Server.js",
     "start-windows": "npm run server-build && cross-env NODE_PATH=./Dist/App DEBUG=express:* node ./Dist/App/Server.js",
     "pretest": "npm run build-server",
     "test": "jest",
-    "preinstall": "node ./Scripts/preinstall.js"
+    "preinstall": "node ./Build/preinstall.js"
   },
   "repository": {
     "type": "git",

@@ -48,14 +48,17 @@
         "console": "integratedTerminal"
         },         
         {
-        "name": "Debug Webpack",
+        "name": "Debug SW Build",
         "type": "node",
         "request": "launch",
         "runtimeArgs": [
             "--inspect-brk",
             "${workspaceRoot}/node_modules/webpack/bin/webpack.js",
             "--config",
-            "${workspaceRoot}/webpack.client.config.dev.js"
+            "${workspaceRoot}/webpack.client.serviceworker.config.js",
+            "--profile",
+            "--json",
+            "> C:/dev/stats.json",
         ],
         "cwd": "${workspaceRoot}",
         "port": 9229,

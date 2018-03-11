@@ -32,6 +32,10 @@ module.exports = {
             fs: path.resolve(workingDir,'./App/1.Framework/Client/lib/ServiceWorker/fs.js'),
             net: path.resolve(workingDir,'./App/1.Framework/Client/lib/ServiceWorker/net.js'),
             moment: path.resolve(workingDir,'./App/1.Framework/Client/lib/ServiceWorker/stub.js'),
+            "iconv-lite": path.resolve(workingDir,'./App/1.Framework/Client/lib/ServiceWorker/stub.js'),
+            "bn.js": path.resolve(workingDir,'./App/1.Framework/Client/lib/ServiceWorker/stub.js'),
+            "body-parser": path.resolve(workingDir,'./App/1.Framework/Client/lib/ServiceWorker/stub.js'),
+            "events": path.resolve(workingDir,'./App/1.Framework/Client/lib/ServiceWorker/stub.js'),
             "./view": path.resolve(workingDir,'./App/1.Framework/Client/lib/ServiceWorker/view.js')
         }
     },   
