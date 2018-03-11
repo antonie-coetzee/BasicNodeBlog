@@ -1,8 +1,7 @@
-var serviceScriptUrl = '/serviceWorker.entry.js'
+//async entry point for loading the service worker on the index page
+////////////////////////////////////////////////////////////////////
+var serviceScriptUrl = '/serviceworker.js'
 var scope = '/'
-
-
-const assets = [{{#each assets}}"{{this}}",{{/each}}];
 
 function registeredWorker (registration) {
   console.log('express-service registered...')
@@ -17,19 +16,14 @@ function onError (err) {
   }
 }
 
-const cacheName = 'client-cache'
-const myName = 'express-service'
-
-self.addEventListener('install', function (event) {
-    console.log(myName, 'installed')
-})
-
-self.addEventListener('activate', function (event:any) {
-    console.log(myName, 'activated')
-    event.waitUntil(caches.delete(cacheName));
-})
-
-window.navigator.serviceWorker
+if ('serviceWorker' in window.navigator) {
+  window.navigator.serviceWorker
   .register(serviceScriptUrl, { scope: scope })
   .then(registeredWorker)
   .catch(onError)
+}else{
+  console.log('serviceWorker not available or supported, skipping install');
+}
+
+
+

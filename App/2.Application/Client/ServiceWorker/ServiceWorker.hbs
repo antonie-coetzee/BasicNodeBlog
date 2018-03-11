@@ -1,0 +1,22 @@
+const cacheName = 'sw-client-cache'
+const staticAssets = [{{#each staticAssets}}
+    "{{this}}",{{/each}}
+    ];
+
+
+self.addEventListener('install', function (event) {
+    console.log(myName, 'installed')
+})
+
+self.addEventListener('activate', function (event:any) {
+  event.waitUntil(
+    return caches.open(cacheName).then(function(cache) {
+        cache.keys().then(function(keys) {
+            keys.forEach(function(request, index, array) {
+            cache.delete(request);
+            });   
+        })
+      );
+    })
+  );
+})

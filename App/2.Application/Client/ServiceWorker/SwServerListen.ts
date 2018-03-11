@@ -6,7 +6,7 @@ import { IExpressApplication } from "1.Framework/Server/Application/IExpressAppl
 import * as expressService from "1.Framework/Client/Lib/ServiceWorker/expressService"
 
 @injectable()
-export class ServiceWorkerListen implements IServerListen {
+export class SwServerListen implements IServerListen {
 
     constructor(@inject(ILoggerKey) private logger:ILogger) {}
 
