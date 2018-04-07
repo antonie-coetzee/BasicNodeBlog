@@ -15,6 +15,7 @@ export let middlewareContainerModule = new ContainerModule(
             bind<IMiddleware>(IMiddlewareKey).to(WebpackDevMiddleware);
             bind<IMiddleware>(IMiddlewareKey).to(ClientRoutingMiddleware);
         }else{
+            bind<IMiddleware>(IMiddlewareKey).to(ClientRoutingMiddleware);
             bind<IMiddleware>(IMiddlewareKey).to(StaticFilesMiddleware);
         }
         bind<IMiddleware>(IMiddlewareKey).to(SwaggerUIMiddleware);

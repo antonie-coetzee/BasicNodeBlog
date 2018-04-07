@@ -16,7 +16,6 @@ let workingDir = __dirname.includes("Dist") ? path.resolve(__dirname,'../')  : _
 module.exports = {
     devtool: 'source-map',
     entry: {
-        'client.serviceworker.install': path.resolve(workingDir, './App/ServiceWorkerInstall.ts'),
         client: [path.resolve(workingDir, './App/Client.tsx')]        
     },
     output: {
@@ -135,7 +134,6 @@ module.exports = {
         new ExtractTextPlugin('styles.css'),      
         new HtmlWebpackPlugin({hash:false, template: workingDir +'/App/Index.ejs'}),
         new ScriptExtHtmlWebpackPlugin({
-            async: 'client.serviceworker.install',
             defaultAttribute: 'sync'
         }),
         new webpack.WatchIgnorePlugin([
@@ -143,7 +141,7 @@ module.exports = {
             ]),  
         new CommonsChunkPlugin({
             name: 'common',
-            filename: 'client.common.[chunkhash].js',
+            filename: 'client.common.[hash].js',
             minChunks(module, count) {
                 var context = module.context;
                 return context && context.indexOf('node_modules') >= 0;}

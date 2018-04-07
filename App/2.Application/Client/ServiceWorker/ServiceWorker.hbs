@@ -3,11 +3,13 @@ const staticAssets = [{{#each staticAssets}}
     "{{this}}",{{/each}}
     ];
 
-
+// add assets to cache (that have changed)
 self.addEventListener('install', function (event) {
     console.log(myName, 'installed')
 })
 
+// remove cache items that are not needed, update index '/' item to latest
+// eval sw scripts when done
 self.addEventListener('activate', function (event:any) {
   event.waitUntil(
     return caches.open(cacheName).then(function(cache) {
