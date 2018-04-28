@@ -12,5 +12,9 @@
         "xml": {
             "attr_quotes": "single"
         }
-    }
+    },
+"search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true
+    }    
 }

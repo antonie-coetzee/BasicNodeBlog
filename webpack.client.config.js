@@ -3,23 +3,19 @@ const webpack = require('webpack');
 
 const fs = require('fs');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-var HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-
+const devMode = process.env.NODE_ENV !== 'production'
 let workingDir = __dirname.includes("Dist") ? path.resolve(__dirname,'../')  : __dirname;
 
 module.exports = {
     devtool: 'source-map',
+    
     entry: {
         client: [path.resolve(workingDir, './App/Client.tsx')]        
     },
     output: {
-        filename: '[name].[chunkhash].js',
+        filename: '[name].[hash].js',
         path: path.resolve(workingDir, './Dist/Public/'),
         pathinfo: true,
         hashDigestLength: 8
@@ -28,11 +24,23 @@ module.exports = {
         extensions: ['.ts', '.tsx', 'd.ts', '.js'],
         modules: [path.resolve(workingDir,'./App'), path.resolve(workingDir,'./node_modules'), 'node_modules'],
         alias: {
-            bulma: path.resolve(workingDir, './node_modules/bulma')
-        },
+            '../../theme.config': path.join(workingDir, './App/Theme/theme.config')  
+         }
     },   
     devServer: {
         historyApiFallback: true
+    },
+    optimization:{
+        splitChunks: {
+            chunks: "all",
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendors",
+                    chunks: "all"
+                }
+            }
+        }
     },
     module: {
       rules: [
@@ -64,87 +72,19 @@ module.exports = {
                 'ts-loader'
             ],
             exclude: [/node_modules/]
-        },
-        { 
-            test: /\.hbs$/, 
-            use:[                          
-                { 
-                    loader: 'ts-loader'
-                }
-            ],
-            exclude: [/node_modules/]
-        },        
+        },     
         {
-            test: /\.css$/,
-            use: process.env.HOT_RELOAD ? 
-                    ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-                        use: [
-                            { 
-                                loader: 'css-loader'
-                            }
-                        ]
-                    }))
-                    :
-                    ExtractTextPlugin.extract({
-                        use: [
-                            { 
-                                loader: 'css-loader'
-                            }
-                        ]
-                    })
-        },        
-        {
-            test: /\.(sass|scss)$/,
-            use: process.env.HOT_RELOAD ? 
-                    ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-                        use: [
-                            { 
-                                loader: 'typings-for-css-modules-loader', 
-                                    query: {
-                                        modules:true, 
-                                        url:true, 
-                                        localIdentName: '[local]' } 
-                            },
-                            {
-                                loader: 'sass-loader' 
-                            }
-                        ]
-                    }))
-                    :
-                    ExtractTextPlugin.extract({
-                        use: [
-                            { 
-                                loader: 'typings-for-css-modules-loader', 
-                                    query: {
-                                        modules:true, 
-                                        url:true, 
-                                        localIdentName: '[local]' } 
-                            },
-                            {
-                                loader: 'sass-loader' 
-                            }
-                        ]
-                    })                    
+            test: /\.less$/,
+            use: [false ? 'style-loader' : MiniCssExtractPlugin.loader,'css-loader','less-loader' ]             
         }       
       ]
     },
-    plugins: [
-        new HardSourceWebpackPlugin(),
-        new CleanWebpackPlugin(path.resolve(workingDir, './Dist/Public/')),
-        new ExtractTextPlugin('styles.css'),      
-        new HtmlWebpackPlugin({hash:false, template: workingDir +'/App/Index.ejs'}),
-        new ScriptExtHtmlWebpackPlugin({
-            defaultAttribute: 'sync'
-        }),
-        new webpack.WatchIgnorePlugin([
-                /sass\.ts$/
-            ]),  
-        new CommonsChunkPlugin({
-            name: 'common',
-            filename: 'client.common.[hash].js',
-            minChunks(module, count) {
-                var context = module.context;
-                return context && context.indexOf('node_modules') >= 0;}
-        })                      
+    plugins: [  
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+          })                   
     ]
 };
