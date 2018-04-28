@@ -12,7 +12,7 @@ module.exports = {
     devtool: 'source-map',
     
     entry: {
-        client: [path.resolve(workingDir, './App/Client.tsx')]        
+        client: [path.resolve(workingDir, './Src/Client.tsx')]        
     },
     output: {
         filename: '[name].[hash].js',
@@ -22,9 +22,9 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', 'd.ts', '.js'],
-        modules: [path.resolve(workingDir,'./App'), path.resolve(workingDir,'./node_modules'), 'node_modules'],
+        modules: [path.resolve(workingDir,'./Src'), path.resolve(workingDir,'./node_modules'), 'node_modules'],
         alias: {
-            '../../theme.config': path.join(workingDir, './App/Theme/theme.config')  
+            '../../theme.config': path.join(workingDir, './Src/Theme/theme.config')  
          }
     },   
     devServer: {

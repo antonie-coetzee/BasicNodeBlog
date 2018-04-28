@@ -13,7 +13,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "moduleResolution": "node",
-        "baseUrl": "App/",
+        "baseUrl": "Src/",
         "types": [
             "node",
             "reflect-metadata",
@@ -24,7 +24,7 @@
          ]
     },
       "include": [
-         "App/**/*"
+         "Src/**/*"
       ],        
      "exclude": [
          "node_modules",
