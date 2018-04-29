@@ -1,5 +1,5 @@
 import {injectable, ContainerModule, interfaces} from "inversify"
-import {IMiddlewareKey, IMiddleware} from "../../../1.Framework/Server/Middleware/IMiddleware"
+import {IMiddlewareKey, IMiddleware} from "../../_Parent/Server/Middleware/IMiddleware"
 
 /// #if !ServiceWorker
 import {StaticFilesMiddleware} from "./StaticFiles/StaticFiles"

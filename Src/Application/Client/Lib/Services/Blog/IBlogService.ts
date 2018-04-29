@@ -1,4 +1,4 @@
-import { IArticle } from "2.Application/Common/Domain/IArticle";
+import { IArticle } from "../../../../Common/Domain/IArticle";
 
 export interface IBlogService {
     readonly selectedArticle:IArticle;

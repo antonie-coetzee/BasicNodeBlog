@@ -6,7 +6,6 @@
   "scripts": {
     "client-prod": "./node_modules/.bin/webpack --config ./webpack.client.config.prod.js --progress --mode production",
     "client-dev": "./node_modules/.bin/webpack --config ./webpack.client.config.dev.js --progress --profile --display-error-details --mode development",
-    "client-sw": "./node_modules/.bin/webpack --config ./webpack.client.serviceworker.config.js --progress --profile --display-error-details --json > c:/dev/stats.json",
     "server-build": "node ./Build/prebuild.js && tsc",
     "server-rebuild": "node ./Build/prebuild.js && node ./Build/updateApi.js && tsc",
     "debug": "./node_modules/.bin/concurrently --kill-others \"tsc -w\" \"node ./node_modules/nodemon/bin/nodemon.js\"",
