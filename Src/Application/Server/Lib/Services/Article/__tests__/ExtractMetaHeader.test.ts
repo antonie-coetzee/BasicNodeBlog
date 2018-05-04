@@ -7,12 +7,12 @@ describe('extracting meta header', () => {
     {
         "synopsis":"Test synopsis",
         "readingTime":"5 minutes",
-        "tags":"test blog engine"
+        "tags": "test blog engine"
     }
     -->
     `
     let result = await ExtractMetaHeader.Extract(header);
-    const desiredMetaHeader = {synopsis:"Test synopsis", readingTime:"5 minutes", tags:"test blog engine"}
+    const desiredMetaHeader = {synopsis:"Test synopsis", readingTime:"5 minutes", tags:["test", "blog", "engine"]}
     expect(result).toMatchObject(desiredMetaHeader);
   });
 
@@ -52,7 +52,7 @@ describe('extracting meta header', () => {
     }
     -->    
     `
-    const desiredMetaHeader = {synopsis:"first header", readingTime:"5 minutes", tags:"test blog engine"}
+    const desiredMetaHeader = {synopsis:"first header", readingTime:"5 minutes", tags:["test", "blog", "engine"]}
     let result = await ExtractMetaHeader.Extract(header);
     expect(result).toMatchObject(desiredMetaHeader);
   });       

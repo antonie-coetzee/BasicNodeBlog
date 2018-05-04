@@ -1,6 +1,6 @@
 import { IMetaHeader } from "../../../../Common/Domain/IMetaHeader";
 
-export class ExtractMetaHeader{
+export class ExtractMetaHeader {
     public static Extract(fileData:string):IMetaHeader{
         if(fileData == null){
             throw new TypeError("fileData");
