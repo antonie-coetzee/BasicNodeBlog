@@ -15,7 +15,7 @@
         "moduleResolution": "node",
         "baseUrl": "Src/",
         "types": [
-            "node",
+            //"node",
             "reflect-metadata",
             "jest"
          ],

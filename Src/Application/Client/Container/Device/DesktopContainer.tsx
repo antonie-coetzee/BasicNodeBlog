@@ -15,8 +15,6 @@ import { IDesktopContainer } from "../../../Client/Container/Device/IDesktopCont
 
 import style from "Theme/Style.less"
 
-
-@withRouter
 @injectable()
 export class DesktopContainer extends React.Component implements IDesktopContainer {
 

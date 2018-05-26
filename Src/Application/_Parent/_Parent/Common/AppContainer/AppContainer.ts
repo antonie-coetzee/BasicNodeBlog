@@ -9,15 +9,15 @@ export default class AppContainer implements IAppContainer {
     private currentContainer:Container;
     
     constructor() {
-        this.container = new Container();
-        this.currentContainer = new Container();
+        this.container = new Container({ skipBaseClassChecks: true });
+        this.currentContainer = new Container({ skipBaseClassChecks: true });
     }
 
     public AddLayer(builder: (container:interfaces.Container)=>void) : void {
         if(builder == null){
             throw new Error("argument 'builder' is null");
         }
-        let childContainer = new Container();
+        let childContainer = new Container({ skipBaseClassChecks: true });
         childContainer.parent = this.currentContainer;
         this.currentContainer = childContainer;
         builder(childContainer);

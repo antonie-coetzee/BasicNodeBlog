@@ -9,7 +9,6 @@ import { IBlogArticleKey, IBlogArticle } from "../../../../Client/Container/Cont
 
 import style from "Theme/Style.less"
 
-@withRouter
 @injectable()
 export class BlogContent extends React.Component<IBlogContentProps & RouteComponentProps<IBlogContentProps>> implements IBlogContent {
 

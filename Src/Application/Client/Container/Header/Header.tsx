@@ -16,7 +16,6 @@ import style from "Theme/Style.less"
 import  {TransitionGroup} from 'react-transition-group';
 import Transition from "react-transition-group/Transition";
 
-@withRouter
 @injectable()
 @observer
 export class Header extends React.Component<any, any> implements IHeader  {

@@ -19,10 +19,9 @@ import { withRouter } from "react-router";
 
 import style from "Theme/Style.less"
 
-@withRouter
-@observer
+//@observer
 @injectable()
-export default class Container extends React.Component<any, any> implements IContainer  {
+export class Container extends React.Component<any, any> implements IContainer  {
 
     @lazyInject(IResponsiveServiceKey)
     public ResponsiveService : IResponsiveService;

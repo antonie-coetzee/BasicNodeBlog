@@ -11,7 +11,6 @@ import { IBlogMenuKey, IBlogMenu } from "../../../../Client/Container/SideBar/Me
 
 import style from "Theme/Style.less";
 
-@withRouter
 @injectable()
 @observer
 export class Menu extends React.Component<IMenuProps> implements IMenu  {

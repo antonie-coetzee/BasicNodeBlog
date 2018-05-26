@@ -19,7 +19,6 @@ import { IMobileContainer } from "../../../Client/Container/Device/IMobileContai
 
 import style from "Theme/Style.less"
 
-@withRouter
 @observer
 @injectable()
 export class MobileContainer extends React.Component implements IMobileContainer {
