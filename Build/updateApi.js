@@ -42,8 +42,8 @@ if(!shell.which('java')){
 
 console.log('generating api client from swagger spec');
 let codegenPath = './Tools/swagger-codegen-cli.jar';
-let inputSpecPath = './App/2.Application/Server/Middleware/SwaggerUI/swagger.json';
-let outputPath = './App/2.Application/Client/Lib/Api/Generated';
+let inputSpecPath = './Src/Application/Server/Middleware/SwaggerUI/swagger.json';
+let outputPath = './Src/Application/Lib/Api/Generated';
 mkdirp(outputPath);
 let cmd = `java -jar ${codegenPath} generate -i ${inputSpecPath} -l typescript-fetch -o ${outputPath}`;
 console.log('executing: ' + cmd);

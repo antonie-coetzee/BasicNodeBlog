@@ -3,7 +3,7 @@ let path = require('path')
 let mkdirp = require('mkdirp');
 
 let destDir = './Dist/App';
-let srcConfigFile = './App/1.Framework/Server/Server.Config.json';
+let srcConfigFile = './Src/Application/_Parent/Server/Server.Config.json';
 
 function copySync(src, dest) {
     if (!fs.existsSync(src)) {

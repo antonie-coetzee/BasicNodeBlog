@@ -49,7 +49,6 @@
     "emitter": "0.0.5",
     "inversify": "^4.13.0",
     "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.4",
     "loglevel": "^1.4.1",
     "markdown-to-jsx": "^6.4.1",
     "mkdirp": "^0.5.1",
