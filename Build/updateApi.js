@@ -24,7 +24,7 @@ if (shell.exec('tsoa swagger').code !== 0) {
 
 let tsoaConf = require('../tsoa.json')
 let sourceSpecPath = tsoaConf.swagger.outputDirectory + '/swagger.json'
-let distSpecDir = destDir + '/App/2.Application/Server/Middleware/SwaggerUI/'
+let distSpecDir = destDir + '/Src/Application/Server/Middleware/SwaggerUI/'
 console.log('source swagger spec path: ' + sourceSpecPath);
 console.log('copying to Dist directory: ' + distSpecDir);
 mkdirp.sync(distSpecDir);
@@ -43,7 +43,7 @@ if(!shell.which('java')){
 console.log('generating api client from swagger spec');
 let codegenPath = './Tools/swagger-codegen-cli.jar';
 let inputSpecPath = './Src/Application/Server/Middleware/SwaggerUI/swagger.json';
-let outputPath = './Src/Application/Lib/Api/Generated';
+let outputPath = './Src/Application/Client/Lib/Api/Generated';
 mkdirp(outputPath);
 let cmd = `java -jar ${codegenPath} generate -i ${inputSpecPath} -l typescript-fetch -o ${outputPath}`;
 console.log('executing: ' + cmd);

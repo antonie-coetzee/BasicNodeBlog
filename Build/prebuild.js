@@ -2,7 +2,7 @@ let fs = require('fs');
 let path = require('path')
 let mkdirp = require('mkdirp');
 
-let destDir = './Dist/App';
+let destDir = './Dist/Src';
 let srcConfigFile = './Src/Application/_Parent/Server/Server.Config.json';
 
 function copySync(src, dest) {
