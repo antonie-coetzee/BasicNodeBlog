@@ -9,8 +9,8 @@
     "server-build": "node ./Build/prebuild.js && tsc",
     "server-rebuild": "node ./Build/prebuild.js && node ./Build/updateApi.js && tsc",
     "debug": "./node_modules/.bin/concurrently --kill-others \"tsc -w\" \"node ./node_modules/nodemon/bin/nodemon.js\"",
-    "start-dev": "node --inspect-brk=5858 ./Dist/App/Server.js",
-    "start-windows": "npm run server-build && cross-env NODE_PATH=./Dist/App DEBUG=express:* node ./Dist/App/Server.js",
+    "start-dev": "node --inspect-brk=5858 ./Dist/Src/Server.js",
+    "start-windows": "npm run server-build && cross-env NODE_PATH=./Dist/Src DEBUG=express:* node ./Dist/Src/Server.js",
     "pretest": "npm run build-server",
     "test": "jest",
     "preinstall": "node ./Build/preinstall.js"

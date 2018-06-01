@@ -13,7 +13,7 @@ class StaticFilesMiddleware implements IMiddleware {
     handlers:RequestHandler[];
 
     constructor(@inject(ILoggerKey) private logger:ILogger) {     
-        let dir = path.resolve("../Public");
+        let dir = path.resolve("../../Public");
         this.logger.Debug(`serving static files from: ${dir}`);
         let handler = express.static(dir);
         this.handlers = [handler];
