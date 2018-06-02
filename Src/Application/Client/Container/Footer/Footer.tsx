@@ -1,6 +1,6 @@
 import * as React from "react";
 import {injectable} from "inversify";
-import * as classNames from "classnames";
+import classNames from "classnames";
 
 import {IFooter, IFooterKey} from "../../../_Parent/Client/Container/Footer/IFooter"
 

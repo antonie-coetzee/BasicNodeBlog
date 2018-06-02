@@ -1,7 +1,7 @@
 import {IExpressApplication, IExpressApplicationKey} from "./IExpressApplication"
 
 import {injectable} from "inversify";
-import * as express from "express";
+import express from "express";
 
 @injectable()
 export class ExpressApplication implements IExpressApplication {

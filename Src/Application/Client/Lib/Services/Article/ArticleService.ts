@@ -41,7 +41,7 @@ export class ArticleService implements IArticleService {
     @action('fetching article with source')   
     async getArticleWithSource(id: string): Promise<IArticle> {
         this.logger.Debug(`fetching article with source shortid:${id}`);
-        let article = await this.apiWrapper.Api.getArticleWithSource({id:id});
+        let article = await this.apiWrapper.Api.getArticleWithSource(id);
         runInAction(()=>{
             this.logger.Debug(`article: ${article.metaHeader.id}, with source fetched, updating`);
             this.articleWithSource = article;

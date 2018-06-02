@@ -1,7 +1,7 @@
 import * as React from "react";
 import { withRouter } from "react-router";
 import {interfaces, injectable} from "inversify";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { lazyInject } from "../../../_Parent/_Parent/Common/AppContainer/LazyInject";
 
 import {IContainer} from "../../../_Parent/Client/Container/IContainer"

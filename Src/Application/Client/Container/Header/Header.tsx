@@ -2,7 +2,7 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import {Link, withRouter, Switch, Route} from 'react-router-dom'
 import {injectable, interfaces} from "inversify";
-import * as classNames from "classnames"
+import classNames from "classnames";
 import { lazyInject, lazyMultiInject } from "../../../_Parent/_Parent/Common/AppContainer/LazyInject";
 
 import {IResponsiveService, IResponsiveServiceKey} from "../../../_Parent/Client/Lib/Responsive/IResponsiveService"

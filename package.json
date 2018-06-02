@@ -64,7 +64,8 @@
     "reflect-metadata": "^0.1.12",
     "semantic-ui-less": "^2.3.1",
     "swagger-ui-express": "^2.0.9",
-    "typescript": "^2.8.3",
+    "tsoa": "https://github.com/WireJunky/tsoa/tarball/master",
+    "typescript": "^2.9.1",
     "winston": "^2.3.1"
   },
   "devDependencies": {
@@ -122,7 +123,6 @@
     "ts-loader": "^4.2.0",
     "ts-mockito": "^2.2.5",
     "ts-node": "^4.1.0",
-    "tsoa": "https://github.com/WireJunky/tsoa/tarball/master",
     "typedoc": "^0.7.2",
     "typings-for-css-modules-loader": "https://github.com/WireJunky/typings-for-css-modules-loader/tarball/master",
     "upath": "^1.0.2",

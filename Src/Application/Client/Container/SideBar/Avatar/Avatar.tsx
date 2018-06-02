@@ -1,6 +1,6 @@
 import * as React from "react";
 import { injectable, interfaces } from "inversify";
-import * as classNames from "classnames";
+import classNames from "classnames";
 
 import { IAvatar, IAvatarProps } from "../../../../Client/Container/SideBar/Avatar/IAvatar";
 

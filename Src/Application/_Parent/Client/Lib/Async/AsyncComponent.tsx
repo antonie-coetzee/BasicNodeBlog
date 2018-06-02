@@ -1,7 +1,7 @@
 import * as React from "react"
 import {interfaces} from "inversify";
 
-import * as classNames from "classnames"
+import classNames from "classnames";
 import style from "Theme/Style.less"
 
 export type ImportFunction<TComponent> = () => Promise<interfaces.Newable<TComponent>>;

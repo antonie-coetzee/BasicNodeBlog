@@ -1,6 +1,6 @@
 import * as React from "react";
 import {injectable, interfaces} from "inversify";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { computed } from "mobx";
 import { observer } from "mobx-react";
 import { TagCloud as ReactTagCloud} from "react-tagcloud";

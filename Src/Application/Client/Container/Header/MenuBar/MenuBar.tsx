@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Link} from 'react-router-dom'
 import {injectable, interfaces} from "inversify";
-import * as classNames from "classnames"
+import classNames from "classnames";
 
 import {IMenuBar} from "./IMenuBar"
 

@@ -5,7 +5,7 @@ import * as express from "express";
 import {IMiddleware} from "../../../_Parent/Server/Middleware/IMiddleware"
 
 import * as ui from "swagger-ui-express"
-import * as swaggerDocument from "./swagger.json"
+import swaggerDocument from "./swagger.json"
 
 @injectable()
 class SwaggerUIMiddleware implements IMiddleware {

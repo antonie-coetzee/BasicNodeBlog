@@ -1,3 +1,5 @@
+/// <reference path="./custom.d.ts" />
+// tslint:disable
 /**
  * basicnodeblog
  * Basic blog engine serving static content
@@ -10,221 +12,394 @@
  * Do not edit the class manually.
  */
 
-import * as querystring from "querystring";
+
 import * as url from "url";
-
-import * as isomorphicFetch from "isomorphic-fetch";
-import * as assign from "core-js/library/fn/object/assign";
-
-interface Dictionary<T> { [index: string]: T; }
-export interface FetchAPI { (url: string, init?: any): Promise<any>; }
+import * as portableFetch from "portable-fetch";
+import { Configuration } from "./configuration";
 
 const BASE_PATH = "http://localhost:8080/api/v1".replace(/\/+$/, "");
 
+/**
+ *
+ * @export
+ */
+export const COLLECTION_FORMATS = {
+    csv: ",",
+    ssv: " ",
+    tsv: "\t",
+    pipes: "|",
+};
+
+/**
+ *
+ * @export
+ * @interface FetchAPI
+ */
+export interface FetchAPI {
+    (url: string, init?: any): Promise<Response>;
+}
+
+/**
+ *  
+ * @export
+ * @interface FetchArgs
+ */
 export interface FetchArgs {
     url: string;
     options: any;
 }
 
+/**
+ * 
+ * @export
+ * @class BaseAPI
+ */
 export class BaseAPI {
-    basePath: string;
-    fetch: FetchAPI;
+    protected configuration: Configuration;
 
-    constructor(fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) {
-        this.basePath = basePath;
-        this.fetch = fetch;
+    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected fetch: FetchAPI = portableFetch) {
+        if (configuration) {
+            this.configuration = configuration;
+            this.basePath = configuration.basePath || this.basePath;
+        }
     }
 };
 
+/**
+ * 
+ * @export
+ * @class RequiredError
+ * @extends {Error}
+ */
+export class RequiredError extends Error {
+    name: "RequiredError"
+    constructor(public field: string, msg?: string) {
+        super(msg);
+    }
+}
+
+/**
+ * 
+ * @export
+ * @interface IArticle
+ */
 export interface IArticle {
-    "title": string;
-    "path": string;
-    "metaHeader": IMetaHeader;
-    "hash": string;
-    "source"?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IArticle
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IArticle
+     */
+    path: string;
+    /**
+     * 
+     * @type {IMetaHeader}
+     * @memberof IArticle
+     */
+    metaHeader: IMetaHeader;
+    /**
+     * 
+     * @type {string}
+     * @memberof IArticle
+     */
+    hash: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IArticle
+     */
+    source?: string;
 }
 
+/**
+ * 
+ * @export
+ * @interface IArticleTree
+ */
 export interface IArticleTree {
-    "name": string;
-    "article": IArticle;
-    "children": Array<IArticleTree>;
+    /**
+     * 
+     * @type {string}
+     * @memberof IArticleTree
+     */
+    name: string;
+    /**
+     * 
+     * @type {IArticle}
+     * @memberof IArticleTree
+     */
+    article: IArticle;
+    /**
+     * 
+     * @type {Array&lt;IArticleTree&gt;}
+     * @memberof IArticleTree
+     */
+    children: Array<IArticleTree>;
 }
 
+/**
+ * 
+ * @export
+ * @interface IMetaHeader
+ */
 export interface IMetaHeader {
-    "id": string;
-    "title"?: string;
-    "date": string;
-    "synopsis": string;
-    "readingTime"?: string;
-    "tags"?: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof IMetaHeader
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IMetaHeader
+     */
+    title?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IMetaHeader
+     */
+    date: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IMetaHeader
+     */
+    synopsis: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IMetaHeader
+     */
+    readingTime?: string;
+    /**
+     * 
+     * @type {Array&lt;string&gt;}
+     * @memberof IMetaHeader
+     */
+    tags?: Array<string>;
 }
-
 
 
 /**
  * DefaultApi - fetch parameter creator
+ * @export
  */
-export const DefaultApiFetchParamCreator = {
-    /**
-     * 
-     */
-    doUpdate(options?: any): FetchArgs {
-        const baseUrl = `/content/update`;
-        let urlObj = url.parse(baseUrl, true);
-        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        doUpdate(options: any = {}): FetchArgs {
+            const localVarPath = `/content/update`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-        let contentTypeHeader: Dictionary<string> = {};
-        if (contentTypeHeader) {
-            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
-        }
-        return {
-            url: url.format(urlObj),
-            options: fetchOptions,
-        };
-    },
-    /**
-     * 
-     * @param id 
-     */
-    getArticleWithSource(params: {  "id": string; }, options?: any): FetchArgs {
-        // verify required parameter "id" is set
-        if (params["id"] == null) {
-            throw new Error("Missing required parameter id when calling getArticleWithSource");
-        }
-        const baseUrl = `/article/full/{id}`
-            .replace(`{${"id"}}`, `${ params["id"] }`);
-        let urlObj = url.parse(baseUrl, true);
-        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
-        let contentTypeHeader: Dictionary<string> = {};
-        if (contentTypeHeader) {
-            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
-        }
-        return {
-            url: url.format(urlObj),
-            options: fetchOptions,
-        };
-    },
-    /**
-     * 
-     */
-    getTree(options?: any): FetchArgs {
-        const baseUrl = `/article/tree`;
-        let urlObj = url.parse(baseUrl, true);
-        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getArticleWithSource(id: string, options: any = {}): FetchArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling getArticleWithSource.');
+            }
+            const localVarPath = `/article/full/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-        let contentTypeHeader: Dictionary<string> = {};
-        if (contentTypeHeader) {
-            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
-        }
-        return {
-            url: url.format(urlObj),
-            options: fetchOptions,
-        };
-    },
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTree(options: any = {}): FetchArgs {
+            const localVarPath = `/article/tree`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
 };
 
 /**
  * DefaultApi - functional programming interface
+ * @export
  */
-export const DefaultApiFp = {
-    /**
-     * 
-     */
-    doUpdate(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
-        const fetchArgs = DefaultApiFetchParamCreator.doUpdate(options);
-        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        };
-    },
-    /**
-     * 
-     * @param id 
-     */
-    getArticleWithSource(params: { "id": string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<IArticle> {
-        const fetchArgs = DefaultApiFetchParamCreator.getArticleWithSource(params, options);
-        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        };
-    },
-    /**
-     * 
-     */
-    getTree(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<IArticleTree> {
-        const fetchArgs = DefaultApiFetchParamCreator.getTree(options);
-        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        };
-    },
-};
-
-/**
- * DefaultApi - object-oriented interface
- */
-export class DefaultApi extends BaseAPI {
-    /**
-     * 
-     */
-    doUpdate(options?: any) {
-        return DefaultApiFp.doUpdate(options)(this.fetch, this.basePath);
-    }
-    /**
-     * 
-     * @param id 
-     */
-    getArticleWithSource(params: {  "id": string; }, options?: any) {
-        return DefaultApiFp.getArticleWithSource(params, options)(this.fetch, this.basePath);
-    }
-    /**
-     * 
-     */
-    getTree(options?: any) {
-        return DefaultApiFp.getTree(options)(this.fetch, this.basePath);
+export const DefaultApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        doUpdate(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
+            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).doUpdate(options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getArticleWithSource(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<IArticle> {
+            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).getArticleWithSource(id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTree(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<IArticleTree> {
+            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).getTree(options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
     }
 };
 
 /**
  * DefaultApi - factory interface
+ * @export
  */
-export const DefaultApiFactory = function (fetch?: FetchAPI, basePath?: string) {
+export const DefaultApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
     return {
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
          */
         doUpdate(options?: any) {
-            return DefaultApiFp.doUpdate(options)(fetch, basePath);
+            return DefaultApiFp(configuration).doUpdate(options)(fetch, basePath);
         },
         /**
          * 
-         * @param id 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
          */
-        getArticleWithSource(params: {  "id": string; }, options?: any) {
-            return DefaultApiFp.getArticleWithSource(params, options)(fetch, basePath);
+        getArticleWithSource(id: string, options?: any) {
+            return DefaultApiFp(configuration).getArticleWithSource(id, options)(fetch, basePath);
         },
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
          */
         getTree(options?: any) {
-            return DefaultApiFp.getTree(options)(fetch, basePath);
+            return DefaultApiFp(configuration).getTree(options)(fetch, basePath);
         },
     };
 };
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public doUpdate(options?: any) {
+        return DefaultApiFp(this.configuration).doUpdate(options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getArticleWithSource(id: string, options?: any) {
+        return DefaultApiFp(this.configuration).getArticleWithSource(id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getTree(options?: any) {
+        return DefaultApiFp(this.configuration).getTree(options)(this.fetch, this.basePath);
+    }
+
+}
 

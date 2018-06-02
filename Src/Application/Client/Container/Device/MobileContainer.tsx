@@ -4,7 +4,7 @@ import {autorun, IReactionDisposer, action} from "mobx";
 import { observer } from "mobx-react";
 import {interfaces, injectable} from "inversify";
 import { push as Menu } from 'react-burger-menu'
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { lazyInject } from "../../../_Parent/_Parent/Common/AppContainer/LazyInject";
 
 import {IContainer} from "../../../_Parent/Client/Container/IContainer"

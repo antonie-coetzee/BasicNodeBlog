@@ -3,7 +3,7 @@ import { withRouter, Switch, Route , RouteComponentProps} from "react-router";
 import { observer } from "mobx-react";
 import { injectable } from "inversify";
 import { lazyInject } from "../../../../../_Parent/_Parent/Common/AppContainer/LazyInject";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import Markdown from "markdown-to-jsx";
 
 import { IBlogArticleProps, IBlogArticle } from "../../../../../Client/Container/Content/Blog/Article/IBlogArticle";

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {observer} from "mobx-react"
 import {injectable, interfaces} from "inversify";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import * as slideOut from "slideout"
 
 import { lazyInject } from "../../_Parent/_Parent/Common/AppContainer/LazyInject";

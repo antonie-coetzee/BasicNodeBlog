@@ -2,7 +2,7 @@ import * as React from "react";
 import { observer } from "mobx-react";
 
 import { injectable, interfaces } from "inversify";
-import * as classNames from "classnames";
+import classNames from "classnames";
 
 import { IArticleNode, IArticleNodeProps, IArticleNodeState } from "../../../../../../Client/Container/SideBar/Menu/BlogMenu/ArticleNode/IArticleNode";
 import { IArticle } from "../../../../../../Common/Domain/IArticle";
