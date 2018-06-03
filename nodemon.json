@@ -1,5 +1,5 @@
 {
-    "ignore": ["**/*.test.ts", "**/*.spec.ts", ".git", "node_modules", "**/swagger.json"],
+    "ignore": ["**/*.test.ts", "**/*.spec.ts", "**/*.test.js", "**/*.map", ".git", "node_modules", "**/swagger.json"],
     "watch": ["Dist/Src/Application/_Parent/Server/**/*.js","Dist/Src/Application/Server/**/*.js"],
     "exec": "npm run start-dev",
     "ext": "js",

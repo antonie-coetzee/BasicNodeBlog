@@ -24,7 +24,8 @@ module.exports = {
         extensions: ['.ts', '.tsx', 'd.ts', '.js'],
         modules: [path.resolve(workingDir,'./Src'), path.resolve(workingDir,'./node_modules'), 'node_modules'],
         alias: {
-            '../../theme.config': path.join(workingDir, './Src/Theme/theme.config')  
+            '../../theme.config': path.join(workingDir, './Src/Theme/theme.config'),
+            'portable-fetch' : "isomorphic-fetch"
          }
     },   
     devServer: {

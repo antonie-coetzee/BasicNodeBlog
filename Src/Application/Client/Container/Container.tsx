@@ -19,7 +19,7 @@ import { withRouter } from "react-router";
 
 import style from "Theme/Style.less"
 
-//@observer
+@observer
 @injectable()
 export class Container extends React.Component<any, any> implements IContainer  {
 
@@ -43,3 +43,4 @@ export class Container extends React.Component<any, any> implements IContainer  
                 </div> 
     } 
 }
+

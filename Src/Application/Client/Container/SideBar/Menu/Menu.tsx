@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Switch, Route, withRouter } from "react-router";
+import { Switch, Route, withRouter, RouteComponentProps } from "react-router";
 import { observer } from "mobx-react";
 import { injectable, interfaces } from "inversify";
 import classNames from "classnames";

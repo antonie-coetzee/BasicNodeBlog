@@ -82,6 +82,7 @@
     "@types/react-router": "^4.0.16",
     "@types/react-router-dom": "^4.2.3",
     "@types/slideout": "^0.1.19",
+    "@types/webpack": "^4.4.0",
     "cache-loader": "^1.2.0",
     "clean-webpack-plugin": "^0.1.17",
     "compression-webpack-plugin": "^1.1.3",
